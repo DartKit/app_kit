@@ -3,7 +3,7 @@ import 'package:app_kit/core/kt_export.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import '../widgets/kit_view.dart';
+import '../widgets/kit_views/kit_view.dart';
 
 class AppPermission {
   // Future<void> init() async {

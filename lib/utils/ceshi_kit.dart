@@ -1,7 +1,7 @@
 import 'package:app_kit/core/kt_dao.dart';
 import 'package:app_kit/core/app_device.dart';
 import 'package:app_kit/core/kt_export.dart';
-import 'package:app_kit/widgets/kit_view.dart';
+import 'package:app_kit/widgets/kit_views/kit_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CeshiKit {

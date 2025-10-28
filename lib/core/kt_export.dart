@@ -1,7 +1,7 @@
 export 'dart:convert';
 export 'package:app_kit/core/app_define.dart';
 export 'package:flutter/material.dart';
-export 'package:app_kit/utils/kit_image.dart';
+export 'package:app_kit/tools/image/kit_image.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:app_kit/core/app_colors.dart';
 export 'package:app_kit/extension/string_add.dart';
@@ -9,15 +9,15 @@ export 'package:get/get.dart'
     hide FormData, MultipartFile, Response; //这三个和dio库冲突隐藏起来
 export 'package:dio/dio.dart';
 export 'package:app_kit/widgets/text.dart';
-export 'package:app_kit/widgets/app_bar.dart';
+export 'package:app_kit/tools/core_ui//app_bar.dart';
 export 'package:app_kit/utils/enum.dart';
 export 'package:app_kit/core/app_log.dart';
 export 'package:app_kit/extension/pduration_add.dart';
-export 'package:app_kit/utils/hud.dart';
+export 'package:app_kit/tools/hud.dart';
 export 'package:app_kit/base/stateful.dart';
 export 'package:app_kit/generated/assets.dart';
 export 'package:app_kit/extension/int_add.dart';
-export 'package:app_kit/utils/no_data.dart';
+export 'package:app_kit/tools/core_ui/no_data.dart';
 export 'package:app_kit/https/common.dart';
 export '../../../core/app_font.dart';
 export './kt_dao.dart';
