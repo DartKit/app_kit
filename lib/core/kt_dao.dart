@@ -1,0 +1,42 @@
+import 'dart:ui';
+
+import 'package:get/get.dart';
+
+KtDao get kdao => KtDao();
+
+class KtDao {
+  static KtDao? _instance;
+  KtDao._internal() {
+    _instance = this;
+    _init();
+  }
+
+  factory KtDao() => _instance ?? KtDao._internal();
+
+  String token = '';
+  String channel = '';
+  String app_name = '';
+  String baseUrl = '';
+  String appStoreUrl = '';
+  String official = 'official';
+  List<String> hostUrls = [];
+  String urlUpOssFile = '';
+
+  var noNet = false.obs;
+  var inReq = false.obs;
+  late DateTime date0;
+  late bool req_end;
+  late bool reqing;
+  int _baseHostAtIndex = -1;
+
+  bool get isLogin => token.isNotEmpty;
+
+  set baseHostAtIndex (int index){
+    _baseHostAtIndex = index;
+  }
+  int get baseHostAtIndex {
+    return _baseHostAtIndex >=0 ? _baseHostAtIndex: hostUrls.indexOf(baseUrl);
+  }
+
+  void _init() {}
+}
