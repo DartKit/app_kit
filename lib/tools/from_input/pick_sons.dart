@@ -49,7 +49,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
       'status': 80 // 40 隐藏 80 显示
     };
     FromTemplate? res =
-        await CoService.fire<FromTemplate>(widget.mo.url, params: map);
+        await CoService.fire<FromTemplate>(widget.mo.url, query: map);
     if (res != null) {
       _tags[_num].ls = res.list;
       if (mounted) setState(() {});

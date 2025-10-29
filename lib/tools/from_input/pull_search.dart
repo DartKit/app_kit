@@ -67,7 +67,7 @@ class _DropSearchFieldState extends State<PullSearchField> {
       });
     }
 
-    List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true, params: map);
+    List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map);
     if (res != null) {
       hasReqDone = true;
       ls = res;

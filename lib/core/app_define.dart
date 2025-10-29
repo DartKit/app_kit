@@ -31,7 +31,7 @@ bool isNil<T>(Object? v, [String tip = '', bool useSnack = true]) {
   }
   if (f && tip.isNotEmpty) {
     if (useSnack) {
-      kPopSnack(tip);
+      kPopSnack(tip,time: tip.length~/6+1);
     } else {
       kitPopText(tip);
     }

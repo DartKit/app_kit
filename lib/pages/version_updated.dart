@@ -6,17 +6,17 @@ import 'package:app_kit/models/core/common_ver.dart';
 import 'package:app_kit/utils/open_file.dart';
 import 'package:app_kit/widgets/kit_views/kit_view.dart';
 import 'package:flutter/foundation.dart';
+import 'package:open_file_plus/open_file_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:open_file_plus/open_file_plus.dart';
 
 class VersionUpdated extends StatefulWidget {
   CommonVerVersion mo;
   bool is_force;
   String url;
-
-  VersionUpdated({super.key, required this.mo, required this.is_force, required this.url});
+  Function onClickInstall;
+  VersionUpdated({super.key, required this.mo, required this.is_force, required this.url,required this.onClickInstall});
 
   static Future<bool> haveNewVersion(String newVersion) async {
     final PackageInfo info = await PackageInfo.fromPlatform();
@@ -41,7 +41,7 @@ class VersionUpdated extends StatefulWidget {
     return false;
   }
 
-  static Future<void> getVersion({bool isHud = false, required url, required int owm_project_id}) async {
+  static Future<void> getVersion({bool isHud = false, required url, required int owm_project_id , required Function onClickInstall}) async {
     Map<String, dynamic> map = {
       // 'channel': isDebug ? kdao.official : kdao.channel,
       'channel': kdao.channel,
@@ -50,7 +50,7 @@ class VersionUpdated extends StatefulWidget {
     if ((kdao.channel == 'official') || ((kdao.channel == 'appstore'))) map.clear();
     logs('---kdao.channel--${kdao.channel}');
 
-    CommonVer? res = await CoService.fireGet<CommonVer>(url, params: map);
+    CommonVer? res = await CoService.fireGet<CommonVer>(url, query: map);
     if (res != null) {
       if (res.info.project_list.contains(owm_project_id) == false) {
         if (isHud) kPopSnack('当前已是最新版本', bgColor: C.blue);
@@ -74,7 +74,7 @@ class VersionUpdated extends StatefulWidget {
         AppDevice.has_version = true;
         for (var o in res.info.channels) {
           logs('---o.channel--${o.channel}---kdao.channel--${kdao.channel}');
-          if (o.channel == kdao.channel) _showNewVersionUpdated(res.info, is_force, o.url);
+          if (o.channel == kdao.channel) _showNewVersionUpdated(res.info, is_force, o.url,onClickInstall: onClickInstall);
         }
       } else {
         if (isHud) kPopSnack('当前已是最新版本', bgColor: C.blue);
@@ -88,13 +88,13 @@ class VersionUpdated extends StatefulWidget {
   //   return  versionName??'';
   // }
 
-  static Future<void> _showNewVersionUpdated(CommonVerVersion mo, bool is_force, url) async {
+  static Future<void> _showNewVersionUpdated(CommonVerVersion mo, bool is_force, url,{required Function onClickInstall}) async {
     logs('---o.url--$url');
     return showDialog(
       context: Get.context!,
       barrierDismissible: is_force,
       builder: (BuildContext context) {
-        return VersionUpdated(mo: mo, is_force: is_force, url: url);
+        return VersionUpdated(mo: mo, is_force: is_force, url: url,onClickInstall: onClickInstall,);
       },
     );
   }
@@ -207,6 +207,7 @@ class _VersionUpdatedState extends State<VersionUpdated> {
                                                     onPressed: () async {
                                                       logs('---_path--$_path');
                                                       await OpenFile.open(_path).then((value) => print('value == ${value.message}'));
+                                                      widget.onClickInstall();
                                                     },
                                                     child: const Text(
                                                       '立即安装',

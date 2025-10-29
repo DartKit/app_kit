@@ -1,5 +1,6 @@
 import 'package:app_kit/generated/json/base/json_convert_content.dart';
 
+import '../../core/app_log.dart';
 import 'api_response_entity.dart';
 
 ApiResponse<T> $ApiResponseFromJson<T>(Map<String, dynamic> json,{String dataKey = '',}) {
@@ -16,17 +17,37 @@ ApiResponse<T> $ApiResponseFromJson<T>(Map<String, dynamic> json,{String dataKey
   if (message != null) {
     apiResponseEntity.message = message;
   }
+
   // print('---json.runtimeType.toString()--${json['data'].runtimeType.toString()}');
+  var rsp = json['data'];
   if (dataKey.isNotEmpty &&
       (json['data'].runtimeType.toString().contains('Map')) &&
-      (Map.from(json['data']).containsKey(dataKey))
+      (Map.from(json['data']).containsKey(dataKey.split('.').first))
   ) {
-    final T? data = JsonConvert.fromJsonAsT<T>( json['data'][dataKey]);
+    List<String> keys = dataKey.split('.');
+    for (var o in keys) {
+      if (rsp.containsKey(o)) {
+        rsp =  rsp[o];
+      }else {
+        apiResponseEntity.data = null;
+        return apiResponseEntity;
+      }
+    }
+    final T? data = JsonConvert.fromJsonAsT<T>(rsp);
     if (data != null) {
       apiResponseEntity.data = data;
     }
 
   }else {
+    // logs('--data-0-:${json['data']}');
+    // if (rsp is List) {
+    //
+    // } else {
+    //   if (JsonConvert().convertFuncMap.containsKey(T.toString()) == false) {
+    //
+    //   }
+    // }
+
     final T? data = JsonConvert.fromJsonAsT<T>( json['data']);
     if (data != null) {
       apiResponseEntity.data = data;

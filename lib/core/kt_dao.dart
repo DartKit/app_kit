@@ -12,13 +12,13 @@ class KtDao {
   }
 
   factory KtDao() => _instance ?? KtDao._internal();
+  String official = 'official';
 
   String token = '';
-  String channel = '';
+  late String channel = official;
   String app_name = '';
   String baseUrl = '';
   String appStoreUrl = '';
-  String official = 'official';
   List<String> hostUrls = [];
   String urlUpOssFile = '';
 
@@ -33,7 +33,9 @@ class KtDao {
 
   set baseHostAtIndex (int index){
     _baseHostAtIndex = index;
+    if (hostUrls.length >= index) baseUrl = hostUrls[index];
   }
+
   int get baseHostAtIndex {
     return _baseHostAtIndex >=0 ? _baseHostAtIndex: hostUrls.indexOf(baseUrl);
   }

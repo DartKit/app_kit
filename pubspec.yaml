@@ -15,6 +15,7 @@ dependencies:
   open_file_plus:
     git:
       url: https://github.com/postflow/open_file_plus.git
+#  flutter_pickers: ^2.1.9
   flutter_pickers:
     git:
       url: https://github.com/quewen08/flutter_pickers.git

@@ -3,6 +3,10 @@ import 'package:app_kit/models/core/profile_entity.dart';
 
 ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   final ProfileEntity profileEntity = ProfileEntity();
+  final String? token = jsonConvert.convert<String>(json['token']);
+  if (token != null) {
+    profileEntity.token = token;
+  }
   final ProfileInfo? own = jsonConvert.convert<ProfileInfo>(json['own']);
   if (own != null) {
     profileEntity.own = own;
@@ -15,41 +19,9 @@ ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   if (check != null) {
     profileEntity.check = check;
   }
-  final bool? working = jsonConvert.convert<bool>(json['working']);
-  if (working != null) {
-    profileEntity.working = working;
-  }
-  final int? workId = jsonConvert.convert<int>(json['workId']);
-  if (workId != null) {
-    profileEntity.workId = workId;
-  }
-  final int? distance = jsonConvert.convert<int>(json['distance']);
-  if (distance != null) {
-    profileEntity.distance = distance;
-  }
-  final int? duration = jsonConvert.convert<int>(json['duration']);
-  if (duration != null) {
-    profileEntity.duration = duration;
-  }
-  final String? token = jsonConvert.convert<String>(json['token']);
-  if (token != null) {
-    profileEntity.token = token;
-  }
   final String? mobile = jsonConvert.convert<String>(json['mobile']);
   if (mobile != null) {
     profileEntity.mobile = mobile;
-  }
-  final String? endTime = jsonConvert.convert<String>(json['endTime']);
-  if (endTime != null) {
-    profileEntity.endTime = endTime;
-  }
-  final String? userTip = jsonConvert.convert<String>(json['userTip']);
-  if (userTip != null) {
-    profileEntity.userTip = userTip;
-  }
-  final String? url = jsonConvert.convert<String>(json['url']);
-  if (url != null) {
-    profileEntity.url = url;
   }
   final double? lat = jsonConvert.convert<double>(json['lat']);
   if (lat != null) {
@@ -63,30 +35,6 @@ ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   if (address != null) {
     profileEntity.address = address;
   }
-  final String? title = jsonConvert.convert<String>(json['title']);
-  if (title != null) {
-    profileEntity.title = title;
-  }
-  final String? logo = jsonConvert.convert<String>(json['logo']);
-  if (logo != null) {
-    profileEntity.logo = logo;
-  }
-  final String? logo_mini = jsonConvert.convert<String>(json['logo_mini']);
-  if (logo_mini != null) {
-    profileEntity.logo_mini = logo_mini;
-  }
-  final String? background_image = jsonConvert.convert<String>(json['background_image']);
-  if (background_image != null) {
-    profileEntity.background_image = background_image;
-  }
-  final String? role_name = jsonConvert.convert<String>(json['role_name']);
-  if (role_name != null) {
-    profileEntity.role_name = role_name;
-  }
-  final int? role_id = jsonConvert.convert<int>(json['role_id']);
-  if (role_id != null) {
-    profileEntity.role_id = role_id;
-  }
   final bool? can_ima_edit = jsonConvert.convert<bool>(json['can_ima_edit']);
   if (can_ima_edit != null) {
     profileEntity.can_ima_edit = can_ima_edit;
@@ -95,37 +43,9 @@ ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   if (can_cam_edit != null) {
     profileEntity.can_cam_edit = can_cam_edit;
   }
-  final bool? nav_ls = jsonConvert.convert<bool>(json['nav_ls']);
-  if (nav_ls != null) {
-    profileEntity.nav_ls = nav_ls;
-  }
   final bool? use_cam_sys = jsonConvert.convert<bool>(json['use_cam_sys']);
   if (use_cam_sys != null) {
     profileEntity.use_cam_sys = use_cam_sys;
-  }
-  final bool? use_ai = jsonConvert.convert<bool>(json['use_ai']);
-  if (use_ai != null) {
-    profileEntity.use_ai = use_ai;
-  }
-  final bool? only_seged = jsonConvert.convert<bool>(json['only_seged']);
-  if (only_seged != null) {
-    profileEntity.only_seged = only_seged;
-  }
-  final bool? road_big = jsonConvert.convert<bool>(json['road_big']);
-  if (road_big != null) {
-    profileEntity.road_big = road_big;
-  }
-  final double? road_zoom = jsonConvert.convert<double>(json['road_zoom']);
-  if (road_zoom != null) {
-    profileEntity.road_zoom = road_zoom;
-  }
-  final double? font_zoom = jsonConvert.convert<double>(json['font_zoom']);
-  if (font_zoom != null) {
-    profileEntity.font_zoom = font_zoom;
-  }
-  final double? road_opacity = jsonConvert.convert<double>(json['road_opacity']);
-  if (road_opacity != null) {
-    profileEntity.road_opacity = road_opacity;
   }
   final bool? notifications_enabled = jsonConvert.convert<bool>(json['notifications_enabled']);
   if (notifications_enabled != null) {
@@ -134,10 +54,6 @@ ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   final int? readSetBgLoc = jsonConvert.convert<int>(json['readSetBgLoc']);
   if (readSetBgLoc != null) {
     profileEntity.readSetBgLoc = readSetBgLoc;
-  }
-  final String? last_domain = jsonConvert.convert<String>(json['last_domain']);
-  if (last_domain != null) {
-    profileEntity.last_domain = last_domain;
   }
   final String? user_host = jsonConvert.convert<String>(json['user_host']);
   if (user_host != null) {
@@ -148,117 +64,54 @@ ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $ProfileEntityToJson(ProfileEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
+  data['token'] = entity.token;
   data['own'] = entity.own.toJson();
   data['isLogin'] = entity.isLogin;
   data['check'] = entity.check;
-  data['working'] = entity.working;
-  data['workId'] = entity.workId;
-  data['distance'] = entity.distance;
-  data['duration'] = entity.duration;
-  data['token'] = entity.token;
   data['mobile'] = entity.mobile;
-  data['endTime'] = entity.endTime;
-  data['userTip'] = entity.userTip;
-  data['url'] = entity.url;
   data['lat'] = entity.lat;
   data['lon'] = entity.lon;
   data['address'] = entity.address;
-  data['title'] = entity.title;
-  data['logo'] = entity.logo;
-  data['logo_mini'] = entity.logo_mini;
-  data['background_image'] = entity.background_image;
-  data['role_name'] = entity.role_name;
-  data['role_id'] = entity.role_id;
   data['can_ima_edit'] = entity.can_ima_edit;
   data['can_cam_edit'] = entity.can_cam_edit;
-  data['nav_ls'] = entity.nav_ls;
   data['use_cam_sys'] = entity.use_cam_sys;
-  data['use_ai'] = entity.use_ai;
-  data['only_seged'] = entity.only_seged;
-  data['road_big'] = entity.road_big;
-  data['road_zoom'] = entity.road_zoom;
-  data['font_zoom'] = entity.font_zoom;
-  data['road_opacity'] = entity.road_opacity;
   data['notifications_enabled'] = entity.notifications_enabled;
   data['readSetBgLoc'] = entity.readSetBgLoc;
-  data['last_domain'] = entity.last_domain;
   data['user_host'] = entity.user_host;
   return data;
 }
 
 extension ProfileEntityExtension on ProfileEntity {
   ProfileEntity copyWith({
+    String? token,
     ProfileInfo? own,
     bool? isLogin,
     bool? check,
-    bool? working,
-    int? workId,
-    int? distance,
-    int? duration,
-    String? token,
     String? mobile,
-    String? endTime,
-    String? userTip,
-    String? url,
     double? lat,
     double? lon,
     String? address,
-    String? title,
-    String? logo,
-    String? logo_mini,
-    String? background_image,
-    String? role_name,
-    int? role_id,
     bool? can_ima_edit,
     bool? can_cam_edit,
-    bool? nav_ls,
     bool? use_cam_sys,
-    bool? use_ai,
-    bool? only_seged,
-    bool? road_big,
-    double? road_zoom,
-    double? font_zoom,
-    double? road_opacity,
     bool? notifications_enabled,
     int? readSetBgLoc,
-    String? last_domain,
     String? user_host,
   }) {
     return ProfileEntity()
+      ..token = token ?? this.token
       ..own = own ?? this.own
       ..isLogin = isLogin ?? this.isLogin
       ..check = check ?? this.check
-      ..working = working ?? this.working
-      ..workId = workId ?? this.workId
-      ..distance = distance ?? this.distance
-      ..duration = duration ?? this.duration
-      ..token = token ?? this.token
       ..mobile = mobile ?? this.mobile
-      ..endTime = endTime ?? this.endTime
-      ..userTip = userTip ?? this.userTip
-      ..url = url ?? this.url
       ..lat = lat ?? this.lat
       ..lon = lon ?? this.lon
       ..address = address ?? this.address
-      ..title = title ?? this.title
-      ..logo = logo ?? this.logo
-      ..logo_mini = logo_mini ?? this.logo_mini
-      ..background_image = background_image ?? this.background_image
-      ..role_name = role_name ?? this.role_name
-      ..role_id = role_id ?? this.role_id
       ..can_ima_edit = can_ima_edit ?? this.can_ima_edit
       ..can_cam_edit = can_cam_edit ?? this.can_cam_edit
-      ..nav_ls = nav_ls ?? this.nav_ls
       ..use_cam_sys = use_cam_sys ?? this.use_cam_sys
-      ..use_ai = use_ai ?? this.use_ai
-      ..only_seged = only_seged ?? this.only_seged
-      ..road_big = road_big ?? this.road_big
-      ..road_zoom = road_zoom ?? this.road_zoom
-      ..font_zoom = font_zoom ?? this.font_zoom
-      ..road_opacity = road_opacity ?? this.road_opacity
       ..notifications_enabled = notifications_enabled ?? this.notifications_enabled
       ..readSetBgLoc = readSetBgLoc ?? this.readSetBgLoc
-      ..last_domain = last_domain ?? this.last_domain
       ..user_host = user_host ?? this.user_host;
   }
 }
@@ -269,35 +122,9 @@ ProfileInfo $ProfileInfoFromJson(Map<String, dynamic> json) {
   if (token != null) {
     profileInfo.token = token;
   }
-  final String? currentAuthority = jsonConvert.convert<String>(json['currentAuthority']);
-  if (currentAuthority != null) {
-    profileInfo.currentAuthority = currentAuthority;
-  }
-  final String? type = jsonConvert.convert<String>(json['type']);
-  if (type != null) {
-    profileInfo.type = type;
-  }
-  final ProfileInfoUser? user = jsonConvert.convert<ProfileInfoUser>(json['user']);
-  if (user != null) {
-    profileInfo.user = user;
-  }
-  final ProfileInfoProject? project = jsonConvert.convert<ProfileInfoProject>(json['project']);
-  if (project != null) {
-    profileInfo.project = project;
-  }
-  final List<ProfileInfoProject>? projectLink = (json['projectLink'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<ProfileInfoProject>(e) as ProfileInfoProject).toList();
-  if (projectLink != null) {
-    profileInfo.projectLink = projectLink;
-  }
-  final int? expire_at = jsonConvert.convert<int>(json['expire_at']);
-  if (expire_at != null) {
-    profileInfo.expire_at = expire_at;
-  }
-  final List<ProfileSite>? site = (json['site'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<ProfileSite>(e) as ProfileSite).toList();
-  if (site != null) {
-    profileInfo.site = site;
+  final ProfileInfoUser? info = jsonConvert.convert<ProfileInfoUser>(json['info']);
+  if (info != null) {
+    profileInfo.info = info;
   }
   return profileInfo;
 }
@@ -305,36 +132,18 @@ ProfileInfo $ProfileInfoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $ProfileInfoToJson(ProfileInfo entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['token'] = entity.token;
-  data['currentAuthority'] = entity.currentAuthority;
-  data['type'] = entity.type;
-  data['user'] = entity.user.toJson();
-  data['project'] = entity.project.toJson();
-  data['projectLink'] = entity.projectLink.map((v) => v.toJson()).toList();
-  data['expire_at'] = entity.expire_at;
-  data['site'] = entity.site.map((v) => v.toJson()).toList();
+  data['info'] = entity.info.toJson();
   return data;
 }
 
 extension ProfileInfoExtension on ProfileInfo {
   ProfileInfo copyWith({
     String? token,
-    String? currentAuthority,
-    String? type,
-    ProfileInfoUser? user,
-    ProfileInfoProject? project,
-    List<ProfileInfoProject>? projectLink,
-    int? expire_at,
-    List<ProfileSite>? site,
+    ProfileInfoUser? info,
   }) {
     return ProfileInfo()
       ..token = token ?? this.token
-      ..currentAuthority = currentAuthority ?? this.currentAuthority
-      ..type = type ?? this.type
-      ..user = user ?? this.user
-      ..project = project ?? this.project
-      ..projectLink = projectLink ?? this.projectLink
-      ..expire_at = expire_at ?? this.expire_at
-      ..site = site ?? this.site;
+      ..info = info ?? this.info;
   }
 }
 
@@ -363,6 +172,10 @@ ProfileInfoUser $ProfileInfoUserFromJson(Map<String, dynamic> json) {
   final String? real_name = jsonConvert.convert<String>(json['real_name']);
   if (real_name != null) {
     profileInfoUser.real_name = real_name;
+  }
+  final String? nick_name = jsonConvert.convert<String>(json['nick_name']);
+  if (nick_name != null) {
+    profileInfoUser.nick_name = nick_name;
   }
   final String? username = jsonConvert.convert<String>(json['username']);
   if (username != null) {
@@ -412,10 +225,6 @@ ProfileInfoUser $ProfileInfoUserFromJson(Map<String, dynamic> json) {
   if (strength_text != null) {
     profileInfoUser.strength_text = strength_text;
   }
-  final bool? is_supervise = jsonConvert.convert<bool>(json['is_supervise']);
-  if (is_supervise != null) {
-    profileInfoUser.is_supervise = is_supervise;
-  }
   return profileInfoUser;
 }
 
@@ -427,6 +236,7 @@ Map<String, dynamic> $ProfileInfoUserToJson(ProfileInfoUser entity) {
   data['project_id'] = entity.project_id;
   data['type'] = entity.type;
   data['real_name'] = entity.real_name;
+  data['nick_name'] = entity.nick_name;
   data['username'] = entity.username;
   data['department_name'] = entity.department_name;
   data['role_name'] = entity.role_name;
@@ -438,7 +248,6 @@ Map<String, dynamic> $ProfileInfoUserToJson(ProfileInfoUser entity) {
   data['city_id'] = entity.city_id;
   data['mobile_format'] = entity.mobile_format;
   data['strength_text'] = entity.strength_text;
-  data['is_supervise'] = entity.is_supervise;
   return data;
 }
 
@@ -450,6 +259,7 @@ extension ProfileInfoUserExtension on ProfileInfoUser {
     int? project_id,
     int? type,
     String? real_name,
+    String? nick_name,
     String? username,
     List<String>? department_name,
     List<String>? role_name,
@@ -461,7 +271,6 @@ extension ProfileInfoUserExtension on ProfileInfoUser {
     int? city_id,
     String? mobile_format,
     String? strength_text,
-    bool? is_supervise,
   }) {
     return ProfileInfoUser()
       ..id = id ?? this.id
@@ -470,6 +279,7 @@ extension ProfileInfoUserExtension on ProfileInfoUser {
       ..project_id = project_id ?? this.project_id
       ..type = type ?? this.type
       ..real_name = real_name ?? this.real_name
+      ..nick_name = nick_name ?? this.nick_name
       ..username = username ?? this.username
       ..department_name = department_name ?? this.department_name
       ..role_name = role_name ?? this.role_name
@@ -480,8 +290,7 @@ extension ProfileInfoUserExtension on ProfileInfoUser {
       ..status = status ?? this.status
       ..city_id = city_id ?? this.city_id
       ..mobile_format = mobile_format ?? this.mobile_format
-      ..strength_text = strength_text ?? this.strength_text
-      ..is_supervise = is_supervise ?? this.is_supervise;
+      ..strength_text = strength_text ?? this.strength_text;
   }
 }
 

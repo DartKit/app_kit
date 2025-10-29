@@ -67,8 +67,8 @@ class AppDevice {
           : androidInfo?.version.incremental,
       "version_name": packageInfo.version,
       "version_code": packageInfo.buildNumber,
-      if (channel.isNotEmpty)  "channel": channel,
-      if (mobile.isNotEmpty)  "mobile": mobile,
+        "channel": channel.ifNil(kdao.channel),
+        "mobile": mobile,
     };
     system_version = data['system_version'];
     model = data['model'];

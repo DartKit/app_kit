@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../core/app_define.dart';
 import '../../../core/kt_export.dart';
-import '../../../https/common.dart';
+import '../../../https/co_service.dart';
 import '../../../models/core/co_state.dart';
 import '../../../models/core/from_template.dart';
 
@@ -62,7 +62,7 @@ class FormInputLogic extends GetxController {
     hasReqTemps.value = false;
 
     FromTemplate? res =
-    await CoService.fireGet<FromTemplate>(url, params: map);
+    await CoService.fireGet<FromTemplate>(url, query: map);
 
     if (res != null) {
       hasReqTemps.value = true;
@@ -169,7 +169,7 @@ class FormInputLogic extends GetxController {
     logs('---info.url--${info.url}');
     if (noReq) return false;
     // return false;
-    CoState? res = await CoService.fire<CoState>(url, params: map, unTap: true);
+    CoState? res = await CoService.fire<CoState>(url, query: map, unTap: true);
     if (res?.state == true) {
       kitPopText('操作成功').then((value) {
         params.clear();

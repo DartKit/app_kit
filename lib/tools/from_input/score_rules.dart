@@ -62,7 +62,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
 
     if (widget.mo.url.contains('_fill_fas')) map.addAll(widget.fas);
     List<FromTemplateList>? res =
-        await CoService.fireGet<List<FromTemplateList>>(widget.mo.url, params: map);
+        await CoService.fireGet<List<FromTemplateList>>(widget.mo.url, query: map);
     if (res != null) {
       _tags[_num].ls = res;
       if (mounted) setState(() {});
@@ -72,7 +72,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
   /*
   Future<void> _evaluateList() async {
     Map<String,dynamic> map = {widget.mo.name:_parent_id};
-    FromTemplate? res = await  CoService.fire<FromTemplate>(widget.mo.children.first.url,params: map );
+    FromTemplate? res = await  CoService.fire<FromTemplate>(widget.mo.children.first.url,query: map );
     if (res != null) {
       _tags[_num].ls = res.list;
       if (mounted) setState(() {});

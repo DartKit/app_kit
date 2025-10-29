@@ -87,7 +87,7 @@ class _DropSelectState extends State<DropSelect> {
       List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(
           widget.url,
           unTap: true,
-          params: map);
+          query: map);
       if (res != null) {
         hasReqDone = true;
         ls = res;
@@ -96,7 +96,7 @@ class _DropSelectState extends State<DropSelect> {
       }
     } else {
       List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url,
-          unTap: true, params: map);
+          unTap: true, query: map);
       if (res != null) {
         hasReqDone = true;
         ls = res;

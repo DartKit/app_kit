@@ -1,4 +1,65 @@
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  enable-experiment:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "test/.test_coverage.dart"
+    - "bin/cache/**"
+    - "lib/generated_plugin_registrant.dart"
+  errors:
+  # Without ignore here, we cause import of all_lint_rules to warn, because some rules conflict.
+  # We explicitly enabled even conflicting rules and are fixing the conflicts in this file.
+  # Put it to warning temporarily, if you need troubleshoot lint rule settings.
+  included_file_warning: ignore
+  # Treat missing required parameters as an error, not as a hint or a warning.
+  missing_required_param: error
+  # Treat missing returns as an error, not as a hint or a warning.
+  missing_return: error
+  # Allow self-reference to deprecated members. This is done because otherwise we have
+  # to annotate every member in every test, assert, etc., when we deprecate something.
+  deprecated_member_use_from_same_package: ignore
+  # DON'T assign new values to parameters of methods or functions.
+  # https://dart-lang.github.io/linter/lints/parameter_assignments.html
+  parameter_assignments: warning
+  # Allow having TODOs in the code.
+  todo: ignore
+  dead_code: info
+
+linter:
+  # The lint rules applied to this project can be customized in the
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # included above or to enable additional rules. A list of all available lints
+  # and their documentation is published at
+  # https://dart-lang.github.io/linter/lints/index.html.
+  #
+  # Instead of disabling a lint rule for the entire project in the
+  # section below, it can also be suppressed for a single line of code
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
+  # producing the lint.
+  rules:
+    always_use_package_imports: false
+    package_api_docs: true
+
+    avoid_function_literals_in_foreach_calls: false
+    curly_braces_in_flow_control_structures: false
+    prefer_const_constructors: false
+    file_names : false
+    unnecessary_statements: false
+    avoid_relative_lib_imports: false
+    prefer_final_fields: false
+    constant_identifier_names: false
+    non_constant_identifier_names: false
+    prefer_relative_imports: false
+    prefer_single_quotes: false
+    prefer_interpolation_to_compose_strings: false
+    use_build_context_synchronously: false
+    depend_on_referenced_packages: false
+    no_logic_in_create_state: false
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

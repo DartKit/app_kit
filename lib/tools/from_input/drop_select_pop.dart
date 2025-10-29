@@ -49,7 +49,7 @@ class _DropSelectPopState extends State<DropSelectPop> {
     if (widget.url.contains('district_id=0')) return;
 
     if (widget.url.contains('_rsp_list=1')) {
-      List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true, params: map);
+      List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map);
       if (res != null) {
         hasReqDone = true;
         ls = res;
@@ -57,7 +57,7 @@ class _DropSelectPopState extends State<DropSelectPop> {
         if (mounted) setState(() {});
       }
     } else {
-      List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true, params: map);
+      List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map);
       if (res != null) {
         hasReqDone = true;
         ls = res;

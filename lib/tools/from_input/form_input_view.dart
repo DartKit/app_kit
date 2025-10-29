@@ -794,7 +794,7 @@ class _FromInputState extends State<FromInput> {
   Future<void> _one_fill_belong_depart(FromTemplateList o) async {
     if (o.value_id == 0 && o.url.contains('_one_fill')) {
       Map<String, dynamic> map = o.url.urlQuery(); // 40 隐藏 80 显示
-      FromTemplate? res = await CoService.fire<FromTemplate>(o.url, params: map);
+      FromTemplate? res = await CoService.fire<FromTemplate>(o.url, query: map);
       if (res != null && res.list.length == 1) {
         FromTemplateList mo = res.list.first;
         o.value_id = mo.id;
