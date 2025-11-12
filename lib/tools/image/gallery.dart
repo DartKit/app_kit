@@ -1,8 +1,13 @@
+import 'dart:ui';
+
 import 'package:app_kit/core/kt_export.dart';
 import 'package:app_kit/core/app_permission.dart';
 import 'package:app_kit/utils/open_file.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:image_pickers/image_pickers.dart';
+import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:image_pickers/image_pickers.dart';
+// import 'package:image_pickers/image_pickers.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -184,17 +189,19 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
   }
 
   void _saveImaToGllery(String url) async {
-    String? res = await ImagePickers.saveImageToGallery(url.split('?').first);
-    if (res != null) kPopSnack('保存成功');
-    logs(res);
+    // ImagePicker
+    // String? res = await ImagePickers.saveImageToGallery(url.split('?').first);
+    // if (res != null) kPopSnack('保存成功');
+    // logs(res);
 
-    // var response = await Dio().get(url, options: Options(responseType: ResponseType.bytes));
-    // final result = await ImageGallerySaver.saveImage(
-    //     Uint8List.fromList(response.data),
-    //     quality: 100,);
-    // if (result['isSuccess'] == true) {
-    //   kitPopText('保存成功');
-    // }
+
+    var response = await Dio().get(url, options: Options(responseType: ResponseType.bytes));
+    final result = await ImageGallerySaverPlus.saveImage(
+        Uint8List.fromList(response.data),
+        quality: 100,);
+    if (result['isSuccess'] == true) {
+      kitPopText('保存成功');
+    }
   }
 
   String _getIndexurl(int index) {

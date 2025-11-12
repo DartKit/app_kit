@@ -45,13 +45,13 @@ class _DropSelectMoreState extends State<DropSelectMore> {
   Future<void> _scoreSortList() async {
     Map<String, dynamic> map = {if (widget.patrol_type_id > 0) 'patrol_type_id': widget.patrol_type_id, 'status': 80};
     if (widget.mo.url.contains('_rsp')) {
-      List<FromTemplateList>? res = await CoService.fire<List<FromTemplateList>>(widget.mo.url, query: map, key: widget.mo.url.urlQuery()['_rsp'] ?? '');
+      List<FromTemplateList>? res = await KitService.fire<List<FromTemplateList>>(widget.mo.url, query: map,isMoInAppKit: true);
       if (res != null) {
         ls = res;
         if (mounted) setState(() {});
       }
     } else {
-      FromTemplate? res = await CoService.fire<FromTemplate>(widget.mo.url, query: map);
+      FromTemplate? res = await KitService.fire<FromTemplate>(widget.mo.url, query: map,isMoInAppKit: true);
       if (res != null) {
         ls = res.list;
         if (mounted) setState(() {});

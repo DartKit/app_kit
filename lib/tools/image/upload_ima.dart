@@ -2,7 +2,7 @@
 import 'dart:io';
 import 'package:app_kit/core/app_log.dart';
 import 'package:app_kit/models/core/oss_obj.dart';
-import 'package:app_kit/utils/oss.dart';
+import 'package:app_kit/tools/image/oss.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:image_pickers/image_pickers.dart';
 // import 'package:image_pickers/image_pickers.dart';

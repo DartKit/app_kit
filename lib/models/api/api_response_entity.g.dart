@@ -3,8 +3,8 @@ import 'package:app_kit/generated/json/base/json_convert_content.dart';
 import '../../core/app_log.dart';
 import 'api_response_entity.dart';
 
-ApiResponse<T> $ApiResponseFromJson<T>(Map<String, dynamic> json,{String dataKey = '',}) {
-  final ApiResponse<T> apiResponseEntity = ApiResponse<T>();
+KitResponse<T> $ApiResponseFromJson<T>(Map<String, dynamic> json,{String dataKey = '',}) {
+  final KitResponse<T> apiResponseEntity = KitResponse<T>();
   final int? code = jsonConvert.convert<int>(json['code']);
   if (code != null) {
     apiResponseEntity.code = code;
@@ -57,7 +57,7 @@ ApiResponse<T> $ApiResponseFromJson<T>(Map<String, dynamic> json,{String dataKey
   return apiResponseEntity;
 }
 
-Map<String, dynamic> $ApiResponseToJson(ApiResponse entity) {
+Map<String, dynamic> $ApiResponseToJson(KitResponse entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['code'] = entity.code;
   data['status'] = entity.status;

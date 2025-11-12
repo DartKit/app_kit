@@ -28,7 +28,7 @@ class _DeductionListState extends State<DeductionList> {
   // 移交对象
   void _req() async {
     var url = widget.mo.url;
-    FromTemplateList? res = await CoService.fire<FromTemplateList>(url);
+    FromTemplateList? res = await KitService.fire<FromTemplateList>(url,isMoInAppKit: true);
     if (res != null) {
       _checkAll();
       if (mounted) setState(() {});

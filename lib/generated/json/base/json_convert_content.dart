@@ -15,8 +15,6 @@ import 'package:app_kit/models/core/profile_entity.dart';
 import 'package:app_kit/models/core/sd_search.dart';
 import 'package:app_kit/models/core/sd_sort_item.dart';
 
-import '../../../core/app_log.dart';
-
 JsonConvert jsonConvert = JsonConvert();
 
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -148,7 +146,6 @@ class JsonConvert {
 
   //list is returned by type
   static M? _getListChildType<M>(List<Map<String, dynamic>> data) {
-    logs('--M-0-:${M}');
     if (<CoState>[] is M) {
       return data.map<CoState>((Map<String, dynamic> e) => CoState.fromJson(e)).toList() as M;
     }
@@ -219,11 +216,9 @@ class JsonConvert {
     if (json is M) {
       return json;
     }
-
     if (json is List) {
       return _getListChildType<M>(json.map((dynamic e) => e as Map<String, dynamic>).toList());
     } else {
-      logs('--M-1-:${M}');
       return jsonConvert.convert<M>(json);
     }
   }

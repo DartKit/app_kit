@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'package:app_kit/tools/hud.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:flutter/services.dart';
+import '../core/app_define.dart';
 
 /// 字符串扩展方法
 extension AddString on String {
@@ -106,7 +105,7 @@ extension AddString on String {
 
   String get copyToClipboard {
     Clipboard.setData(ClipboardData(text: this));
-    kitPopText('已复制：' + this);
+    kPopSnack('已复制：' + this);
     return this;
   }
 

@@ -1,7 +1,7 @@
 import 'package:app_kit/core/kt_export.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-const String _path = 'image/';
+const String _path = '';
 
 // class FillImage extends CoImage {
 //

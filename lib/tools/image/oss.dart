@@ -15,8 +15,8 @@ class UploadOss {
   static int size = 0;
 
   static Future<void> _filetoken() async {
-    if (isNil(kdao.urlUpOssFile.isEmpty, '请配置文件上传地址')) return;
-    OssToken? x = await CoService.fire<OssToken>(kdao.urlUpOssFile, hud: true, unTap: true);
+    if (isNil(kdao.urlUpFileToOss.isEmpty, '请配置文件上传地址')) return;
+    OssToken? x = await KitService.fire<OssToken>(kdao.urlUpFileToOss, hud: true, unTap: true,isMoInAppKit: true);
 
     if (x != null) {
       ossAccessKeyId = x.id;

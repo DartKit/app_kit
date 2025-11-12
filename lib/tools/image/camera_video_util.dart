@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:wechat_assets_picker/wechat_assets_picker.dart';
+// import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 class CameraVideoUtil {
   static final CameraVideoUtil _singleton = new CameraVideoUtil._internal();
@@ -15,26 +15,26 @@ class CameraVideoUtil {
 
   static final ImagePicker _picker = ImagePicker();
 
-  static Future<List<String>> pickMulitImage(context) async {
-    final List<AssetEntity>? pickedAssets =
-        await AssetPicker.pickAssets(context);
-
-    if (pickedAssets == null) return [];
-
-    List<String> listImgPath = [];
-    for (var asset in pickedAssets) {
-      final originFile = await asset.originFile;
-      final filePath = originFile?.path;
-      final type = asset.type;
-      if (filePath != null) {
-        if (type == AssetType.image) {
-          listImgPath.add(filePath);
-        }
-      }
-    }
-
-    return listImgPath;
-  }
+  // static Future<List<String>> pickMulitImage(context) async {
+  //   final List<AssetEntity>? pickedAssets =
+  //       await AssetPicker.pickAssets(context);
+  //
+  //   if (pickedAssets == null) return [];
+  //
+  //   List<String> listImgPath = [];
+  //   for (var asset in pickedAssets) {
+  //     final originFile = await asset.originFile;
+  //     final filePath = originFile?.path;
+  //     final type = asset.type;
+  //     if (filePath != null) {
+  //       if (type == AssetType.image) {
+  //         listImgPath.add(filePath);
+  //       }
+  //     }
+  //   }
+  //
+  //   return listImgPath;
+  // }
 
   static Future<List<String>> pickMultipleImages() async {
     final List<XFile>? images = await _picker.pickMultiImage();

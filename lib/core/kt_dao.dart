@@ -20,13 +20,14 @@ class KtDao {
   String baseUrl = '';
   String appStoreUrl = '';
   List<String> hostUrls = [];
-  String urlUpOssFile = '';
+  String urlUpFileToOss = '';
+  String urlUpFileToOwn = '';
 
   var noNet = false.obs;
   var inReq = false.obs;
   late DateTime date0;
-  late bool req_end;
-  late bool reqing;
+  bool req_end = true;
+  bool reqing = false;
   int _baseHostAtIndex = -1;
 
   bool get isLogin => token.isNotEmpty;

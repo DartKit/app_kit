@@ -270,9 +270,7 @@ class _FromInputState extends State<FromInput> {
                 isLook: !widget.enable,
                 check_box: o.checked,
                 isFile: o.url.contains('_file=1'),
-                aiCall: (x) {
-                  if (widget.aiCall != null) widget.aiCall!(o);
-                },
+                aiCall: widget.aiCall,
                 onCheckBoxChange: (x) {
                   o.checked = x;
                   if (x == false) {
@@ -794,7 +792,7 @@ class _FromInputState extends State<FromInput> {
   Future<void> _one_fill_belong_depart(FromTemplateList o) async {
     if (o.value_id == 0 && o.url.contains('_one_fill')) {
       Map<String, dynamic> map = o.url.urlQuery(); // 40 隐藏 80 显示
-      FromTemplate? res = await CoService.fire<FromTemplate>(o.url, query: map);
+      FromTemplate? res = await KitService.fire<FromTemplate>(o.url, query: map,isMoInAppKit: true);
       if (res != null && res.list.length == 1) {
         FromTemplateList mo = res.list.first;
         o.value_id = mo.id;
@@ -818,10 +816,10 @@ class _FromInputState extends State<FromInput> {
     }
 
     if (o.url.contains('_rsp_list=1')) {
-      List<FromTemplateList>? res = await CoService.fireGet<List<FromTemplateList>>(o.url, unTap: true);
+      List<FromTemplateList>? res = await KitService.fireGet<List<FromTemplateList>>(o.url, unTap: true);
       if (res != null) o.dats = res;
     } else {
-      FromTemplate? res = await CoService.fireGet<FromTemplate>(o.url, unTap: true);
+      FromTemplate? res = await KitService.fireGet<FromTemplate>(o.url, unTap: true);
       if (res != null) o.dats = res.list;
     }
   }

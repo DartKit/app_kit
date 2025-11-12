@@ -53,7 +53,7 @@ class _PickBoxState extends State<PickBox> {
     if (widget.mo.url.contains('_box_one')) _box_one = true;
     logs('---url-111-$url');
 
-    FromTemplateList? res = await CoService.fire<FromTemplateList>(url);
+    FromTemplateList? res = await KitService.fire<FromTemplateList>(url,isMoInAppKit: true);
     if (res != null) {
       _ls = res.list;
       if (widget.mo.value_id > 0 && _box_one) {

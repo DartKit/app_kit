@@ -84,7 +84,7 @@ class _DropSelectState extends State<DropSelect> {
     if (widget.url.contains('district_id=0')) return;
 
     if (widget.url.contains('_rsp_list=1')) {
-      List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(
+      List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(
           widget.url,
           unTap: true,
           query: map);
@@ -95,7 +95,7 @@ class _DropSelectState extends State<DropSelect> {
         if (mounted) setState(() {});
       }
     } else {
-      List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url,
+      List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url,
           unTap: true, query: map);
       if (res != null) {
         hasReqDone = true;

@@ -233,7 +233,7 @@ class KitView {
         children: [
           MainText(
             serial,
-            tip: tip ?? '问题编号：',
+            tip: tip ?? '问题编号c',
             fontWeight: AppFont.semiBold,
             color: C.subText3,
             fontSize: fontSize ?? 13.r,
@@ -247,7 +247,7 @@ class KitView {
               child: Padding(
                   padding: EdgeInsets.only(left: 3.r, right: 0),
                   child: CoImage(
-                    'asts/images/ic_copy.png',
+                    'packages/app_kit/lib/asts/images/ic_copy.png',
                     size: 12.r,
                     circular: 0,
                   )),

@@ -67,7 +67,7 @@ class _SearchListState extends State<SearchList> {
                             right: 20.r,
                             bottom: 6.r,
                             child: CoImage(
-                              'asts/images/sel_tick2.png',
+                              'lib/asts/images/sel_tick2.png',
                               size: 16.r,
                               circular: 0,
                               fit: BoxFit.fill,

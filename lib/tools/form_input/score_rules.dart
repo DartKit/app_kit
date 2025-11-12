@@ -22,7 +22,7 @@ class ScoreRulesPage extends StatefulWidget {
   State<ScoreRulesPage> createState() => _ScoreRulesPageState();
 }
 
-const String tip = '点上级可重选';
+const String atip = '点上级可重选';
 
 class _ScoreRulesPageState extends State<ScoreRulesPage> {
   bool setBg = false;
@@ -62,7 +62,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
 
     if (widget.mo.url.contains('_fill_fas')) map.addAll(widget.fas);
     List<FromTemplateList>? res =
-        await CoService.fireGet<List<FromTemplateList>>(widget.mo.url, query: map);
+        await KitService.fireGet<List<FromTemplateList>>(widget.mo.url, query: map);
     if (res != null) {
       _tags[_num].ls = res;
       if (mounted) setState(() {});
@@ -72,7 +72,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
   /*
   Future<void> _evaluateList() async {
     Map<String,dynamic> map = {widget.mo.name:_parent_id};
-    FromTemplate? res = await  CoService.fire<FromTemplate>(widget.mo.children.first.url,query: map );
+    FromTemplate? res = await  KitService.fire<FromTemplate>(widget.mo.children.first.url,query: map );
     if (res != null) {
       _tags[_num].ls = res.list;
       if (mounted) setState(() {});
@@ -234,7 +234,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
     _score_ids.clear();
 
     _tags.asMap().entries.map((e) {
-      name += e.value.name != tip
+      name += e.value.name != atip
           ? '${(e.key != 0 ? ' > ' : '')}${e.value.name}'
           : '';
       _score_ids.add(e.value.id.toString());
@@ -332,7 +332,7 @@ class SelectTag {
   SelectTag(
       {this.id = '',
       this.time = '',
-      this.name = tip,
+      this.name = atip,
       this.index = -1,
       this.ls = const []});
 }

@@ -42,7 +42,7 @@ class _SelMultiState extends State<SelMulti> {
   }
 
   void _req() async {
-    List<KeyVars>? res = await CoService.fireGet<List<KeyVars>>(widget.url, unTap: true);
+    List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true);
     if (res != null) _ls = res;
     if (mounted) setState(() {});
   }

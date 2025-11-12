@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../core/app_define.dart';
 import '../../../core/kt_export.dart';
-import '../../../https/co_service.dart';
+import '../../../https/kit_service.dart';
 import '../../../models/core/co_state.dart';
 import '../../../models/core/from_template.dart';
 
@@ -62,7 +62,7 @@ class FormInputLogic extends GetxController {
     hasReqTemps.value = false;
 
     FromTemplate? res =
-    await CoService.fireGet<FromTemplate>(url, query: map);
+    await KitService.fireGet<FromTemplate>(url, query: map);
 
     if (res != null) {
       hasReqTemps.value = true;
@@ -169,15 +169,10 @@ class FormInputLogic extends GetxController {
     logs('---info.url--${info.url}');
     if (noReq) return false;
     // return false;
-    CoState? res = await CoService.fire<CoState>(url, query: map, unTap: true);
+    CoState? res = await KitService.fire<CoState>(url,data: map, query: map, unTap: true,isMoInAppKit: true);
     if (res?.state == true) {
-      kitPopText('操作成功').then((value) {
+      kPopSnack('操作成功',onFinish: (){
         params.clear();
-        // if (cMap.fromMapToInfo.isTrue) {
-        //   cProb.req().then((value) {
-        //     cMap.fenceIndex.value = SdRoadFenceList.fromJson(cProb.mo.value.toJson());
-        //   });
-        // }
         if (autoBack) Get.back(result: true);
       });
     }

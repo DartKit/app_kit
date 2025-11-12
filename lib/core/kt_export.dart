@@ -18,7 +18,7 @@ export 'package:app_kit/base/stateful.dart';
 // export 'package:app_kit/generated/assets.dart';
 export 'package:app_kit/extension/int_add.dart';
 export 'package:app_kit/tools/core_ui/no_data.dart';
-export 'package:app_kit/https/co_service.dart';
+export 'package:app_kit/https/kit_service.dart';
 export '../../../core/app_font.dart';
 export './kt_dao.dart';
 export 'package:app_kit/utils/debouncer.dart';

@@ -5,7 +5,7 @@ import 'package:app_kit/models/core/oss_obj.dart';
 import 'package:app_kit/tools/image/camera.dart';
 import 'package:app_kit/tools/image/image_editor.dart';
 import 'package:app_kit/utils/open_file.dart';
-import 'package:app_kit/utils/oss.dart';
+import 'package:app_kit/tools/image/oss.dart';
 import 'package:app_kit/tools/image/gallery.dart';
 import 'package:app_kit/widgets/kit_views/kit_view.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -341,7 +341,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                           }
                         },
                       ))),
-          Obx(() => (aiGif.isTrue && (_aiIndex == index)) ? Positioned(top: 0, right: 0, left: 0, bottom: 0, child: CoImage('asts/images/gf_scan1.gif')) : SizedBox()),
+          Obx(() => (aiGif.isTrue && (_aiIndex == index)) ? Positioned(top: 0, right: 0, left: 0, bottom: 0, child: CoImage('lib/asts/images/gf_scan1.gif')) : SizedBox()),
           Positioned(
               top: 0.0,
               right: 0.0,

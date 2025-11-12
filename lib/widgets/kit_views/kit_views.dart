@@ -11,7 +11,7 @@ class CallPhone extends StatelessWidget {
           if (call != null) call!();
         },
         child: CoImage(
-          'asts/images/ic_call.png',
+          'lib/asts/images/ic_call.png',
           width: 36.r,
           height: 36.r,
           circular: 0,

@@ -50,7 +50,7 @@ class VersionUpdated extends StatefulWidget {
     if ((kdao.channel == 'official') || ((kdao.channel == 'appstore'))) map.clear();
     logs('---kdao.channel--${kdao.channel}');
 
-    CommonVer? res = await CoService.fireGet<CommonVer>(url, query: map);
+    CommonVer? res = await KitService.fireGet<CommonVer>(url, query: map);
     if (res != null) {
       if (res.info.project_list.contains(owm_project_id) == false) {
         if (isHud) kPopSnack('当前已是最新版本', bgColor: C.blue);
@@ -143,7 +143,7 @@ class _VersionUpdatedState extends State<VersionUpdated> {
                   height: 155.r,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
-                    image: DecorationImage(image: AssetImage('asts/images/up_ver.png'), fit: BoxFit.fill),
+                    image: DecorationImage(image: AssetImage('lib/asts/images/up_ver.png'), fit: BoxFit.fill),
                   ),
                 ),
                 Container(

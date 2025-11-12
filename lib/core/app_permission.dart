@@ -245,7 +245,7 @@ class AppPermission {
         (st == PermissionStatus.provisional));
   }
 
-  static Future<bool> isGrantedLocation({required bool isGrantedIftoLoc, Function(bool)? call}) async {
+  static Future<bool> isGrantedLocation({Function(bool)? call}) async {
     // var f = await Permission.location.isGranted;
     // if(!f) KitView.alert(
     //     title: '获取位置信息权限说明：',
