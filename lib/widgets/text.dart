@@ -43,7 +43,7 @@ class MainText extends Text {
         maxLines: maxLines ?? 100,
         textAlign: textAlign ?? TextAlign.start,
         style: TextStyle(
-            color: color ?? (txt.isNum ? C.blue : Color(0xFF5F5F5F)),
+            color: color ?? (txt.isNum ? CC.blue : Color(0xFF5F5F5F)),
             fontSize: fontSize ?? 13.r,
             fontWeight: fontWeight ?? AppFont.semiBold),
       );
@@ -67,7 +67,7 @@ class MainText extends Text {
       style: TextStyle(
           fontWeight: tip2.isNotEmpty ? AppFont.medium : AppFont.semiBold,
           fontSize: fontSize ?? 13.r,
-          color: color ?? (txt.isNum ? C.blue : Color(0xFF5F5F5F))),
+          color: color ?? (txt.isNum ? CC.blue : Color(0xFF5F5F5F))),
       textAlign: TextAlign.start,
     ).marginOnly(top: top ?? 0);
 
@@ -106,7 +106,7 @@ class CoText extends MainText {
   CoText(super.text,
       {super.key, super.tip, super.textAlign, Color? color, double? fontSize})
       : super(
-            color: color ?? C.mainColor,
+            color: color ?? CC.mainColor,
             fontSize: fontSize ?? 16.r,
             fontWeight: AppFont.bold);
 }
@@ -120,7 +120,7 @@ class CoText14 extends MainText {
       super.textAlign,
       fontWeight})
       : super(
-          color: color ?? C.mainColor,
+          color: color ?? CC.mainColor,
           fontSize: 14.r,
           fontWeight: fontWeight ?? AppFont.bold,
         );
@@ -128,7 +128,7 @@ class CoText14 extends MainText {
 
 class RedText extends MainText {
   RedText(super.text, {super.key, super.tip, super.textAlign})
-      : super(color: C.red, fontSize: 14.r, fontWeight: AppFont.semiBold);
+      : super(color: CC.red, fontSize: 14.r, fontWeight: AppFont.semiBold);
 }
 
 class BlackText extends MainText {
@@ -140,7 +140,7 @@ class BlackText extends MainText {
       super.textAlign,
       FontWeight? fontWeight})
       : super(
-            color: color ?? C.black,
+            color: color ?? CC.black,
             fontSize: fontSize ?? 14.r,
             fontWeight: fontWeight ?? AppFont.bold,
             padding: EdgeInsets.only(top: 3.r));
@@ -162,7 +162,7 @@ class SubText extends MainText {
 
 // class Top8Text extends MainText {
 //   Top8Text(String text,{String? tip,double? fontSize,Color? color,TextAlign? textAlign})
-//       :super(text,tip: tip,color: color??C.deepGrey,fontWeight: AppFont.medium,top: 8.r,textAlign: textAlign);
+//       :super(text,tip: tip,color: color??CC.deepGrey,fontWeight: AppFont.medium,top: 8.r,textAlign: textAlign);
 // }
 
 class Top2Text extends MainText {

@@ -65,25 +65,25 @@ class NewButton extends StatelessWidget {
                       colors: gradientColors ??
                           [Color(0xFF2FA750), Color(0xFF5ED48D)]),
               color: isEnable
-                  ? (bgColor ?? C.mainColor)
-                  : C.black.withOpacity(0.5),
+                  ? (bgColor ?? CC.mainColor)
+                  : CC.black.withOpacity(0.5),
               boxShadow: const [
                 BoxShadow(
                   offset: Offset(.0, 3),
                   blurRadius: 3.0,
-                  color: C.fiveColor,
+                  color: CC.fiveColor,
                 ),
                 BoxShadow(
                   offset: Offset(2.0, 2),
                   blurRadius: 2.0,
-                  color: C.fiveColor,
+                  color: CC.fiveColor,
                 ),
               ]),
           child: Center(
             child: Text(
               name,
               style: TextStyle(
-                  color: txtColor ?? C.lightBlack,
+                  color: txtColor ?? CC.lightBlack,
                   fontSize: fontSize ?? 16.0,
                   fontWeight: FontWeight.w700),
             ),

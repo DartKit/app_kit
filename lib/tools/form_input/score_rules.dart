@@ -83,7 +83,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: setBg == true ? Colors.black45 : C.transparent,
+        color: setBg == true ? Colors.black45 : CC.transparent,
         child: Column(
           children: [
             Expanded(
@@ -94,7 +94,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
                       }
                     },
                     child: Container(
-                      color: C.transparent,
+                      color: CC.transparent,
                     ))),
             _tags.isNotEmpty ? _pop() : Container(),
           ],
@@ -110,7 +110,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
             ),
-            color: C.white),
+            color: CC.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -138,7 +138,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
                                   begin: Alignment.centerLeft, //右上
                                   end: Alignment.centerRight, //左下
                                   stops: const [0.0, 1.0], //[渐变起始点, 渐变结束点]
-                                  colors: [C.mainColor, C.white])),
+                                  colors: [CC.mainColor, CC.white])),
                         )
                       ],
                     ),
@@ -151,7 +151,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
                     Container(
                       height: 1,
                       margin: EdgeInsets.only(top: 10),
-                      color: C.mainColor,
+                      color: CC.mainColor,
                     ),
                     Expanded(child: _list(_tags[_num])),
                   ],
@@ -179,8 +179,8 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
           maxLines: 2,
           style: TextStyle(
               color: tag.name.contains('点')
-                  ? C.deepGrey
-                  : C.mainColor.withOpacity(0.8),
+                  ? CC.deepGrey
+                  : CC.mainColor.withOpacity(0.8),
               fontSize: 16,
               fontWeight: AppFont.bold),
         ),
@@ -200,7 +200,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
             padding: EdgeInsets.all(15),
             child: Icon(
               Icons.close,
-              color: C.deepGrey,
+              color: CC.deepGrey,
             ),
           ),
         ),
@@ -209,7 +209,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
               ? ((widget.isHot ? '推荐如下热门' : 'AI检测该图可能有如下') + widget.mo.title)
               : widget.mo.hint,
           style: TextStyle(
-              color: C.black, fontSize: 18, fontWeight: AppFont.medium),
+              color: CC.black, fontSize: 18, fontWeight: AppFont.medium),
         ),
         Offstage(
           // offstage: !_hasPick,
@@ -219,7 +219,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
               padding: EdgeInsets.all(15),
               child: Icon(
                 Icons.done_outline_rounded,
-                color: C.transparent,
+                color: CC.transparent,
               ),
             ),
           ),
@@ -290,7 +290,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
         padding: EdgeInsets.only(top: 6, bottom: 6),
         child: Column(
           children: [
-            const Divider(height: 0.5, color: C.transparent),
+            const Divider(height: 0.5, color: CC.transparent),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -299,7 +299,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
                     v.name.isNotEmpty ? v.name : v.title + '   ' + v.score,
                     style: TextStyle(
                         color:
-                            _tags[_num].index == i ? C.mainColor : C.deepGrey,
+                            _tags[_num].index == i ? CC.mainColor : CC.deepGrey,
                         fontSize: 16,
                         fontWeight: _tags[_num].index == i
                             ? AppFont.bold
@@ -308,13 +308,13 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
                 ),
                 Icon(
                   Icons.done,
-                  color: _tags[_num].index == i ? C.mainColor : C.transparent,
+                  color: _tags[_num].index == i ? CC.mainColor : CC.transparent,
                 )
               ],
             ),
             Container(
               margin: const EdgeInsets.only(top: 7.0, bottom: 0.0),
-              child: const Divider(height: 0.5, color: C.lightBlack),
+              child: const Divider(height: 0.5, color: CC.lightBlack),
             ),
           ],
         ),

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension Add on Text {
-  Text get red => Text(data!, style: style?.copyWith(color: C.red));
-  Text get orange => Text(data!, style: style?.copyWith(color: C.orange));
-  Text get mainColor => Text(data!, style: style?.copyWith(color: C.mainColor));
-  Text get deepGrey => Text(data!, style: style?.copyWith(color: C.deepGrey));
-  Text get lightGrey => Text(data!, style: style?.copyWith(color: C.lightGrey));
+  Text get red => Text(data!, style: style?.copyWith(color: CC.red));
+  Text get orange => Text(data!, style: style?.copyWith(color: CC.orange));
+  Text get mainColor => Text(data!, style: style?.copyWith(color: CC.mainColor));
+  Text get deepGrey => Text(data!, style: style?.copyWith(color: CC.deepGrey));
+  Text get lightGrey => Text(data!, style: style?.copyWith(color: CC.lightGrey));
   Text get lightBlack =>
-      Text(data!, style: style?.copyWith(color: C.lightBlack));
-  Text get keyColor => Text(data!, style: style?.copyWith(color: C.keyColor));
-  Text get white => Text(data!, style: style?.copyWith(color: C.white));
+      Text(data!, style: style?.copyWith(color: CC.lightBlack));
+  Text get keyColor => Text(data!, style: style?.copyWith(color: CC.keyColor));
+  Text get white => Text(data!, style: style?.copyWith(color: CC.white));
 
   Text get normal =>
       Text(data!, style: style?.copyWith(fontWeight: FontWeight.w400));

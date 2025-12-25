@@ -88,6 +88,14 @@ extension AddString on String {
     }
   }
 
+  String ifUnNilAdd(String x) {
+    if (isNotEmpty && x.isNotEmpty) {
+      return this + ' ' + x;
+    } else {
+      return '';
+    }
+  }
+
   String gang([bool isAdd = true]) {
     if (isNotEmpty) {
       if (startsWith('-')) {

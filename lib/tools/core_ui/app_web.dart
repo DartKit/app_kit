@@ -34,7 +34,7 @@ class AppWebPage extends StatefulWidget {
 }
 
 class _AppWebPageState extends State<AppWebPage> {
-  Color bgColor = C.white;
+  Color bgColor = CC.white;
   var canGoBack = false.obs;
   var canGoForward = false.obs;
   var _appBarAlpha = 0.0.obs;
@@ -81,7 +81,7 @@ class _AppWebPageState extends State<AppWebPage> {
 
     pullReC = PullToRefreshController(
       settings: PullToRefreshSettings(
-        color: C.mainColor,
+        color: CC.mainColor,
       ),
       onRefresh: () async {
         logs('---pullReC--$pullReC');
@@ -167,8 +167,8 @@ class _AppWebPageState extends State<AppWebPage> {
                       height: 2,
                       child: LinearProgressIndicator(
                         value: progress,
-                        color: C.mainColor,
-                        backgroundColor: C.lightBlack,
+                        color: CC.mainColor,
+                        backgroundColor: CC.lightBlack,
                       ),
                     ),
                   )
@@ -190,7 +190,7 @@ class _AppWebPageState extends State<AppWebPage> {
           padding: EdgeInsets.all(10.r),
           child: Icon(
             Icons.arrow_back_ios_new,
-            color: C.white,
+            color: CC.white,
           )),
     ));
   }

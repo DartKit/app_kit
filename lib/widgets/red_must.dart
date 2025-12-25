@@ -17,14 +17,14 @@ class RedMust extends StatelessWidget {
           Text(
             dot,
             style: TextStyle(
-                color: (hasGap && noRed) ? C.transparent : C.red,
+                color: (hasGap && noRed) ? CC.transparent : CC.red,
                 fontSize: 16.r,
                 fontWeight: FontWeight.w700),
           ),
         Text(
           title,
           style: TextStyle(
-              color: C.keyfont, fontSize: 15.r, fontWeight: AppFont.medium),
+              color: CC.keyfont, fontSize: 15.r, fontWeight: AppFont.medium),
         )
       ],
     );
@@ -88,7 +88,7 @@ class _RedMustInputState extends State<RedMustInput> {
               Text(
                 '∗ ',
                 style: TextStyle(
-                    color: (widget.noRed) ? C.transparent : C.red,
+                    color: (widget.noRed) ? CC.transparent : CC.red,
                     fontSize: 16.r,
                     fontWeight: FontWeight.w700),
               ),
@@ -97,7 +97,7 @@ class _RedMustInputState extends State<RedMustInput> {
               // Text(
               //   widget.title,
               //   style: TextStyle(
-              //       color: C.keyfont,
+              //       color: CC.keyfont,
               //       fontSize: 15.r,
               //       fontWeight: AppFont.medium),
               // )
@@ -126,7 +126,7 @@ class _RedMustInputState extends State<RedMustInput> {
                       widget.dropArrow ? Icon(Icons.arrow_drop_down) : null,
                 ),
                 keyboardType: widget.keyboardType,
-                style: TextStyle(color: C.keyfont),
+                style: TextStyle(color: CC.keyfont),
                 onTap: () {
                   logs('---_txtC.text--${_txtC.text}');
                 },

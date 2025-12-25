@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:app_kit/core/kt_export.dart';
 import 'package:app_kit/core/app_permission.dart';
+import 'package:app_kit/generated/assets.dart';
 import 'package:app_kit/models/core/oss_obj.dart';
+import 'package:app_kit/tools/ast_tool_kit.dart';
 import 'package:app_kit/tools/image/camera.dart';
 import 'package:app_kit/tools/image/image_editor.dart';
 import 'package:app_kit/utils/open_file.dart';
@@ -38,6 +40,7 @@ class PhotoPicker extends StatefulWidget {
     this.max = 9,
     this.compressSize = 500,
     this.title = '问题图片（最多9张）',
+    this.hintText = '',
     this.is_required = false,
     this.titleStyle,
     this.callback,
@@ -46,7 +49,7 @@ class PhotoPicker extends StatefulWidget {
     this.isLook = false,
     this.isWrap = false,
     this.imaAndVideo = false,
-    this.isBig = false,
+    // this.isBig = false,
     this.wrapAlignment,
     this.check_box,
     this.onCheckBoxChange,
@@ -57,9 +60,16 @@ class PhotoPicker extends StatefulWidget {
     this.canImaEdit = false,
     this.canCamEdit = false,
     this.useCamSys = true,
+    this.holder,
+    this.circular,
+    this.imaSizeW,
+    this.imaSizeH,
+    this.addImaTipStr,
+
   });
   bool isLook;
   String title;
+  String hintText;
   bool is_required;
   TypePicker type;
   var callback;
@@ -75,13 +85,19 @@ class PhotoPicker extends StatefulWidget {
   Function? onCheckBoxChange;
   int compressSize;
   bool imaAndVideo;
-  bool isBig;
+  // bool isBig;
   bool isFile;
   Function? aiCall;
   bool isUpLsInStr;
   bool canImaEdit;
   bool canCamEdit;
   bool useCamSys;
+  Widget? holder;
+  double? circular;
+  double? imaSizeW;
+  double? imaSizeH;
+  String? addImaTipStr;
+
   // /// 已经上传成功的  图片名称。退出当前页面后清空
   // static List<String> names = [];
 
@@ -90,7 +106,7 @@ class PhotoPicker extends StatefulWidget {
 }
 
 class _PhotoPickerState extends State<PhotoPicker> {
-  List _urls = [];
+  List<dynamic> _urls = [];
   int _aiIndex = -1;
 
   @override
@@ -114,6 +130,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
       _setUrls();
     }
   }
+
 
   void _setUrls() {
     if ((widget.urls?.isNotEmpty == true)) {
@@ -160,7 +177,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                       if (widget.is_required)
                         Text(
                           '∗',
-                          style: TextStyle(color: C.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+                          style: TextStyle(color: CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
                         ),
                       if (widget.check_box != null)
                         SizedBox(
@@ -177,7 +194,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                           onTap: _check_box_fire,
                           child: Text(
                             widget.title + (widget.isLook ? '' : '（最多${widget.max}张）'),
-                            style: widget.titleStyle ?? TextStyle(color: C.deepBlack, fontSize: 16.r, fontWeight: FontWeight.w700),
+                            style: widget.titleStyle ?? TextStyle(color: CC.deepBlack, fontSize: 16.r, fontWeight: FontWeight.w700),
                           ),
                         ),
                       ),
@@ -210,7 +227,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
 
     return widget.isWrap
         ? Container(
-            // color: C.random,
+            // color: CC.random,
             child: Row(
               children: [
                 Expanded(
@@ -225,7 +242,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
             ),
           )
         : SizedBox(
-            height: imaSize,
+      height: widget.imaSizeH ?? imaSizeW,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: list.map((e) => e.marginOnly(right: 10.r)).toList(),
@@ -262,14 +279,22 @@ class _PhotoPickerState extends State<PhotoPicker> {
           }
         },
         child: Container(
-          width: imaSize,
-          height: imaSize,
-          padding: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(border: Border.all(color: widget.bdColor ?? C.fiveColor), borderRadius: BorderRadius.all(Radius.circular(5.r)), color: widget.bgColor ?? C.white),
-          child: Icon(
-            widget.isFile ? Icons.upload_file_sharp : Icons.photo_camera,
-            color: C.fiveColor,
-            size: 40.r,
+          width: imaSizeW,
+          height: widget.imaSizeH ?? imaSizeW,
+          padding: EdgeInsets.all(10.r),
+          decoration: BoxDecoration(border: Border.all(color: widget.bdColor ?? CC.fiveColor), borderRadius: BorderRadius.all(Radius.circular(widget.circular??5.r)), color: widget.bgColor ?? CC.white),
+          child: Column(
+            spacing: 3.r,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                widget.isFile ? Icons.upload_file_sharp : Icons.photo_camera,
+                color: CC.fiveColor,
+                size: 40.r,
+              ),
+             if (widget.hintText.isNotEmpty)  Text(widget.hintText, style: TextStyle(color: Color(0xFF666666), fontSize: 12.r, fontWeight: AppFont.bold),),
+            ],
           ),
         ));
   }
@@ -284,7 +309,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
     // logs('--end--:${end}');
 
     return SizedBox(
-      width: widget.isBig ? (Get.width - 64.r) / 2 : (imaSize),
+      width: imaSizeW,
       // margin: EdgeInsets.only(right: 10.r),
       child: Stack(
         children: [
@@ -302,10 +327,9 @@ class _PhotoPickerState extends State<PhotoPicker> {
                     },
                     child: CoImage(
                       url,
-                      width: widget.isBig ? (Get.width - 64.r) / 2 : imaSize,
-                      height: imaSize,
+                      width: imaSizeW, height: widget.imaSizeH ?? imaSizeW,
                       fit: BoxFit.cover,
-                      circular: 5.r,
+                      circular: widget.circular??5.r,
                     ))
                 : _file(ob.runtimeType == String? (OssObj()..url = url) : ob ),
           ),
@@ -320,7 +344,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                         child: Container(
                           height: 30.r,
                           decoration: BoxDecoration(
-                            color: C.blue.withOpacity(0.7),
+                            color: CC.blue.withOpacity(0.7),
                             borderRadius: BorderRadius.all(Radius.circular(4.r)),
                           ),
                           child: Row(
@@ -328,7 +352,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                             children: [
                               Text(
                                 'AI 识图',
-                                style: TextStyle(color: C.white, fontSize: 14.r, fontWeight: AppFont.regular),
+                                style: TextStyle(color: CC.white, fontSize: 14.r, fontWeight: AppFont.regular),
                               ),
                             ],
                           ),
@@ -341,7 +365,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                           }
                         },
                       ))),
-          Obx(() => (aiGif.isTrue && (_aiIndex == index)) ? Positioned(top: 0, right: 0, left: 0, bottom: 0, child: CoImage('lib/asts/images/gf_scan1.gif')) : SizedBox()),
+          Obx(() => (aiGif.isTrue && (_aiIndex == index)) ? Positioned(top: 0, right: 0, left: 0, bottom: 0, child: CoImage(AstToolKit.pkgAst(AstKit.lib_asts_images_gf_scan1))) : SizedBox()),
           Positioned(
               top: 0.0,
               right: 0.0,
@@ -352,7 +376,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                     height: 24.0,
                     width: 24.0,
                     decoration: BoxDecoration(
-                      color: C.mainColor.withOpacity(0.9),
+                      color: CC.mainColor.withOpacity(0.9),
                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
                     ),
                     child: const Icon(
@@ -364,7 +388,17 @@ class _PhotoPickerState extends State<PhotoPicker> {
                     aiGif.value = false;
                     _urls.removeAt(index);
                     if (widget.callback != null) {
-                      widget.callback(_urls);
+
+                        // List ls = [];
+                        // for (var e in _urls) {
+                        //   if (e.runtimeType == String) {
+                        //     ls.add(e);
+                        //   } else {
+                        //     ls.add(widget.isUpLsInStr? e.url:e);
+                        //   }
+                        // }
+                      List ls = _urls.map((e) => widget.isUpLsInStr? e.url: e).toList();
+                      widget.callback(ls);
                     }
                     if (mounted) setState(() {});
                   },
@@ -376,7 +410,8 @@ class _PhotoPickerState extends State<PhotoPicker> {
   }
 
   String get timestamp => DateTime.now().millisecondsSinceEpoch.toString();
-  double get imaSize => (Get.width - 20.r - 35.r - (widget.isLook ? 0 : 30.r) - 10.r * 2) / 3.0;
+  // double get imaSize => (Get.width - 20.r - 35.r - (widget.isLook ? 0 : 30.r) - 10.r * 2) / 3.0;
+  double get imaSizeW => widget.imaSizeW ?? (Get.width - 20.r - 35.r - (widget.isLook ? 0 : 30.r) - 10.r * 2) / 3.0;
 
   Widget _file(OssObj mo) {
     return Stack(
@@ -387,9 +422,9 @@ class _PhotoPickerState extends State<PhotoPicker> {
             },
             child: Container(
               padding: EdgeInsets.all(5.r),
-              width: imaSize,
-              height: imaSize,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), border: Border.all(width: 1.r, color: C.line), color: C.lightGrey.withOpacity(0.3)),
+              width: imaSizeW,
+              height: widget.imaSizeH??imaSizeW,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), border: Border.all(width: 1.r, color: CC.line), color: CC.lightGrey.withOpacity(0.3)),
               child: AutoSizeText(
                 '\n' + mo.name.ifNil(mo.url.split('/').last),
                 // style: TextStyle(fontSize: 18.r),
@@ -401,7 +436,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
             )),
         Align(
           alignment: Alignment.topLeft,
-          child: KitView.sortName((mo.name.ifNil(mo.url)).split('.').last, padding: EdgeInsets.symmetric(vertical: 1.r, horizontal: 5.r), bgColor: C.mainColor.withOpacity(0.5), margin: EdgeInsets.all(1.5)),
+          child: KitView.sortName((mo.name.ifNil(mo.url)).split('.').last, padding: EdgeInsets.symmetric(vertical: 1.r, horizontal: 5.r), bgColor: CC.mainColor.withOpacity(0.5), margin: EdgeInsets.all(1.5)),
         ),
       ],
     );
@@ -619,7 +654,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
     //     showGif: false,
     //     showCamera: false,
     //     compressSize: 300,
-    //     uiConfig: UIConfig(uiThemeColor: C.mainColor),
+    //     uiConfig: UIConfig(uiThemeColor: CC.mainColor),
     //     // cropConfig: dao.can_ima_crop? CropConfig(enableCrop: true, width: 1, height: 1):null
     // );
     // List<Media> res = [];
@@ -629,7 +664,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
     //     showGif: false,
     //     showCamera: false,
     //     compressSize: 300,
-    //     uiConfig: UIConfig(uiThemeColor: C.mainColor),
+    //     uiConfig: UIConfig(uiThemeColor: CC.mainColor),
     //     // cropConfig: dao.can_ima_crop? CropConfig(enableCrop: true, width: 1, height: 1):null
     // );
 
@@ -663,9 +698,9 @@ class _PhotoPickerState extends State<PhotoPicker> {
       kitPopText('最多上传${widget.max}张图片');
       return;
     }
-
     await uploadOss(files);
-    widget.callback(_urls);
+    List ls = _urls.map((e) => widget.isUpLsInStr? e.url: e).toList();
+    widget.callback(ls);
     if (mounted) setState(() {});
   }
 
@@ -723,10 +758,13 @@ class _PhotoPickerState extends State<PhotoPicker> {
     for (var i = 0; i < images.length; i++) {
       var res = await _uploadFile(File(images[i]), callback: (e) {}, onSendProgress: (count, data) {});
       if (res.url.isNotEmpty) {
+        logs('--PhotoPicker-res---:${res.toString()}--res--:${res.runtimeType}');
+        logs('--_urls-res---:${_urls.toString()}--_urls--:${_urls.runtimeType}');
         ls.add(res);
-        _urls.add(widget.isUpLsInStr?res.url: res);
+        _urls.add(res);
       }
     }
+    logs('---_urls--$_urls');
     if (ls.isNotEmpty) return _urls;
   }
 }

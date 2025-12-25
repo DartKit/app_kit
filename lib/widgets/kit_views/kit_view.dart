@@ -40,8 +40,8 @@ class KitView {
         builder: (BuildContext context) {
           return AlertDialog(
             alignment: alignment,
-            surfaceTintColor: C.white,
-            // backgroundColor: C.white,
+            surfaceTintColor: CC.white,
+            // backgroundColor: CC.white,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.r))),
             titlePadding: EdgeInsets.zero,
@@ -59,7 +59,7 @@ class KitView {
                 ],
               ),
             ),
-            // contentTextStyle: TextStyle(fontSize: 16.r,color: C.black),
+            // contentTextStyle: TextStyle(fontSize: 16.r,color: CC.black),
             contentPadding: EdgeInsets.zero,
             content: Container(
               margin: EdgeInsets.symmetric(horizontal: 15.r),
@@ -68,7 +68,7 @@ class KitView {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(height: 1.r, color: C.lightBlack),
+                  Container(height: 1.r, color: CC.lightBlack),
                   SizedBox(
                     height: 16.r,
                   ),
@@ -88,8 +88,8 @@ class KitView {
                   Container(
                       height: 1.r,
                       color: ((cancel == null) && (sure == null))
-                          ? C.transparent
-                          : C.lightBlack),
+                          ? CC.transparent
+                          : CC.lightBlack),
                 ],
               ),
             ),
@@ -99,7 +99,7 @@ class KitView {
                 : [
                     Container(
                       padding: EdgeInsets.only(bottom: 0.r),
-                      // color: C.white,
+                      // color: CC.white,
                       height: 45.r,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -117,13 +117,13 @@ class KitView {
                                       child: Text(
                                     cancelName,
                                     style: TextStyle(
-                                        color: C.subText4,
+                                        color: CC.subText4,
                                         fontSize: 14.r,
                                         fontWeight: AppFont.medium),
                                   ))),
                             ),
                           if ((noCancel == false) && (sure != null))
-                            Container(width: 1.r, color: C.lightBlack),
+                            Container(width: 1.r, color: CC.lightBlack),
                           if (sure != null)
                             Expanded(
                               child: InkWell(
@@ -137,7 +137,7 @@ class KitView {
                                       child: Text(
                                     sureName,
                                     style: TextStyle(
-                                        color: sureColor ?? C.mainColor,
+                                        color: sureColor ?? CC.mainColor,
                                         fontSize: 14.r,
                                         fontWeight: AppFont.medium),
                                   ))),
@@ -164,18 +164,18 @@ class KitView {
       decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(
-                color: C.fiveColor, offset: Offset(1.0, 1.0), blurRadius: 5.0)
+                color: CC.fiveColor, offset: Offset(1.0, 1.0), blurRadius: 5.0)
           ],
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(5),
               bottomLeft: Radius.circular(5),
               bottomRight: Radius.circular(10)),
-          color: bgColor ?? C.mainColor),
+          color: bgColor ?? CC.mainColor),
       child: Text(
         sortName.toString(),
         style: TextStyle(
-            color: C.white,
+            color: CC.white,
             fontSize: fontSize ?? 12.0,
             fontWeight: FontWeight.w700),
       ),
@@ -196,7 +196,7 @@ class KitView {
     var vi = Text(
       text.toString(),
       style: TextStyle(
-          color: color ?? C.white,
+          color: color ?? CC.white,
           fontSize: fontSize ?? 12.r,
           fontWeight: FontWeight.w700),
     );
@@ -216,7 +216,7 @@ class KitView {
               topRight: Radius.circular(5),
               bottomLeft: Radius.circular(5),
               bottomRight: Radius.circular(5)),
-          color: bgColor ?? C.mainColor,
+          color: bgColor ?? CC.mainColor,
         ),
         child: fixFel ? vi : Center(child: vi),
       ),
@@ -235,7 +235,7 @@ class KitView {
             serial,
             tip: tip ?? '问题编号c',
             fontWeight: AppFont.semiBold,
-            color: C.subText3,
+            color: CC.subText3,
             fontSize: fontSize ?? 13.r,
           ),
           Offstage(
@@ -247,7 +247,7 @@ class KitView {
               child: Padding(
                   padding: EdgeInsets.only(left: 3.r, right: 0),
                   child: CoImage(
-                    'packages/app_kit/lib/asts/images/ic_copy.png',
+                    'packages/app_kit/lib/ast/images/ic_copy.png',
                     size: 12.r,
                     circular: 0,
                   )),

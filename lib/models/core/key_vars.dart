@@ -5,9 +5,11 @@ export 'package:app_kit/generated/json/key_vars.g.dart';
 
 @JsonSerializable()
 class KeyVars {
-	int id = 0;
+	// int id = 0;
 	bool select = false;
+	String id = '';
 	String label = '';
+	String name = '';
 	String value = '';
 	String title = '';
 	String pid = '';

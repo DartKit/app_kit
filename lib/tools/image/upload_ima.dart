@@ -29,7 +29,7 @@ class UploadIma {
     //   showGif: true,
     //   showCamera: false,
     //   compressSize: 300,
-    //   uiConfig: UIConfig(uiThemeColor: C.mainColor),
+    //   uiConfig: UIConfig(uiThemeColor: CC.mainColor),
     //   cropConfig: CropConfig(enableCrop: true, width: 1, height: 1)
     // );
 

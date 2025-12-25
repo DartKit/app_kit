@@ -77,13 +77,13 @@ class _DropSearchState extends State<DropSearchField> {
             children: [
               Text(
                 '∗ ',
-                style: TextStyle(color: (widget.noRed) ? C.transparent : C.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+                style: TextStyle(color: (widget.noRed) ? CC.transparent : CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
               ),
               AutoSizeText(widget.title),
               // Text(
               //   widget.title,
               //   style: TextStyle(
-              //       color: C.keyfont,
+              //       color: CC.keyfont,
               //       fontSize: 15.r,
               //       fontWeight: AppFont.medium),
               // )
@@ -110,7 +110,7 @@ class _DropSearchState extends State<DropSearchField> {
         }
         final filter = ls.where((e) => (e.label).contains(query)).toList();
         logs('---query--$query');
-        return filter.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, style: TextStyle(fontSize: 15.r, color: query.isEmpty ? C.mainColor : C.red)))).toList();
+        return filter.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, style: TextStyle(fontSize: 15.r, color: query.isEmpty ? CC.mainColor : CC.red)))).toList();
       },
       key: const Key('searchfield'),
       hint: '请输入',
@@ -126,10 +126,10 @@ class _DropSearchState extends State<DropSearchField> {
                 color: Colors.grey,
               )
             : null,
-        // searchStyle: TextStyle(fontSize: 16.r,color: C.mainColor,fontWeight: AppFont.bold) ,
+        // searchStyle: TextStyle(fontSize: 16.r,color: CC.mainColor,fontWeight: AppFont.bold) ,
       ),
-      suggestionsDecoration: SuggestionDecoration(padding: EdgeInsets.only(left: 15.r, right: 3.r), border: Border.all(color: C.mainColor), borderRadius: BorderRadius.all(Radius.circular(10.r))),
-      suggestions: ls.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label , maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14.r, color: C.mainColor)))).toList(),
+      suggestionsDecoration: SuggestionDecoration(padding: EdgeInsets.only(left: 15.r, right: 3.r), border: Border.all(color: CC.mainColor), borderRadius: BorderRadius.all(Radius.circular(10.r))),
+      suggestions: ls.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label , maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14.r, color: CC.mainColor)))).toList(),
       focusNode: focus,
       suggestionState: Suggestion.expand,
       suggestionDirection: widget.suggestionDirection,

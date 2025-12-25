@@ -57,7 +57,7 @@ class _SelMultiState extends State<SelMulti> {
     return Container(
       padding: EdgeInsets.all(10.r),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r), color: C.white),
+          borderRadius: BorderRadius.circular(10.r), color: CC.white),
       child: Column(
         children: [
           Container(
@@ -74,7 +74,7 @@ class _SelMultiState extends State<SelMulti> {
                     _lsSel.isEmpty
                         ? widget.title
                         : _lsSel.map((e) => e.label).toList().join(', '),
-                    color: C.blue,
+                    color: CC.blue,
                     fontWeight: AppFont.medium,
                     fontSize: 15.r,
                   ),
@@ -104,7 +104,7 @@ class _SelMultiState extends State<SelMulti> {
                       child: Text(e.label,
                           style: TextStyle(
                               fontSize: 15.r,
-                              color: query.isEmpty ? C.mainColor : C.red))))
+                              color: query.isEmpty ? CC.mainColor : CC.red))))
                       .toList();
                 },
                 key: const Key('pul_search'),
@@ -113,14 +113,14 @@ class _SelMultiState extends State<SelMulti> {
                 searchInputDecoration: SearchInputDecoration(
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 15.r),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: C.black, width: 1.r),
+                    borderSide: BorderSide(color: CC.black, width: 1.r),
                     borderRadius: BorderRadius.circular(10.r),
                     gapPadding: 0.r,
                   ),
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 2.r, horizontal: 15.r),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: C.fiveColor, width: 1.r),
+                    borderSide: BorderSide(color: CC.fiveColor, width: 1.r),
                     borderRadius: BorderRadius.circular(10.r),
                     gapPadding: 0.r,
                   ),
@@ -128,12 +128,12 @@ class _SelMultiState extends State<SelMulti> {
                   fillColor: Colors.white,
                   searchStyle: TextStyle(
                       fontSize: 16.r,
-                      color: C.mainColor,
+                      color: CC.mainColor,
                       fontWeight: AppFont.bold),
                 ),
                 suggestionsDecoration: SuggestionDecoration(
                     padding: EdgeInsets.only(left: 15.r, right: 3.r),
-                    border: Border.all(color: C.blue, width: 2.r),
+                    border: Border.all(color: CC.blue, width: 2.r),
                     borderRadius: BorderRadius.all(Radius.circular(10.r))),
                 suggestions: _ls
                     .map((e) => SearchFieldListItem<KeyVars>(e.label,
@@ -142,7 +142,7 @@ class _SelMultiState extends State<SelMulti> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            fontSize: 14.r, color: C.mainColor))))
+                            fontSize: 14.r, color: CC.mainColor))))
                     .toList(),
                 focusNode: focus,
                 suggestionState: Suggestion.expand,
@@ -184,8 +184,8 @@ class _SelMultiState extends State<SelMulti> {
                     EdgeInsets.symmetric(horizontal: 5.r, vertical: 3.r),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(width: 1.r, color: C.line),
-                        color: mo.select ? C.blue.withOpacity(0.5) : C.bg),
+                        border: Border.all(width: 1.r, color: CC.line),
+                        color: mo.select ? CC.blue.withOpacity(0.5) : CC.bg),
                     child: Text(
                       mo.label,
                       style: TextStyle(

@@ -16,8 +16,8 @@ class ListBox extends Container {
          padding: padding ?? const EdgeInsets.only(left: 15.0, right: 10.0, top: 10.0, bottom: 10.0),
          decoration: BoxDecoration(
            borderRadius: BorderRadius.all(Radius.circular(10)),
-           border: Border.all(width: 2.r, color: bdColor ?? C.white),
-           color: bgColor ?? C.white,
+           border: Border.all(width: 2.r, color: bdColor ?? CC.white),
+           color: bgColor ?? CC.white,
            boxShadow: const [
              BoxShadow(offset: Offset(.0, 3), blurRadius: 4.0, color: Color(0x0D000000)),
              BoxShadow(offset: Offset(3.0, 5), blurRadius: 1.0, color: Color(0x0D000000)),
@@ -37,7 +37,7 @@ class ListBox2 extends Container {
         padding: padding ?? const EdgeInsets.only(left: 15.0, right: 10.0, top: 10.0, bottom: 10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: bgColor ?? C.white,
+          color: bgColor ?? CC.white,
           gradient: LinearGradient(
             //渐变位置
             begin: Alignment.topCenter,
@@ -46,8 +46,8 @@ class ListBox2 extends Container {
             colors: const [Color(0xFFECF6F1), Color(0xFFFDFEFE)],
           ),
           boxShadow: const [
-            BoxShadow(offset: Offset(.0, 3), blurRadius: 4.0, color: C.fiveColor),
-            BoxShadow(offset: Offset(3.0, 3), blurRadius: 4.0, color: C.fiveColor),
+            BoxShadow(offset: Offset(.0, 3), blurRadius: 4.0, color: CC.fiveColor),
+            BoxShadow(offset: Offset(3.0, 3), blurRadius: 4.0, color: CC.fiveColor),
           ],
         ),
         child: InkWell(
@@ -69,7 +69,7 @@ class ListBoxDot extends ListBox {
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: children),
                 ),
-                Icon(Icons.keyboard_arrow_right_rounded, color: C.fiveColor, size: 20.r),
+                Icon(Icons.keyboard_arrow_right_rounded, color: CC.fiveColor, size: 20.r),
               ],
             ),
           ),
@@ -84,7 +84,7 @@ class ListBoxDot2 extends Container {
         padding: padding ?? const EdgeInsets.only(left: 15.0, right: 5.0, top: 10.0, bottom: 10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: bgColor ?? C.white,
+          color: bgColor ?? CC.white,
           gradient: LinearGradient(
             //渐变位置
             begin: Alignment.topCenter,
@@ -93,8 +93,8 @@ class ListBoxDot2 extends Container {
             colors: const [Color(0xFFECF6F1), Color(0xFFFDFEFE)],
           ),
           boxShadow: const [
-            BoxShadow(offset: Offset(.0, 3), blurRadius: 4.0, color: C.fiveColor),
-            BoxShadow(offset: Offset(3.0, 3), blurRadius: 4.0, color: C.fiveColor),
+            BoxShadow(offset: Offset(.0, 3), blurRadius: 4.0, color: CC.fiveColor),
+            BoxShadow(offset: Offset(3.0, 3), blurRadius: 4.0, color: CC.fiveColor),
           ],
         ),
         child: InkWell(
@@ -104,7 +104,7 @@ class ListBoxDot2 extends Container {
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: children),
               ),
-              if (!hideDot) Icon(Icons.keyboard_arrow_right_rounded, color: C.fiveColor, size: 20.r),
+              if (!hideDot) Icon(Icons.keyboard_arrow_right_rounded, color: CC.fiveColor, size: 20.r),
             ],
           ),
         ),

@@ -45,18 +45,18 @@ class _CoTabBarState extends State<CoTabBar> with TickerProviderStateMixin {
       child: TabBar(
         controller: _tabController,
         isScrollable: true,
-        labelColor: widget.labelStyle?.color ?? C.mainColor,
+        labelColor: widget.labelStyle?.color ?? CC.mainColor,
         labelStyle: widget.labelStyle ??
             TextStyle(
                 fontSize: 16.r,
                 fontWeight: FontWeight.w700,
-                color: C.deepBlack), //设置选中时的字体样式，tabs里面的字体样式优先级最高
+                color: CC.deepBlack), //设置选中时的字体样式，tabs里面的字体样式优先级最高
         labelPadding:
             widget.labelPadding ?? EdgeInsets.only(left: 15.r, right: 15.r),
-        unselectedLabelColor: C.deepBlack,
+        unselectedLabelColor: CC.deepBlack,
         unselectedLabelStyle:
             TextStyle(fontSize: 14.r), //设置未选中时的字体样式，tabs里面的字体样式优先级最高
-        indicatorColor: widget.labelStyle?.color ?? C.mainColor, //选中下划线的颜色
+        indicatorColor: widget.labelStyle?.color ?? CC.mainColor, //选中下划线的颜色
         indicatorSize: TabBarIndicatorSize
             .label, //选中下划线的长度，label时跟文字内容长度一样，tab时跟一个Tab的长度一样
         // indicatorWeight: 3.r,
@@ -64,13 +64,13 @@ class _CoTabBarState extends State<CoTabBar> with TickerProviderStateMixin {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(5.r),
               bottomRight: Radius.circular(5.r)),
-          color: C.transparent,
+          color: CC.transparent,
           border: Border(
               bottom: BorderSide(
-                  color: widget.lineColor ?? C.mainColor, width: 3.r)),
+                  color: widget.lineColor ?? CC.mainColor, width: 3.r)),
         ),
         indicatorWeight: 2,
-        // dividerColor: C.red,
+        // dividerColor: CC.red,
         dividerHeight: 0.0,
         indicatorPadding: EdgeInsets.only(bottom: 7.r, left: 17.r, right: 17.r),
         tabs: widget.tabs,

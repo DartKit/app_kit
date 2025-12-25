@@ -33,7 +33,7 @@ enum WorkType {
 
 // enum ClickType {
 //   none(0, '', ''),
-//   marker(1, '点', 'lib/asts/images/up_ver.png'),
+//   marker(1, '点', ''),
 //   polyline(2, '线', Ast.mapLine),
 //   polygon(3, '面', Ast.mapPol),
 //   polyCircle(4, '圆', '');

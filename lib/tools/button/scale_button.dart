@@ -17,6 +17,7 @@ class ScaButton extends StatefulWidget {
   final EdgeInsets? padding;
   final bool isExpanded;
   final bool inReq;
+  final LinearGradient? gradient;
 
   const ScaButton({
     Key? key,
@@ -34,6 +35,7 @@ class ScaButton extends StatefulWidget {
     this.radius,
     this.isExpanded = false,
     this.inReq = false,
+    this.gradient,
   }) : super(key: key);
 
   @override
@@ -114,7 +116,7 @@ class _ScaButtonState extends State<ScaButton> with SingleTickerProviderStateMix
   }
 
   Widget _circularProgressIndicator() {
-    return SizedBox(height: 16.r, width: 16.r, child: CircularProgressIndicator(strokeWidth: 1.5.r, color: C.white));
+    return SizedBox(height: 16.r, width: 16.r, child: CircularProgressIndicator(strokeWidth: 1.5.r, color: CC.white));
   }
 
   Widget _button() {
@@ -124,25 +126,25 @@ class _ScaButtonState extends State<ScaButton> with SingleTickerProviderStateMix
       padding: widget.padding ?? EdgeInsets.symmetric(horizontal: 15.r),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(widget.radius ?? hight / 2),
-          gradient: LinearGradient(
+          gradient: widget.gradient?? LinearGradient(
             //渐变位置
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             stops: const [0.0, 1.0],
-            colors: [C.keyColor, Colors.blueGrey.withOpacity(0.7)],
+            colors: [CC.keyColor, Colors.blueGrey.withOpacity(0.7)],
           ),
-          color: widget.isEnable ? (widget.bgColor ?? C.keyColor) : C.black.withOpacity(0.5),
-          border: Border.all(width: 0.5.r, color: C.white),
+          color: widget.isEnable ? (widget.bgColor ?? CC.keyColor) : CC.black.withOpacity(0.5),
+          border: Border.all(width: 0.5.r, color: CC.white),
           boxShadow: const [
-            BoxShadow(offset: Offset(0, 2), blurRadius: 2.0, color: C.FF666666),
-            BoxShadow(offset: Offset(1.0, 2), blurRadius: 2.0, color: C.FF666666),
+            BoxShadow(offset: Offset(0, 2), blurRadius: 2.0, color: CC.FF666666),
+            BoxShadow(offset: Offset(1.0, 2), blurRadius: 2.0, color: CC.FF666666),
           ]),
       child:  Center(
         child: widget.inReq
             ? _circularProgressIndicator()
             : Text(
           widget.name,
-          style: TextStyle(color: C.font, fontSize: widget.fontSize ?? 16.r, fontWeight: FontWeight.w700),
+          style: TextStyle(color: widget.txtColor?? CC.font, fontSize: widget.fontSize ?? 16.r, fontWeight: FontWeight.w700),
         ),
       ),
     );

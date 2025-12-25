@@ -7,9 +7,9 @@ Color rgba(int r, int g, int b, double a) => Color.fromRGBO(r, g, b, a);
 Color RGBA(int r, int g, int b, double a) => Color.fromRGBO(r, g, b, a);
 
 
-class C {
+class CC {
   // static const Color mainColor = Color(0xFF28B98C);
-  static  Color mainColor = Color(0xFF48BF70);
+  static  Color get mainColor => kdao.mainColor?? Color(0xFF48BF70);
   static  Color keyColor = Color(0xFF48A963);
 
   static const Color keyGreen = Color(0xFF0BBD87);

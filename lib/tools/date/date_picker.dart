@@ -33,7 +33,7 @@
 //           child: Container(
 //             decoration: const BoxDecoration(
 //                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
-//                 color: C.white
+//                 color: CC.white
 //             ),
 //             child: Column(
 //               crossAxisAlignment: CrossAxisAlignment.end,
@@ -49,11 +49,11 @@
 //                         height: 40.0,
 //                         width: 40.0,
 //                         decoration: const BoxDecoration(
-//                           color: C.white,
+//                           color: CC.white,
 //                           shape: BoxShape.circle,
 //                         ),
 //                         child: InkWell(
-//                           child: const Icon(Icons.clear, color: C.mainColor, size: 24.0,),
+//                           child: const Icon(Icons.clear, color: CC.mainColor, size: 24.0,),
 //                           onTap: () {
 //                             Navigator.pop(context);
 //                           },

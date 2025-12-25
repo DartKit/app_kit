@@ -52,14 +52,14 @@ class _DeductionListState extends State<DeductionList> {
                         Text(
                           '∗',
                           style: TextStyle(
-                              color: C.red,
+                              color: CC.red,
                               fontSize: 16.r,
                               fontWeight: FontWeight.w700)
                         ),
                       BlackText(
                         '选择退还的评分',
                         fontSize: 15.r,
-                        color: C.deepBlack
+                        color: CC.deepBlack
                       ),
                     ],
                   ),
@@ -137,27 +137,27 @@ class _DeductionListState extends State<DeductionList> {
               Top2Text(
                 mo.reason,
                 tip: '评分理由：',
-                color: C.mainColor,
+                color: CC.mainColor,
               ),
               Top2Text(
                 mo.remark,
                 tip: '评分备注：',
-                color: C.deepGrey,
+                color: CC.deepGrey,
               ),
               Top2Text(
                 mo.score,
                 tip: '扣分分数：',
-                color: C.deepGrey,
+                color: CC.deepGrey,
               ),
               Top2Text(
                 mo.op_user,
                 tip: '操作人员：',
-                color: C.deepGrey,
+                color: CC.deepGrey,
               ),
               Top2Text(
                 mo.op_time,
                 tip: '操作时间：',
-                color: C.deepGrey,
+                color: CC.deepGrey,
               ),
             ],
           ),

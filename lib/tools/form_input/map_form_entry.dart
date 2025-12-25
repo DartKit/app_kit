@@ -22,9 +22,9 @@ class MapFormEntry extends StatelessWidget {
             if (is_required)
               Text(
                 '∗',
-                style: TextStyle(color: C.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+                style: TextStyle(color: CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
               ),
-            MainText(name.isEmpty ? '地址' : name, fontSize: 16.r, color: C.deepBlack),
+            MainText(name.isEmpty ? '地址' : name, fontSize: 16.r, color: CC.deepBlack),
           ],
         ),
         SizedBox(height: 7),
@@ -38,8 +38,8 @@ class MapFormEntry extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(width: 1.r, color: C.fiveColor),
-        color: C.orange.withOpacity(0.1),
+        border: Border.all(width: 1.r, color: CC.fiveColor),
+        color: CC.orange.withOpacity(0.1),
       ),
       padding: EdgeInsets.all(10),
       child: Row(
@@ -54,7 +54,7 @@ class MapFormEntry extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10),
-          Expanded(child: MainText((ls.first.toString().toDouble == 0) ? '未设置$name' : (address.isNotEmpty ? address : lng_lat), color: C.red)),
+          Expanded(child: MainText((ls.first.toString().toDouble == 0) ? '未设置$name' : (address.isNotEmpty ? address : lng_lat), color: CC.red)),
         ],
       ),
     );

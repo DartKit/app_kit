@@ -22,6 +22,7 @@ class KtDao {
   List<String> hostUrls = [];
   String urlUpFileToOss = '';
   String urlUpFileToOwn = '';
+  Color? mainColor;
 
   var noNet = false.obs;
   var inReq = false.obs;

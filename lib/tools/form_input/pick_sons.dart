@@ -59,7 +59,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: setBg == true ? Colors.black45 : C.transparent,
+        color: setBg == true ? Colors.black45 : CC.transparent,
         child: Column(
           children: [
             Expanded(child: SizedBox()),
@@ -77,7 +77,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
             ),
-            color: C.white),
+            color: CC.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -105,7 +105,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
                                   begin: Alignment.centerLeft, //右上
                                   end: Alignment.centerRight, //左下
                                   stops: const [0.0, 1.0], //[渐变起始点, 渐变结束点]
-                                  colors:  [C.mainColor, C.white])),
+                                  colors:  [CC.mainColor, CC.white])),
                         )
                       ],
                     ),
@@ -118,7 +118,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
                     Container(
                       height: 1,
                       margin: EdgeInsets.only(top: 10),
-                      color: C.mainColor,
+                      color: CC.mainColor,
                     ),
                     Expanded(child: _list(_tags[_num])),
                   ],
@@ -146,8 +146,8 @@ class _PickSonsPageState extends State<PickSonsPage> {
           maxLines: 2,
           style: TextStyle(
               color: tag.name.contains('点')
-                  ? C.deepGrey
-                  : C.mainColor.withOpacity(0.8),
+                  ? CC.deepGrey
+                  : CC.mainColor.withOpacity(0.8),
               fontSize: 16,
               fontWeight: AppFont.bold),
         ),
@@ -167,14 +167,14 @@ class _PickSonsPageState extends State<PickSonsPage> {
             padding: EdgeInsets.all(15),
             child: Icon(
               Icons.close,
-              color: C.deepGrey,
+              color: CC.deepGrey,
             ),
           ),
         ),
         Text(
           widget.mo.hint,
           style: TextStyle(
-              color: C.black, fontSize: 18, fontWeight: AppFont.medium),
+              color: CC.black, fontSize: 18, fontWeight: AppFont.medium),
         ),
         InkWell(
           onTap: () {
@@ -184,7 +184,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
             padding: EdgeInsets.all(15),
             child: Icon(
               Icons.done_outline_rounded,
-              color: _hasPick ? C.mainColor : C.transparent,
+              color: _hasPick ? CC.mainColor : CC.transparent,
             ),
           ),
         ),
@@ -250,7 +250,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
         padding: EdgeInsets.only(top: 6, bottom: 6),
         child: Column(
           children: [
-            const Divider(height: 0.5, color: C.transparent),
+            const Divider(height: 0.5, color: CC.transparent),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -259,7 +259,7 @@ class _PickSonsPageState extends State<PickSonsPage> {
                     v.name.isNotEmpty ? v.name : v.title + '   ' + v.score,
                     style: TextStyle(
                         color:
-                            _tags[_num].index == i ? C.mainColor : C.deepGrey,
+                            _tags[_num].index == i ? CC.mainColor : CC.deepGrey,
                         fontSize: 16,
                         fontWeight: _tags[_num].index == i
                             ? AppFont.bold
@@ -268,13 +268,13 @@ class _PickSonsPageState extends State<PickSonsPage> {
                 ),
                 Icon(
                   Icons.done,
-                  color: _tags[_num].index == i ? C.mainColor : C.transparent,
+                  color: _tags[_num].index == i ? CC.mainColor : CC.transparent,
                 )
               ],
             ),
             Container(
               margin: const EdgeInsets.only(top: 7.0, bottom: 0.0),
-              child: const Divider(height: 0.5, color: C.lightBlack),
+              child: const Divider(height: 0.5, color: CC.lightBlack),
             ),
           ],
         ),

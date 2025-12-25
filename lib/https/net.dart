@@ -5,6 +5,7 @@ import 'package:app_kit/https/exception.dart';
 import 'package:app_kit/models/api/api_response_entity.dart';
 import 'package:app_kit/models/core/co_state.dart';
 import 'package:dio/io.dart';
+import 'package:hud/hud.dart';
 // import 'package:dio_smart_retry/dio_smart_retry.dart';
 import '../core/kt_dao.dart';
 
@@ -87,7 +88,8 @@ class Net {
     }
 
     if (dataKey.isEmpty) dataKey = url.urlQuery()['_rsp'] ?? '';
-    if (hud) kitHud(isAction: hud, dismissOnTap: !unTap);
+    // if (hud) kitHud(isAction: hud, dismissOnTap: !unTap);
+    if (hud) Hud.show(barrierDismissible: !unTap);
     kdao.date0 = DateTime.now();
 
     try {
@@ -108,6 +110,7 @@ class Net {
       Response response = await dio.request(url,queryParameters: query, data: data, options: options, cancelToken: cancelToken, onSendProgress: onSendProgress);
       kdao.req_end = true;
       kdao.reqing = false;
+      if (hud) Hud.hide();
       kitHideLoading();
       if (isNil(response.toString().isEmpty, '无数据返回')) return null;
       if (isMoInAppKit) {
@@ -122,7 +125,7 @@ class Net {
     } catch (e) {
       kdao.req_end = true;
       kdao.reqing = false;
-
+      Hud.hide();
       logs('--catch-e-1-${e.toString()}');
       if (showErr) return getException<T>(e);
     }
@@ -199,7 +202,7 @@ class Net {
     }
 
     if (code == _reLoginCode) {
-      kPopSnack(msg ?? '请重新登录', bgColor: C.red, time: 5);
+      kPopSnack(msg ?? '请重新登录', bgColor: CC.red, time: 5);
       if (_reLoginCall != null) _reLoginCall!(ApiException(code, msg));
       // if (isRelease) {
       //   // Global().clear();

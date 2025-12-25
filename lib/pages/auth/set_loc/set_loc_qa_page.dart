@@ -60,7 +60,7 @@ class _SetLocQaPageState extends BaState<SetLocQaPage> {
             padding: EdgeInsets.symmetric(horizontal: 6.r, vertical: 8.r),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
-              border: Border.all(width: 1.r, color: C.line),
+              border: Border.all(width: 1.r, color: CC.line),
             ),
             child: GestureDetector(
               child: Column(
@@ -71,16 +71,16 @@ class _SetLocQaPageState extends BaState<SetLocQaPage> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Q：', style: TextStyle(color: C.black, fontSize: 13.r, fontWeight: FontWeight.w500)),
-                        Expanded(child: Text(mo.first, style: TextStyle(color: C.black, fontSize: 13.r, fontWeight: FontWeight.w500))),
+                        Text('Q：', style: TextStyle(color: CC.black, fontSize: 13.r, fontWeight: FontWeight.w500)),
+                        Expanded(child: Text(mo.first, style: TextStyle(color: CC.black, fontSize: 13.r, fontWeight: FontWeight.w500))),
                       ],
                     ),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('A：', style: TextStyle(color: C.subText1, fontSize: 13.r, fontWeight: FontWeight.w400)),
-                      Expanded(child: Text(mo.last, style: TextStyle(color: C.subText1, fontSize: 13.r, fontWeight: FontWeight.w400))),
+                      Text('A：', style: TextStyle(color: CC.subText1, fontSize: 13.r, fontWeight: FontWeight.w400)),
+                      Expanded(child: Text(mo.last, style: TextStyle(color: CC.subText1, fontSize: 13.r, fontWeight: FontWeight.w400))),
                     ],
                   ),
                 ],

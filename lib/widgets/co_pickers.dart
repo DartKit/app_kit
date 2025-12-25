@@ -8,7 +8,7 @@ class CoPicker extends PickerStyle {
             commitButton: CoText('确认').paddingOnly(right: 20.r),
             cancelButton: CoText(
               '取消',
-              color: C.deepBlack,
+              color: CC.deepBlack,
             ).paddingOnly(left: 20.r),
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -16,7 +16,7 @@ class CoPicker extends PickerStyle {
               children: [Container(child: title ?? Container())],
             ),
             headDecoration: BoxDecoration(
-                color: C.white.withOpacity(0.93),
+                color: CC.white.withOpacity(0.93),
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10))));

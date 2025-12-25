@@ -8,13 +8,13 @@ Future<void> hudText(String text, {bool userInteractions = true}) async {
     ..userInteractions = userInteractions
     ..dismissOnTap = false
     ..maskType = EasyLoadingMaskType.custom
-    ..boxShadow = [BoxShadow(color: C.green)]
+    ..boxShadow = [BoxShadow(color: CC.green)]
     ..indicatorSize = 18.r
     ..displayDuration = Duration(seconds: 3)
-    ..indicatorColor = C.white
-    ..textColor = C.white
+    ..indicatorColor = CC.white
+    ..textColor = CC.white
     ..textStyle =
-        TextStyle(color: C.white, fontSize: 16.r, fontWeight: FontWeight.w600)
+        TextStyle(color: CC.white, fontSize: 16.r, fontWeight: FontWeight.w600)
     ..loadingStyle = EasyLoadingStyle.custom
     ..contentPadding = EdgeInsets.symmetric(horizontal: 20.r, vertical: 10.r)
     ..maskColor = Colors.transparent;
@@ -41,7 +41,7 @@ void initEasyLoading(
     ..contentPadding = EdgeInsets.symmetric(horizontal: 15, vertical: 10)
     ..backgroundColor = Colors.black.withOpacity(0.0)
     ..boxShadow = [BoxShadow(color: Colors.transparent)]
-    ..indicatorColor = C.mainColor
+    ..indicatorColor = CC.mainColor
     ..textColor = Colors.white
     ..maskColor = Colors.black.withOpacity(0.0)
     ..userInteractions = userInteractions

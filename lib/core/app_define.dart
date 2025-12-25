@@ -48,7 +48,7 @@ bool isNil<T>(Object? v, [String tip = '', bool useSnack = true]) {
 //     gravity: gravity??ToastGravity.CENTER,
 //     textColor: textColor?? const Color(0xffffffff),
 //     // backgroundColor: const Color(0xff3695ff),
-//     backgroundColor:bgColor?? C.mainColor,
+//     backgroundColor:bgColor?? CC.mainColor,
 //   ).then((value) {
 //     EasyLoading.dismiss();
 //     return null;
@@ -76,13 +76,13 @@ kPopSnack(text,
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      color: C.mainColor,
+                      color: CC.mainColor,
                     ))),
           ),
         Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
-              color: bgColor ?? C.transparent,
+              color: bgColor ?? CC.transparent,
             ),
             padding: EdgeInsets.symmetric(horizontal: 15.r, vertical: 20.r),
             child: Center(
@@ -91,7 +91,7 @@ kPopSnack(text,
               maxLines: 20,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: textColor ?? C.white,
+                  color: textColor ?? CC.white,
                   fontSize: 16.r,
                   fontWeight: FontWeight.w600),
             ))),
@@ -100,7 +100,7 @@ kPopSnack(text,
     Future.delayed(Duration(milliseconds: 100), () {
       Get.snackbar(
         '', '',
-        backgroundColor: bgColor ?? C.white.withOpacity(0.001),
+        backgroundColor: bgColor ?? CC.white.withOpacity(0.001),
         overlayBlur: 0,
         barBlur: 0,
         duration: Duration(seconds: time),
@@ -124,7 +124,7 @@ kPopSnack(text,
         },
         messageText: Container(
           height: 0.1,
-          color: C.transparent,
+          color: CC.transparent,
         ),
       );
     });

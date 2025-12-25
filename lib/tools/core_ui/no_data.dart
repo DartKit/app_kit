@@ -1,4 +1,6 @@
 import 'package:app_kit/core/kt_dao.dart';
+import 'package:app_kit/generated/assets.dart';
+import 'package:app_kit/tools/ast_tool_kit.dart';
 import '../../core/kt_export.dart';
 import '../button/scale_button.dart';
 // import '../core/kt_export.dart' show StatelessWidget, Size, Color, BuildContext, Widget, MainAxisAlignment, CrossAxisAlignment, MainAxisSize, SizeExtension, CoImage, SizedBox, C, MainText, CircularProgressIndicator, Center, AppFont, TextStyle, Text, Column, Obx, logs, GestureDetector;
@@ -28,7 +30,7 @@ class NoData extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              CoImage(kdao.noNet.isTrue?'lib/asts/images/no_net.png' : (errCover.isNotEmpty? errCover: 'lib/asts/images/no_data.png'),circular: 8.r,width: size?.width??250.r,height: size?.height??183.r,color: color,),
+              CoImage(kdao.noNet.isTrue?AstToolKit.pkgAst(AstKit.lib_asts_images_no_net) : (errCover.isNotEmpty? errCover: AstToolKit.pkgAst(AstKit.lib_asts_images_no_data)),circular: 8.r,width: size?.width??250.r,height: size?.height??183.r,color: color,),
               SizedBox(height: 10.r),
               MainText(
                 kdao.inReq.isTrue ? ('正在刷新...') : (kdao.noNet.isTrue ? '当前无网络，请检查网络连接~' : errTip.isNotEmpty?errTip:'暂无内容'),

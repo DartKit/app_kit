@@ -69,7 +69,7 @@ class UploadOss {
         EasyLoading.showProgress(progress, maskType: EasyLoadingMaskType.none, status: '\n${(progress * 100).toStringAsFixed(0)}%');
         if (progress >= 1) EasyLoading.dismiss();
       });
-      EasyLoading.instance.backgroundColor = C.mainColor;
+      EasyLoading.instance.backgroundColor = CC.mainColor;
       kitHideLoading();
 
       OssObj o = OssObj();
@@ -82,7 +82,7 @@ class UploadOss {
       // 成功后返回文件访问路径
       return o;
     } catch (e) {
-      EasyLoading.instance.backgroundColor = C.mainColor;
+      EasyLoading.instance.backgroundColor = CC.mainColor;
       kitHideLoading();
       kPopSnack('上传失败');
       logs('--error-e--${e.toString()}');

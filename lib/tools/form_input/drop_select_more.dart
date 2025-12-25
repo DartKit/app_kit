@@ -62,7 +62,7 @@ class _DropSelectMoreState extends State<DropSelectMore> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: setBg == true ? Colors.black45 : C.transparent,
+        color: setBg == true ? Colors.black45 : CC.transparent,
         child: Column(
           children: [
             Expanded(child: SizedBox()),
@@ -75,7 +75,7 @@ class _DropSelectMoreState extends State<DropSelectMore> {
     return SizedBox(
       height: Get.height / 8 * 5,
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r), topRight: Radius.circular(15.r)), color: C.white),
+        decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r), topRight: Radius.circular(15.r)), color: CC.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -98,9 +98,9 @@ class _DropSelectMoreState extends State<DropSelectMore> {
       children: [
         InkWell(
           onTap: Get.back,
-          child: Container(padding: EdgeInsets.all(15.r), child: Icon(Icons.close, color: C.deepGrey)),
+          child: Container(padding: EdgeInsets.all(15.r), child: Icon(Icons.close, color: CC.deepGrey)),
         ),
-        Text(widget.mo.hint, style: TextStyle(color: C.black, fontSize: 18, fontWeight: AppFont.medium)),
+        Text(widget.mo.hint, style: TextStyle(color: CC.black, fontSize: 18, fontWeight: AppFont.medium)),
         InkWell(
           onTap: () {
             if (_hasPick) _backDone();
@@ -109,7 +109,7 @@ class _DropSelectMoreState extends State<DropSelectMore> {
             padding: EdgeInsets.all(15),
             child: Icon(
               Icons.done_outline_rounded,
-              color: _hasPick ? C.mainColor : C.transparent,
+              color: _hasPick ? CC.mainColor : CC.transparent,
             ),
           ),
         ),
@@ -162,7 +162,7 @@ class _DropSelectMoreState extends State<DropSelectMore> {
         padding: EdgeInsets.only(top: 6, bottom: 6),
         child: Column(
           children: [
-            const Divider(height: 0.5, color: C.transparent),
+            const Divider(height: 0.5, color: CC.transparent),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -170,15 +170,15 @@ class _DropSelectMoreState extends State<DropSelectMore> {
                   child: Text(
                 (v.name).ifNil(v.label).ifNil(v.title.add(v.score)),
                     // v.name.isNotEmpty ? v.name : v.title + '   ' + v.score,
-                    style: TextStyle(color: v.select ? C.mainColor : C.deepGrey, fontSize: 16, fontWeight: v.select ? AppFont.bold : AppFont.regular),
+                    style: TextStyle(color: v.select ? CC.mainColor : CC.deepGrey, fontSize: 16, fontWeight: v.select ? AppFont.bold : AppFont.regular),
                   ),
                 ),
-                Icon(Icons.done, color: v.select ? C.mainColor : C.transparent)
+                Icon(Icons.done, color: v.select ? CC.mainColor : CC.transparent)
               ],
             ),
             Container(
               margin: const EdgeInsets.only(top: 7.0, bottom: 0.0),
-              child: const Divider(height: 0.5, color: C.lightBlack),
+              child: const Divider(height: 0.5, color: CC.lightBlack),
             ),
           ],
         ),

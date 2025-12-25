@@ -94,7 +94,7 @@ class _FromInputState extends State<FromInput> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
-                color: widget.bgColor ?? C.white,
+                color: widget.bgColor ?? CC.white,
               ),
               padding: widget.padding ?? EdgeInsets.all(10.r),
               child: Column(
@@ -140,7 +140,7 @@ class _FromInputState extends State<FromInput> {
           if (widget.cancel != null)
             KitButton(
                 name: '取消',
-                bgColor: C.mainColor.withOpacity(0.3),
+                bgColor: CC.mainColor.withOpacity(0.3),
                 padding: EdgeInsets.symmetric(horizontal: 30.r),
                 onTap: () {
                   cForm.mods.clear();

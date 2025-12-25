@@ -136,7 +136,7 @@ class _DropSearchFieldState extends State<PullSearchField> {
           ),
         Text(
           widget.noRedHasGap ? '∗' : '',
-          style: TextStyle(color: (widget.noRed) ? C.transparent : C.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+          style: TextStyle(color: (widget.noRed) ? CC.transparent : CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
         ),
         InkWell(
           onTap: () {
@@ -144,10 +144,10 @@ class _DropSearchFieldState extends State<PullSearchField> {
           },
           child: Text(
             widget.title,
-            style: TextStyle(color: C.keyfont, fontSize: 16.r, fontWeight: widget.check_box == null ? AppFont.medium : AppFont.bold),
+            style: TextStyle(color: CC.keyfont, fontSize: 16.r, fontWeight: widget.check_box == null ? AppFont.medium : AppFont.bold),
           ),
         ),
-        if (widget.tip.isNotEmpty) Text('(${widget.tip})', style: TextStyle(color: C.lightGrey, fontSize: 12.r, fontWeight: AppFont.regular)).marginOnly(left: 4.r),
+        if (widget.tip.isNotEmpty) Text('(${widget.tip})', style: TextStyle(color: CC.lightGrey, fontSize: 12.r, fontWeight: AppFont.regular)).marginOnly(left: 4.r),
       ],
     ).marginOnly(bottom: widget.oneLine ? 0 : 5.r);
   }
@@ -158,7 +158,7 @@ class _DropSearchFieldState extends State<PullSearchField> {
       child: Container(
         decoration: BoxDecoration(
             // borderRadius: BorderRadius.circular(10.r),
-            // border: Border.all(width: 1.r,color: C.line),
+            // border: Border.all(width: 1.r,color: CC.line),
             ),
         // height: 44.r,
         child: Center(
@@ -170,7 +170,7 @@ class _DropSearchFieldState extends State<PullSearchField> {
               }
               final filter = ls.where((e) => (e.label).contains(query)).toList();
               logs('---query--$query');
-              return filter.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, style: TextStyle(fontSize: 15.r, color: query.isEmpty ? C.mainColor : C.red)))).toList();
+              return filter.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, style: TextStyle(fontSize: 15.r, color: query.isEmpty ? CC.mainColor : CC.red)))).toList();
             },
             key: const Key('pul_search'),
             hint: widget.hintText,
@@ -178,13 +178,13 @@ class _DropSearchFieldState extends State<PullSearchField> {
             searchInputDecoration: SearchInputDecoration(
               hintStyle: TextStyle(color: Colors.grey, fontSize: 15.r),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: C.black, width: 1.r),
+                borderSide: BorderSide(color: CC.black, width: 1.r),
                 borderRadius: BorderRadius.circular(10.r),
                 gapPadding: 0.r,
               ),
               contentPadding: EdgeInsets.symmetric(vertical: 14.r, horizontal: 15.r),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: C.fiveColor, width: 1.r),
+                borderSide: BorderSide(color: CC.fiveColor, width: 1.r),
                 borderRadius: BorderRadius.circular(10.r),
                 gapPadding: 0.r,
               ),
@@ -195,19 +195,19 @@ class _DropSearchFieldState extends State<PullSearchField> {
                       Icons.keyboard_arrow_down,
                     )
                   : null,
-              searchStyle: TextStyle(fontSize: 16.r, color: C.mainColor, fontWeight: AppFont.bold),
+              searchStyle: TextStyle(fontSize: 16.r, color: CC.mainColor, fontWeight: AppFont.bold),
             ),
             suggestionsDecoration: SuggestionDecoration(
                 padding: EdgeInsets.only(left: 0.r, right: 0.r),
-                border: Border.all(color: C.mainColor),
-                // selectionColor: C.white,
-                // shadowColor: C.random,
+                border: Border.all(color: CC.mainColor),
+                // selectionColor: CC.white,
+                // shadowColor: CC.random,
                 borderRadius: BorderRadius.all(Radius.circular(4.r))),
             suggestionItemDecoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(4.r)),
-              // color: C.random
+              // color: CC.random
             ),
-            suggestions: ls.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14.r, color: C.mainColor)))).toList(),
+            suggestions: ls.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14.r, color: CC.mainColor)))).toList(),
             focusNode: focus,
             suggestionState: Suggestion.expand,
             suggestionDirection: widget.suggestionDirection,

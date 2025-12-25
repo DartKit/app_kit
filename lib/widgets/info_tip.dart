@@ -23,9 +23,9 @@ class InfoTip extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(width: 19.r,),
-          Icon(Icons.info,size: 16.r,color: C.orange,),
+          Icon(Icons.info,size: 16.r,color: CC.orange,),
           SizedBox(width: 5.r,),
-          Text(text,style: TextStyle(fontSize: fontSize??11.r,color: color??C.orange),)
+          Text(text,style: TextStyle(fontSize: fontSize??11.r,color: color??CC.orange),)
         ],
       ),
     );

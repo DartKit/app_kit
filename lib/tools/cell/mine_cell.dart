@@ -28,7 +28,7 @@ class MineCell extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10.r, vertical: 5.r),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(width: 1.r, color: C.line),
+        border: Border.all(width: 1.r, color: CC.line),
       ),
       child: InkWell(
         onTap: () => callback(),
@@ -55,7 +55,7 @@ class MineCell extends StatelessWidget {
                         MainText(
                           subTitle,
                           fontSize: 12.r,
-                          color: C.lightGrey,
+                          color: CC.lightGrey,
                         ),
                       ],
                     ),

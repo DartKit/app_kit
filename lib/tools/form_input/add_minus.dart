@@ -122,8 +122,8 @@ class _AddMinusInputState extends State<AddMinusInput> {
       margin: EdgeInsets.only(top: 10.r),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(width: 1.r, color: C.line.withOpacity(0.5)),
-          color: C.white),
+          border: Border.all(width: 1.r, color: CC.line.withOpacity(0.5)),
+          color: CC.white),
       padding: EdgeInsets.symmetric(horizontal: 10.r),
       child: Row(
         children: [
@@ -131,7 +131,7 @@ class _AddMinusInputState extends State<AddMinusInput> {
             Text(
               '∗',
               style: TextStyle(
-                  color: C.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+                  color: CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
             ),
           Expanded(
               child: Text(
@@ -140,7 +140,7 @@ class _AddMinusInputState extends State<AddMinusInput> {
             style: TextStyle(
                 fontSize: 16.r,
                 fontWeight: FontWeight.w700,
-                color: C.deepBlack),
+                color: CC.deepBlack),
           ).marginOnly(right: 10.r)),
           InkWell(
             onTap: () {
@@ -162,7 +162,7 @@ class _AddMinusInputState extends State<AddMinusInput> {
               child: Icon(
                 Icons.remove,
                 size: 12.r,
-                color: C.mainColor,
+                color: CC.mainColor,
               ),
             ),
           ),
@@ -181,7 +181,7 @@ class _AddMinusInputState extends State<AddMinusInput> {
                     NumberTextInputFormatter(digit: 1), //限制小数位数
                   ],
                   style: TextStyle(
-                    color: C.keyfont,
+                    color: CC.keyfont,
                     fontSize: 15.r,
                     fontWeight: AppFont.heavy,
                   ),
@@ -189,7 +189,7 @@ class _AddMinusInputState extends State<AddMinusInput> {
                     border: InputBorder.none,
                     hintText: '请输入',
                     hintStyle: TextStyle(
-                      color: C.deepGrey,
+                      color: CC.deepGrey,
                       fontSize: 11.r,
                       fontWeight: AppFont.medium,
                     ),
@@ -226,7 +226,7 @@ class _AddMinusInputState extends State<AddMinusInput> {
               child: Icon(
                 Icons.add,
                 size: 12.r,
-                color: C.mainColor,
+                color: CC.mainColor,
               ),
             ),
           )

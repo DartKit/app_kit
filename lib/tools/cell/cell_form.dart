@@ -145,10 +145,10 @@ class _CellFormState extends State<CellForm> {
                         left: 10.0, right: 10.0, top: 13.0, bottom: 13.0),
                 decoration: widget.decoration ??
                     BoxDecoration(
-                        border: Border.all(color: C.fiveColor),
+                        border: Border.all(color: CC.fiveColor),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10.0)),
-                        color: widget.bgColor ?? C.white),
+                        color: widget.bgColor ?? CC.white),
                 child: widget.input != null
                     ? _contentInput()
                     : _contentSelect(isTextNil),
@@ -184,12 +184,12 @@ class _CellFormState extends State<CellForm> {
                 ],
             style: widget.inputTextStyle ??
                 TextStyle(
-                    color: C.mainColor,
+                    color: CC.mainColor,
                     fontSize: 16.r,
                     fontWeight: FontWeight.w700),
             decoration: InputDecoration(
               hintText: widget.hintText,
-              hintStyle: widget.hintStyle ?? TextStyle(color: C.deepGrey),
+              hintStyle: widget.hintStyle ?? TextStyle(color: CC.deepGrey),
               border: InputBorder.none,
               // border: OutlineInputBorder(
               //   ///设置边框四个角的弧度
@@ -229,7 +229,7 @@ class _CellFormState extends State<CellForm> {
                   Icons.cancel,
                   color: widget.controller!.text.isEmpty
                       ? Colors.transparent
-                      : C.fiveColor,
+                      : CC.fiveColor,
                 ),
                 onTap: () {
                   if (widget.clear != null) {
@@ -258,8 +258,8 @@ class _CellFormState extends State<CellForm> {
               maxLines: 30,
               style: TextStyle(
                 color: isTextNil
-                    ? (widget.hintStyle?.color ?? C.deepGrey)
-                    : (widget.textStyle?.color ?? C.mainColor),
+                    ? (widget.hintStyle?.color ?? CC.deepGrey)
+                    : (widget.textStyle?.color ?? CC.mainColor),
                 fontSize: isTextNil
                     ? (widget.hintStyle?.fontSize ?? 16.r)
                     : (widget.textStyle?.fontSize ?? 16.r),
@@ -278,7 +278,7 @@ class _CellFormState extends State<CellForm> {
                         padding: const EdgeInsets.only(top: 3.0),
                         child: Icon(
                           Icons.cancel,
-                          color: isTextNil ? Colors.transparent : C.fiveColor,
+                          color: isTextNil ? Colors.transparent : CC.fiveColor,
                         ),
                       ),
                     )
@@ -292,7 +292,7 @@ class _CellFormState extends State<CellForm> {
                     widget.arrow == TypeArrow.dowm
                         ? Icons.keyboard_arrow_down
                         : Icons.keyboard_arrow_right,
-                    color: C.deepGrey,
+                    color: CC.deepGrey,
                   ))
         ],
       ),
@@ -315,7 +315,7 @@ class _CellFormState extends State<CellForm> {
           if (widget.is_required)
             Text('∗',
                 style: TextStyle(
-                    color: C.red,
+                    color: CC.red,
                     fontSize: 16.r,
                     fontWeight: FontWeight.w700)),
           if (widget.check_box != null)
@@ -334,7 +334,7 @@ class _CellFormState extends State<CellForm> {
               name,
               style: widget.titleStyle ??
                   TextStyle(
-                      color: C.deepBlack,
+                      color: CC.deepBlack,
                       fontSize: 16.r,
                       fontWeight: FontWeight.w700),
             ),
@@ -342,7 +342,7 @@ class _CellFormState extends State<CellForm> {
           if (widget.tip.isNotEmpty)
             Text('(${widget.tip})',
                     style: TextStyle(
-                        color: C.lightGrey,
+                        color: CC.lightGrey,
                         fontSize: 12.r,
                         fontWeight: AppFont.regular))
                 .marginOnly(left: 4.r),

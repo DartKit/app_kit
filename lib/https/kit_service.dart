@@ -11,7 +11,7 @@ class KitService {
     return net.get<T>(url, query: query, data: data, onError: onError, hud: hud,  dataKey: key,unTap: unTap, showErr: showErr,isMoInAppKit:isMoInAppKit);
   }
 
-  static FutureOr<T?> fire<T>(url, {data, query, onError, bool hud = true, String key = '', bool unTap = false, bool showErr = true, bool isMoInAppKit = false}) {
+  static FutureOr<T?> fire<T>(url, {data, Map<String, dynamic>? query, onError, bool hud = true, String key = '', bool unTap = false, bool showErr = true, bool isMoInAppKit = false}) {
     //要对应为Map<String, dynamic>? 类型和基类的入参类型一样。否则如下方法走完无反应 .入参Map组装 可能没有加.value
     // if (data) {
     //

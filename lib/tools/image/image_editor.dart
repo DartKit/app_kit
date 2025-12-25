@@ -49,7 +49,7 @@ class ImageEditor {
               //     hoverCursor: SystemMouseCursors.move,
               //   ),
               //   paintingEditor: const PaintingEditorTheme(
-              //     background: C.black,
+              //     background: CC.black,
               //     initialStrokeWidth: 4.0,
               //     // initialStrokeWidth: dao.paint_width,
               //     // strokeWidthOnChanged: (x){
@@ -65,14 +65,14 @@ class ImageEditor {
               //   // emojiEditor: EmojiEditorTheme(),
               //   // stickerEditor: StickerEditorTheme(),
               //   background: Colors.black,
-              //   loadingDialogTheme: LoadingDialogTheme(textColor: C.mainColor),
-              //   // loadingDialogTextColor: C.mainColor,
+              //   loadingDialogTheme: LoadingDialogTheme(textColor: CC.mainColor),
+              //   // loadingDialogTextColor: CC.mainColor,
               //   uiOverlayStyle: const SystemUiOverlayStyle(
-              //     statusBarColor: C.black,
+              //     statusBarColor: CC.black,
               //     statusBarIconBrightness: Brightness.light,
               //     systemNavigationBarIconBrightness: Brightness.light,
               //     statusBarBrightness: Brightness.light,
-              //     systemNavigationBarColor: C.black,
+              //     systemNavigationBarColor: CC.black,
               //     // systemStatusBarContrastEnforced: false,
               //   ),
               // ),
@@ -129,7 +129,7 @@ class ImageEditor {
                     // ImagePickers.pickerPaths(
                     //   selectCount: 30,
                     //   showGif: true,
-                    //   uiConfig: UIConfig(uiThemeColor: C.mainColor),
+                    //   uiConfig: UIConfig(uiThemeColor: CC.mainColor),
                     // ).then((List<Media> medias){
                     //   /// medias 照片路径信息 Photo path information
                     //   res.value = medias.map((e) => File(e.path??'')).toList();
@@ -196,7 +196,7 @@ class ImageEditor {
                                   // ImagePickers.pickerPaths(
                                   //   selectCount: 30,
                                   //   showGif: true,
-                                  //   uiConfig: UIConfig(uiThemeColor: C.mainColor),
+                                  //   uiConfig: UIConfig(uiThemeColor: CC.mainColor),
                                   // ).then((List<Media> medias){
                                   //  List<File> ls =  medias.map((e) => File(e.path??'')).toList();
                                   //   if (ls.isEmpty) {
@@ -210,7 +210,7 @@ class ImageEditor {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.r),
                                     border:
-                                        Border.all(width: 1.r, color: C.line),
+                                        Border.all(width: 1.r, color: CC.line),
                                   ),
                                   width: 120,
                                   height: 120,

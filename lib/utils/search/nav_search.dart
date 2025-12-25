@@ -20,8 +20,8 @@ class NavSearch extends StatelessWidget {
     return RecButton(
       icon: Icons.search,
       isPatrolingHide: true,
-      color: C.white,
-      bgColor: search.keyVs().isEmpty ? C.mainColor : C.red,
+      color: CC.white,
+      bgColor: search.keyVs().isEmpty ? CC.mainColor : CC.red,
       onTap: () async {
         Get.to(
                 () => ListSearchItems(

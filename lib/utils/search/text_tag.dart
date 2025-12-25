@@ -26,7 +26,7 @@ class _TextTagState extends State<TextTag> {
               child: Text(
                 m.title,
                 style: const TextStyle(
-                    color: C.deepGrey,
+                    color: CC.deepGrey,
                     fontSize: 16.0,
                     fontWeight: FontWeight.w700),
               ),
@@ -50,13 +50,13 @@ class _TextTagState extends State<TextTag> {
                           border: Border.all(
                               width: 1.r,
                               color: m.list[key].select
-                                  ? C.mainColor
-                                  : C.deepGrey),
-                          color: C.white),
+                                  ? CC.mainColor
+                                  : CC.deepGrey),
+                          color: CC.white),
                       child: Text(m.list[key].title,
                           style: TextStyle(
                               color:
-                                  m.list[key].select ? C.mainColor : C.deepGrey,
+                                  m.list[key].select ? CC.mainColor : CC.deepGrey,
                               fontSize: 14.0,
                               fontWeight: FontWeight.w500)),
                     ),

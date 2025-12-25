@@ -10,7 +10,7 @@ const double _spaceHeight = 5.0;
 const Color _spaceColor = Color(0xFFE6E6E6); //230
 const Color _textColor = Color(0xFF323232); //50
 const double _textFontSize = 18.0;
-Color _primary_textColor = C.keyColor; //rgba(230,66,66,1)
+Color _primary_textColor = CC.keyColor; //rgba(230,66,66,1)
 const Color _titleColor = Color(0xFF787878); //120
 const double _titleFontSize = 13.0;
 

@@ -172,9 +172,9 @@ class _ListSearchItemsState extends State<ListSearchItems> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle titleStyle = TextStyle(color: C.deepGrey, fontSize: 16.0, fontWeight: FontWeight.w700);
-    TextStyle hintStyle = TextStyle(color: C.lightGrey, fontSize: 14.0, fontWeight: FontWeight.w600);
-    TextStyle textStyle = TextStyle(color: C.mainColor, fontSize: 14.0, fontWeight: FontWeight.w600);
+    TextStyle titleStyle = TextStyle(color: CC.deepGrey, fontSize: 16.0, fontWeight: FontWeight.w700);
+    TextStyle hintStyle = TextStyle(color: CC.lightGrey, fontSize: 14.0, fontWeight: FontWeight.w600);
+    TextStyle textStyle = TextStyle(color: CC.mainColor, fontSize: 14.0, fontWeight: FontWeight.w600);
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -190,7 +190,7 @@ class _ListSearchItemsState extends State<ListSearchItems> {
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
-                  color: C.lightBlack,
+                  color: CC.lightBlack,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                 ),
                 child: Column(
@@ -237,7 +237,7 @@ class _ListSearchItemsState extends State<ListSearchItems> {
                                       textStyle: textStyle,
                                       titlePadding: EdgeInsets.only(top: 0, bottom: 8),
                                       text: mo.list[0].sel_value,
-                                      bgColor: C.white,
+                                      bgColor: CC.white,
                                       hintText: mo.list[0].tip,
                                       onTap: () {
                                         Pickers.showDatePicker(
@@ -255,7 +255,7 @@ class _ListSearchItemsState extends State<ListSearchItems> {
                                       padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 15),
                                       child: const Text(
                                         '—',
-                                        style: TextStyle(color: C.deepGrey, fontSize: 14.0, fontWeight: FontWeight.w700),
+                                        style: TextStyle(color: CC.deepGrey, fontSize: 14.0, fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   if (mo.list.length > 1)
@@ -264,11 +264,11 @@ class _ListSearchItemsState extends State<ListSearchItems> {
                                           title: mo.title,
                                           showArrow: false,
                                           titlePadding: EdgeInsets.only(top: 0, bottom: 8),
-                                          titleStyle: titleStyle.copyWith(color: C.transparent),
+                                          titleStyle: titleStyle.copyWith(color: CC.transparent),
                                           hintStyle: hintStyle,
                                           textStyle: textStyle,
                                           text: mo.list[1].sel_value,
-                                          bgColor: C.white,
+                                          bgColor: CC.white,
                                           hintText: mo.list[1].tip,
                                           onTap: () {
                                             Pickers.showDatePicker(
@@ -334,7 +334,7 @@ class _ListSearchItemsState extends State<ListSearchItems> {
                         Container(
                             padding: const EdgeInsets.all(30),
                             decoration: const BoxDecoration(
-                              color: C.white,
+                              color: CC.white,
                               // borderRadius: BorderRadius.only(bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                               borderRadius: BorderRadius.all(Radius.circular(15.0)),
                             ),
@@ -343,7 +343,7 @@ class _ListSearchItemsState extends State<ListSearchItems> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  KitButton(name: '重置', bgColor: C.mainColor.withOpacity(0.3), onTap: _onReset),
+                                  KitButton(name: '重置', bgColor: CC.mainColor.withOpacity(0.3), onTap: _onReset),
                                   KitButton(name: '确定', onTap: onSubmit),
                                 ],
                               ),

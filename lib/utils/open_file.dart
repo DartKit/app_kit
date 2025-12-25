@@ -61,8 +61,8 @@ class CoOpenFile {
       EasyLoading.instance
         ..maskColor = Colors.black.withOpacity(0.2)
         ..progressColor = Colors.white
-        ..textColor = C.white
-        ..backgroundColor = C.mainColor;
+        ..textColor = CC.white
+        ..backgroundColor = CC.mainColor;
 
       var dio = Dio();
       Response response = await dio.get(

@@ -48,7 +48,7 @@ class RectSegment extends StatelessWidget {
                     child: Text(e,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: e == ls[index] ? C.white : C.black)))),
+                            color: e == ls[index] ? CC.white : CC.black)))),
             // icon: Icon(Icons.safety_check),
           );
         }).toList(),
@@ -65,7 +65,7 @@ class RectSegment extends StatelessWidget {
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
               if (states.contains(MaterialState.selected)) {
-                return C.mainColor;
+                return CC.mainColor;
               }
               return cl;
             },

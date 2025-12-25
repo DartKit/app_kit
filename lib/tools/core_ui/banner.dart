@@ -35,7 +35,7 @@ class CoBanner extends StatelessWidget {
                   child: Icon(
                     Icons.image,
                     size: 50.r,
-                    color: C.bg,
+                    color: CC.bg,
                   ),
                 );
               },

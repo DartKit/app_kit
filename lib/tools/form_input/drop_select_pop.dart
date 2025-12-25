@@ -79,8 +79,8 @@ class _DropSelectPopState extends State<DropSelectPop> {
           margin: EdgeInsets.all(20.r),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            border: Border.all(width: 1.r, color: C.line),
-            color: C.bg,
+            border: Border.all(width: 1.r, color: CC.line),
+            color: CC.bg,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -101,12 +101,12 @@ class _DropSelectPopState extends State<DropSelectPop> {
                         margin: EdgeInsets.only(left: 10.r, right: 10.r, bottom: 5.r),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.r),
-                          border: Border.all(width: 1.r, color: C.line),
+                          border: Border.all(width: 1.r, color: CC.line),
                         ),
                         child: Center(
                             child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text(filter[index].label, style: TextStyle(color: C.font, fontSize: 14.r, fontWeight: AppFont.regular)), if (filter[index].select) Icon(Icons.done)],
+                          children: [Text(filter[index].label, style: TextStyle(color: CC.font, fontSize: 14.r, fontWeight: AppFont.regular)), if (filter[index].select) Icon(Icons.done)],
                         )),
                       ),
                     );
@@ -123,7 +123,7 @@ class _DropSelectPopState extends State<DropSelectPop> {
                     keyboardType: TextInputType.multiline,
                     textInputAction: TextInputAction.search,
                     style: TextStyle(
-                      color: C.mainColor,
+                      color: CC.mainColor,
                       fontSize: 14.r,
                       fontWeight: AppFont.medium,
                     ),
@@ -133,7 +133,7 @@ class _DropSelectPopState extends State<DropSelectPop> {
                       prefixStyle: TextStyle(),
 
                       hintText: widget.hintText,
-                      hintStyle: TextStyle(color: C.deepGrey),
+                      hintStyle: TextStyle(color: CC.deepGrey),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
                       // isCollapsed:true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,

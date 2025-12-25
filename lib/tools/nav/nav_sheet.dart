@@ -67,7 +67,7 @@ class _NavSheetState extends State<NavSheet> {
 
   Widget _listSons () {
     return Container(
-      color: C.white,
+      color: CC.white,
       margin: widget.margin ?? EdgeInsets.only(top: 0.r),
       height: 30.r,
       constraints: BoxConstraints(
@@ -137,8 +137,8 @@ class _NavSheetState extends State<NavSheet> {
             padding: EdgeInsets.symmetric(horizontal: 5.r),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(35.r / 2),
-                border: Border.all(width: 1.r, color: C.mainColor),
-                color:  C.mainColor),
+                border: Border.all(width: 1.r, color: CC.mainColor),
+                color:  CC.mainColor),
             child:  Container(
                 margin: widget.margin ?? EdgeInsets.only(top: 0.r),
                 height: 30.r,
@@ -149,8 +149,8 @@ class _NavSheetState extends State<NavSheet> {
                 padding: EdgeInsets.symmetric(horizontal: 5.r),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(35.r / 2),
-                    border: Border.all(width: 1.r, color: C.mainColor),
-                    color: C.mainColor),
+                    border: Border.all(width: 1.r, color: CC.mainColor),
+                    color: CC.mainColor),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -160,13 +160,13 @@ class _NavSheetState extends State<NavSheet> {
                       minFontSize: 8,
                       maxFontSize: 14,
                       style:
-                      TextStyle(color: C.white, fontWeight: AppFont.semiBold),
+                      TextStyle(color: CC.white, fontWeight: AppFont.semiBold),
                     ),
                     if (widget.ls!.length > 1)
                       Icon(
                         Icons.keyboard_arrow_down,
                         size: 20.r,
-                        color: C.white,
+                        color: CC.white,
                       ).paddingOnly(left: 2.r)
                   ],
                 )

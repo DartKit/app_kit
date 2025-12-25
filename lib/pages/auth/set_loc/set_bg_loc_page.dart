@@ -78,7 +78,7 @@ class _SetBgLocPageState extends State<SetBgLocPage> {
             margin: EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
-              border: Border.all(width: 1.r, color: C.line),
+              border: Border.all(width: 1.r, color: CC.line),
             ),
             child: InkWell(
               onTap: () {
@@ -86,7 +86,7 @@ class _SetBgLocPageState extends State<SetBgLocPage> {
               },
               child: Row(
                 children: [
-                  Text('我是' + e.key + '手机', style: TextStyle(color: C.black, fontSize: 14.r, fontWeight: FontWeight.w400)),
+                  Text('我是' + e.key + '手机', style: TextStyle(color: CC.black, fontSize: 14.r, fontWeight: FontWeight.w400)),
                   Expanded(child: SizedBox()),
                   Icon(Icons.arrow_forward_ios, size: 18.r),
                 ],

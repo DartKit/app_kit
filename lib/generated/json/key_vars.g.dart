@@ -3,17 +3,21 @@ import 'package:app_kit/models/core/key_vars.dart';
 
 KeyVars $KeyVarsFromJson(Map<String, dynamic> json) {
   final KeyVars keyVars = KeyVars();
-  final int? id = jsonConvert.convert<int>(json['id']);
-  if (id != null) {
-    keyVars.id = id;
-  }
   final bool? select = jsonConvert.convert<bool>(json['select']);
   if (select != null) {
     keyVars.select = select;
   }
+  final String? id = jsonConvert.convert<String>(json['id']);
+  if (id != null) {
+    keyVars.id = id;
+  }
   final String? label = jsonConvert.convert<String>(json['label']);
   if (label != null) {
     keyVars.label = label;
+  }
+  final String? name = jsonConvert.convert<String>(json['name']);
+  if (name != null) {
+    keyVars.name = name;
   }
   final String? value = jsonConvert.convert<String>(json['value']);
   if (value != null) {
@@ -41,9 +45,10 @@ KeyVars $KeyVarsFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $KeyVarsToJson(KeyVars entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['id'] = entity.id;
   data['select'] = entity.select;
+  data['id'] = entity.id;
   data['label'] = entity.label;
+  data['name'] = entity.name;
   data['value'] = entity.value;
   data['title'] = entity.title;
   data['pid'] = entity.pid;
@@ -54,9 +59,10 @@ Map<String, dynamic> $KeyVarsToJson(KeyVars entity) {
 
 extension KeyVarsExtension on KeyVars {
   KeyVars copyWith({
-    int? id,
     bool? select,
+    String? id,
     String? label,
+    String? name,
     String? value,
     String? title,
     String? pid,
@@ -64,9 +70,10 @@ extension KeyVarsExtension on KeyVars {
     List<KeyVars>? children,
   }) {
     return KeyVars()
-      ..id = id ?? this.id
       ..select = select ?? this.select
+      ..id = id ?? this.id
       ..label = label ?? this.label
+      ..name = name ?? this.name
       ..value = value ?? this.value
       ..title = title ?? this.title
       ..pid = pid ?? this.pid

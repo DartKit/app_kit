@@ -92,7 +92,7 @@ class _CalendarSheetState extends State<CalendarSheet> {
         height: 50.r,
         alignment: Alignment.center,
         decoration: BoxDecoration(border: Border(top: BorderSide(width: 1, color: Color.fromRGBO(220, 220, 220, 1)))),
-        child: Text(title, style: TextStyle(color: C.black,fontSize: 16.r, fontWeight: AppFont.medium))),
+        child: Text(title, style: TextStyle(color: CC.black,fontSize: 16.r, fontWeight: AppFont.medium))),
     );
   }
 

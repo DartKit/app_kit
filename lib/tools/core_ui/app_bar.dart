@@ -6,6 +6,7 @@ class CoAppBar extends AppBar {
       List<Widget>? actions,
       Color? backgroundColor,
       Color? navigatorColor,
+      Color? titleColor,
       GestureTapCallback? onLeadingTap,
       super.bottom,
       double? elevation,
@@ -38,7 +39,7 @@ class CoAppBar extends AppBar {
                                 child: Text(
                                   title.toString(),
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: titleColor??Colors.black,
                                       fontSize: 18.r,
                                       fontWeight: AppFont.bold),
                                 )),
@@ -46,7 +47,7 @@ class CoAppBar extends AppBar {
                         : Text(
                             title.toString(),
                             style: TextStyle(
-                                color: Colors.black,
+                                color: titleColor??Colors.black,
                                 fontSize: 18.r,
                                 fontWeight: AppFont.bold),
                           )),
@@ -59,11 +60,11 @@ class CoAppBar extends AppBar {
                           e.paddingOnly(right: e == actions.last ? 10.r : 2.r),
                     ))
                 .toList(),
-            backgroundColor: backgroundColor ?? C.white,
+            backgroundColor: backgroundColor ?? CC.white,
             foregroundColor: navigatorColor,
             elevation: elevation ?? 0.5,
             scrolledUnderElevation: 0,
-            // surfaceTintColor: C.white,
+            // surfaceTintColor: CC.white,
             forceMaterialTransparency: false,
             titleTextStyle: TextStyle(
                 fontWeight: FontWeight.w500,
@@ -96,7 +97,7 @@ class SearchButton extends IconButton {
             icon: Icon(
               isGot ? Icons.youtube_searched_for : Icons.search_rounded,
               size: 30.0,
-              color: isGot ? C.red : Color(0xff000000),
+              color: isGot ? CC.red : Color(0xff000000),
             ));
 }
 

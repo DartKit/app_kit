@@ -24,8 +24,8 @@ class RecButton extends StatelessWidget {
     return CircleButton(
       icon: icon,
       onTap: onTap,
-      color: color ?? C.blue,
-      bgColor: bgColor ?? C.white,
+      color: color ?? CC.blue,
+      bgColor: bgColor ?? CC.white,
       circle: 8.r,
       isPatrolingHide: isPatrolingHide,
     );
@@ -69,10 +69,10 @@ class CircleButton extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(circle > 0 ? circle : btnW / 2),
-                color: bgColor ?? C.mainColor,
+                color: bgColor ?? CC.mainColor,
                 boxShadow: const [
                   BoxShadow(
-                      color: C.lightGrey,
+                      color: CC.lightGrey,
                       offset: Offset(0.5, .5),
                       blurRadius: 3.0 //阴影扩散程度
                       )
@@ -80,7 +80,7 @@ class CircleButton extends StatelessWidget {
               ),
               child: Icon(
                 icon,
-                color: color ?? C.white,
+                color: color ?? CC.white,
               ),
             ),
           );

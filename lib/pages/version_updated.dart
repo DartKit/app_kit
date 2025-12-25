@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:app_kit/core/app_device.dart';
 import 'package:app_kit/core/kt_export.dart';
 import 'package:app_kit/core/app_permission.dart';
+import 'package:app_kit/generated/assets.dart';
 import 'package:app_kit/models/core/common_ver.dart';
+import 'package:app_kit/tools/ast_tool_kit.dart';
 import 'package:app_kit/utils/open_file.dart';
 import 'package:app_kit/widgets/kit_views/kit_view.dart';
 import 'package:flutter/foundation.dart';
@@ -53,7 +55,7 @@ class VersionUpdated extends StatefulWidget {
     CommonVer? res = await KitService.fireGet<CommonVer>(url, query: map);
     if (res != null) {
       if (res.info.project_list.contains(owm_project_id) == false) {
-        if (isHud) kPopSnack('当前已是最新版本', bgColor: C.blue);
+        if (isHud) kPopSnack('当前已是最新版本', bgColor: CC.blue);
         return;
       }
       ChannelVer gw = ChannelVer()
@@ -77,7 +79,7 @@ class VersionUpdated extends StatefulWidget {
           if (o.channel == kdao.channel) _showNewVersionUpdated(res.info, is_force, o.url,onClickInstall: onClickInstall);
         }
       } else {
-        if (isHud) kPopSnack('当前已是最新版本', bgColor: C.blue);
+        if (isHud) kPopSnack('当前已是最新版本', bgColor: CC.blue);
       }
     }
   }
@@ -141,9 +143,9 @@ class _VersionUpdatedState extends State<VersionUpdated> {
               children: [
                 Container(
                   height: 155.r,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
-                    image: DecorationImage(image: AssetImage('lib/asts/images/up_ver.png'), fit: BoxFit.fill),
+                    image: DecorationImage(image: AssetImage(AstToolKit.pkgAst(AstKit.lib_asts_images_up_ver)), fit: BoxFit.fill),
                   ),
                 ),
                 Container(
@@ -197,10 +199,10 @@ class _VersionUpdatedState extends State<VersionUpdated> {
                                                 Expanded(
                                                   child: ElevatedButton(
                                                     style: ButtonStyle(
-                                                      backgroundColor: MaterialStateProperty.all(C.lightBlack),
+                                                      backgroundColor: MaterialStateProperty.all(CC.lightBlack),
                                                       shape: MaterialStateProperty.all(
                                                         const StadiumBorder(
-                                                          side: BorderSide(style: BorderStyle.solid, color: C.lightBlack),
+                                                          side: BorderSide(style: BorderStyle.solid, color: CC.lightBlack),
                                                         ),
                                                       ), //圆角弧度
                                                     ),
@@ -219,7 +221,7 @@ class _VersionUpdatedState extends State<VersionUpdated> {
                                             ),
                                             Text(
                                               '升级需按引导授权《数字园林》安装此来源未知应用',
-                                              style: TextStyle(color: C.black, fontSize: 11.r, fontWeight: AppFont.regular),
+                                              style: TextStyle(color: CC.black, fontSize: 11.r, fontWeight: AppFont.regular),
                                             ),
                                           ],
                                         ),
@@ -236,10 +238,10 @@ class _VersionUpdatedState extends State<VersionUpdated> {
                                       margin: EdgeInsets.only(right: 30),
                                       child: ElevatedButton(
                                         style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.all(C.lightBlack),
+                                          backgroundColor: MaterialStateProperty.all(CC.lightBlack),
                                           shape: MaterialStateProperty.all(
                                             const StadiumBorder(
-                                              side: BorderSide(style: BorderStyle.solid, color: C.lightBlack),
+                                              side: BorderSide(style: BorderStyle.solid, color: CC.lightBlack),
                                             ),
                                           ), //圆角弧度
                                         ),
@@ -278,7 +280,7 @@ class _VersionUpdatedState extends State<VersionUpdated> {
                                       },
                                       child: const Text(
                                         '立即更新',
-                                        style: TextStyle(color: C.white, fontSize: 13.0, fontWeight: FontWeight.w700),
+                                        style: TextStyle(color: CC.white, fontSize: 13.0, fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   ),

@@ -109,7 +109,7 @@ class _PickBoxState extends State<PickBox> {
                   if (widget.mo.is_required.yes)
                     Text(
                       '∗',
-                      style: TextStyle(color: C.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+                      style: TextStyle(color: CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
                     ),
                   BlackText(
                     widget.mo.title,
@@ -163,7 +163,7 @@ class _PickBoxState extends State<PickBox> {
       child: Container(
           width: (Get.width - 85.r) / 2,
           padding: EdgeInsets.all(4.r),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(7.r), color: mo.select ? C.mainColor : C.lightGrey),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(7.r), color: mo.select ? CC.mainColor : CC.lightGrey),
           child: Column(
             children: [
               Padding(
@@ -175,20 +175,20 @@ class _PickBoxState extends State<PickBox> {
                         mo.title,
                       )
                       .ifNil(mo.lable),
-                  color: C.white,
+                  color: CC.white,
                 ),
               ),
               Top2Text(
                 mo.start_time.reduceMinute(mo.start_interval),
                 top: 0.0,
                 tip: '开始：',
-                color: C.lightBlack.withOpacity(0.8),
+                color: CC.lightBlack.withOpacity(0.8),
               ),
               Top2Text(
                 mo.end_time.addMinute(mo.end_interval),
                 top: 0.0,
                 tip: '结束：',
-                color: C.lightBlack.withOpacity(0.8),
+                color: CC.lightBlack.withOpacity(0.8),
               ),
             ],
           )),

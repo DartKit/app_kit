@@ -122,7 +122,7 @@ class CoImage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(circular),
                     color:
-                        isMask == true ? C.hex(#FF111334, 0.02) : C.transparent,
+                        isMask == true ? CC.hex(#FF111334, 0.02) : CC.transparent,
                   ),
                 )
               ],

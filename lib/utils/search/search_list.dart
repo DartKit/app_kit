@@ -1,6 +1,8 @@
 import 'package:app_kit/core/kt_export.dart';
 
 import '../../../models/core/sd_search.dart';
+import '../../generated/assets.dart';
+import '../../tools/ast_tool_kit.dart';
 
 class SearchList extends StatefulWidget {
   SdSearch mo;
@@ -26,7 +28,7 @@ class _SearchListState extends State<SearchList> {
               child: Text(
                 m.title,
                 style: const TextStyle(
-                    color: C.deepGrey,
+                    color: CC.deepGrey,
                     fontSize: 16.0,
                     fontWeight: FontWeight.w700),
               ),
@@ -55,11 +57,11 @@ class _SearchListState extends State<SearchList> {
                                 width: 0.5.r, color: Color(0xFFD0D0D0)),
                             color: m.list[key].select
                                 ? Color(0xFFE7F5E9)
-                                : C.white,
+                                : CC.white,
                           ),
                           child: Text(m.list[key].title,
                               style: TextStyle(
-                                  color: C.keyfont,
+                                  color: CC.keyfont,
                                   fontSize: 14.r,
                                   fontWeight: AppFont.medium))),
                       if (m.list[key].select)
@@ -67,7 +69,7 @@ class _SearchListState extends State<SearchList> {
                             right: 20.r,
                             bottom: 6.r,
                             child: CoImage(
-                              'lib/asts/images/sel_tick2.png',
+                              AstToolKit.pkgAst(AstKit.lib_asts_images_sel_tick2),
                               size: 16.r,
                               circular: 0,
                               fit: BoxFit.fill,

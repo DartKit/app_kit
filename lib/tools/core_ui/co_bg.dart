@@ -27,7 +27,7 @@ class CoBg extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 stops: const [0.0, 1.0],
-                colors: colors2?? [C.white.withOpacity(0.1), C.white]
+                colors: colors2?? [CC.white.withOpacity(0.1), CC.white]
             ),
           ),
         ),

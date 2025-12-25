@@ -53,7 +53,7 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10.r), topRight: Radius.circular(10.r)),
-        color: C.white,
+        color: CC.white,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -65,11 +65,11 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
                 onTap: () {
                   Get.back();
                 },
-                child: Icon(Icons.close, color: C.green, size: 26.r),
+                child: Icon(Icons.close, color: CC.green, size: 26.r),
               ),
               Text(widget.title ?? '',
                   style: TextStyle(
-                      color: C.black,
+                      color: CC.black,
                       fontSize: 14.r,
                       fontWeight: AppFont.regular)),
               InkWell(
@@ -80,7 +80,7 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
                   // widget.onChanged(_controller.text);
                   Get.back(result: _controller.text);
                 },
-                child: Icon(Icons.done_outlined, color: C.green, size: 26.r),
+                child: Icon(Icons.done_outlined, color: CC.green, size: 26.r),
               ),
             ],
           ).marginOnly(bottom: 10.r),
@@ -90,8 +90,8 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25.r),
-                  border: Border.all(width: 1.r, color: C.line),
-                  color: C.bg,
+                  border: Border.all(width: 1.r, color: CC.line),
+                  color: CC.bg,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -101,12 +101,12 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
                       height: 50.r,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25.r),
-                        border: Border.all(width: 1.r, color: C.line),
-                        color: C.blue,
+                        border: Border.all(width: 1.r, color: CC.line),
+                        color: CC.blue,
                       ),
                       child: Center(
                         child: IconButton(
-                          icon: const Icon(Icons.remove, color: C.white),
+                          icon: const Icon(Icons.remove, color: CC.white),
                           onPressed: () {
                             double currentValue =
                                 double.tryParse(_controller.text) ??
@@ -119,7 +119,7 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
-                        color: C.bg,
+                        color: CC.bg,
                       ),
                       width: 100.r,
                       child: TextField(
@@ -146,11 +146,11 @@ class _DecimalNumPickerState extends State<DecimalNumPicker> {
                       height: 50.r,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25.r),
-                          border: Border.all(width: 1.r, color: C.line),
-                          color: C.blue),
+                          border: Border.all(width: 1.r, color: CC.line),
+                          color: CC.blue),
                       child: Center(
                         child: IconButton(
-                          icon: const Icon(Icons.add, color: C.white),
+                          icon: const Icon(Icons.add, color: CC.white),
                           onPressed: () {
                             double currentValue =
                                 double.tryParse(_controller.text) ??

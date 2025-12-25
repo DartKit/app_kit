@@ -12,8 +12,8 @@ List<CameraDescription> _cameras = <CameraDescription>[];
 //   static Future<String?> image_editor(String path) async {
 //     var editedImagePath = await Get.to(()=> FlutterImageEditor(
 //       defaultImage: File(path),
-//       appBarColor: C.mainColor,
-//       bottomBarColor: C.mainColor,
+//       appBarColor: CC.mainColor,
+//       bottomBarColor: CC.mainColor,
 //     ));
 //
 //     logs('---editedImage--${editedImagePath}');
@@ -171,7 +171,7 @@ class _AppCameraState extends State<AppCamera>
         return true;
       },
       child: Scaffold(
-        backgroundColor: C.transparent,
+        backgroundColor: CC.transparent,
         body: _cameras.isEmpty
             ? Container()
             : Stack(
@@ -213,7 +213,7 @@ class _AppCameraState extends State<AppCamera>
                                         onPressed: () => Get.back(),
                                         icon: Icon(
                                           Icons.arrow_back_ios,
-                                          color: C.white,
+                                          color: CC.white,
                                         ))
                                   ],
                                 ),
@@ -283,7 +283,7 @@ class _AppCameraState extends State<AppCamera>
     final CameraController? cameraController = controller;
 
     return Container(
-      color: C.black,
+      color: CC.black,
       child: Column(
         children: <Widget>[
           Container(
@@ -312,8 +312,8 @@ class _AppCameraState extends State<AppCamera>
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        border: Border.all(width: 3, color: C.mainColor),
-                        color: C.white,
+                        border: Border.all(width: 3, color: CC.mainColor),
+                        color: CC.white,
                       ),
                       child:
                           Icon(Icons.camera_alt, color: Colors.black, size: 30),
@@ -334,8 +334,8 @@ class _AppCameraState extends State<AppCamera>
                 //     padding: EdgeInsets.all(15),
                 //     decoration: BoxDecoration(
                 //       borderRadius: BorderRadius.circular(35),
-                //       border: Border.all(width: 1.r, color: C.line),
-                //       color: C.white
+                //       border: Border.all(width: 1.r, color: CC.line),
+                //       color: CC.white
                 //     ),
                 //     child: Icon(Icons.camera_alt,color: Colors.blueGrey,size: 30),
                 //   ),
@@ -359,7 +359,7 @@ class _AppCameraState extends State<AppCamera>
 
   Widget _thumbnailControl() {
     return Container(
-      color: C.black,
+      color: CC.black,
       constraints: BoxConstraints(minHeight: 120),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -368,13 +368,13 @@ class _AppCameraState extends State<AppCamera>
               icon: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Icon(Icons.close, size: 35, color: C.white),
+                  Icon(Icons.close, size: 35, color: CC.white),
                   Text(
                     '重拍',
                     style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: C.white),
+                        color: CC.white),
                   )
                 ],
               ),
@@ -388,13 +388,13 @@ class _AppCameraState extends State<AppCamera>
               icon: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:  [
-                  Icon(Icons.palette, size: 35, color: C.mainColor),
+                  Icon(Icons.palette, size: 35, color: CC.mainColor),
                   Text(
                     '编辑',
                     style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: C.mainColor),
+                        color: CC.mainColor),
                   )
                 ],
               ),
@@ -414,13 +414,13 @@ class _AppCameraState extends State<AppCamera>
               icon: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Icon(Icons.done, size: 35, color: C.white),
+                  Icon(Icons.done, size: 35, color: CC.white),
                   Text(
                     '使用',
                     style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: C.white),
+                        color: CC.white),
                   )
                 ],
               ),

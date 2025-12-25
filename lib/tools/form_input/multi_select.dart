@@ -53,7 +53,7 @@ class _MultiSelectState extends State<MultiSelect> {
   Widget _ct() {
     return Container(
       padding: EdgeInsets.all(10.r),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), color: C.white),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), color: CC.white),
       child: Column(
         children: [
           Container(
@@ -68,7 +68,7 @@ class _MultiSelectState extends State<MultiSelect> {
                       icon: Icon(Icons.close)),
                   MainText(
                     _lsSel.isEmpty ? widget.title : _lsSel.map((e) => e.label).toList().join(', '),
-                    color: C.blue,
+                    color: CC.blue,
                     fontWeight: AppFont.medium,
                     fontSize: 15.r,
                   ),
@@ -89,7 +89,7 @@ class _MultiSelectState extends State<MultiSelect> {
                   final filter = _ls.where((e) => (e.label).contains(query)).toList();
                   logs('---query--$query');
                   logs('---filter--$filter');
-                  return filter.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, style: TextStyle(fontSize: 15.r, color: query.isEmpty ? C.mainColor : C.red)))).toList();
+                  return filter.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, style: TextStyle(fontSize: 15.r, color: query.isEmpty ? CC.mainColor : CC.red)))).toList();
                 },
                 key: const Key('pul_search'),
                 hint: '请输入搜索' + widget.title,
@@ -97,22 +97,22 @@ class _MultiSelectState extends State<MultiSelect> {
                 searchInputDecoration: SearchInputDecoration(
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 15.r),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: C.black, width: 1.r),
+                    borderSide: BorderSide(color: CC.black, width: 1.r),
                     borderRadius: BorderRadius.circular(10.r),
                     gapPadding: 0.r,
                   ),
                   contentPadding: EdgeInsets.symmetric(vertical: 2.r, horizontal: 15.r),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: C.fiveColor, width: 1.r),
+                    borderSide: BorderSide(color: CC.fiveColor, width: 1.r),
                     borderRadius: BorderRadius.circular(10.r),
                     gapPadding: 0.r,
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  searchStyle: TextStyle(fontSize: 16.r, color: C.mainColor, fontWeight: AppFont.bold),
+                  searchStyle: TextStyle(fontSize: 16.r, color: CC.mainColor, fontWeight: AppFont.bold),
                 ),
-                suggestionsDecoration: SuggestionDecoration(padding: EdgeInsets.only(left: 15.r, right: 3.r), border: Border.all(color: C.blue, width: 2.r), borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                suggestions: _ls.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14.r, color: C.mainColor)))).toList(),
+                suggestionsDecoration: SuggestionDecoration(padding: EdgeInsets.only(left: 15.r, right: 3.r), border: Border.all(color: CC.blue, width: 2.r), borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                suggestions: _ls.map((e) => SearchFieldListItem<KeyVars>(e.label, item: e, child: Text(e.label, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14.r, color: CC.mainColor)))).toList(),
                 focusNode: focus,
                 suggestionState: Suggestion.expand,
                 suggestionDirection: SuggestionDirection.up,
@@ -148,7 +148,7 @@ class _MultiSelectState extends State<MultiSelect> {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 5.r),
                     margin: EdgeInsets.symmetric(horizontal: 5.r, vertical: 3.r),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), border: Border.all(width: 1.r, color: C.line), color: mo.select ? C.blue.withValues(alpha: 0.5) : C.bg),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), border: Border.all(width: 1.r, color: CC.line), color: mo.select ? CC.blue.withValues(alpha: 0.5) : CC.bg),
                     child: Text(mo.label, style: TextStyle(fontSize: 14.r, fontWeight: AppFont.medium)),
                   ),
                 );

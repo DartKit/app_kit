@@ -118,7 +118,7 @@ class _DropSelectState extends State<DropSelect> {
               Text(
                 '∗ ',
                 style: TextStyle(
-                    color: (widget.noRed) ? C.transparent : C.red,
+                    color: (widget.noRed) ? CC.transparent : CC.red,
                     fontSize: 16.r,
                     fontWeight: FontWeight.w700),
               ),
@@ -126,7 +126,7 @@ class _DropSelectState extends State<DropSelect> {
               // Text(
               //   widget.title,
               //   style: TextStyle(
-              //       color: C.keyfont,
+              //       color: CC.keyfont,
               //       fontSize: 15.r,
               //       fontWeight: AppFont.medium),
               // )
@@ -178,8 +178,8 @@ class _DropSelectState extends State<DropSelect> {
                               horizontal: 5.r, vertical: 2.r),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.r),
-                            border: Border.all(width: 1.r, color: C.line),
-                            color: C.fiveColor,
+                            border: Border.all(width: 1.r, color: CC.line),
+                            color: CC.fiveColor,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -189,7 +189,7 @@ class _DropSelectState extends State<DropSelect> {
                                   padding: EdgeInsets.symmetric(vertical: 3.r),
                                   child: Text(e.label,
                                           style: TextStyle(
-                                              color: C.font, fontSize: 14.r))
+                                              color: CC.font, fontSize: 14.r))
                                       .marginOnly(right: 5.r)),
                               InkWell(
                                 onTap: () {
@@ -201,10 +201,10 @@ class _DropSelectState extends State<DropSelect> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.r),
                                     border:
-                                        Border.all(width: 1.r, color: C.line),
+                                        Border.all(width: 1.r, color: CC.line),
                                   ),
                                   child: Icon(Icons.close,
-                                      color: C.red, size: 16.r),
+                                      color: CC.red, size: 16.r),
                                 ),
                               )
                             ],
@@ -239,21 +239,21 @@ class _DropSelectState extends State<DropSelect> {
           margin: EdgeInsets.all(20.r),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            border: Border.all(width: 1.r, color: C.line),
-            color: C.bg,
+            border: Border.all(width: 1.r, color: CC.line),
+            color: CC.bg,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(widget.title.replaceAll('：', ''),
                       style: TextStyle(
-                          color: C.font,
+                          color: CC.font,
                           fontSize: 14.r,
                           fontWeight: AppFont.regular))
                   .marginOnly(bottom: 4.r),
               if (filter.isEmpty)
                 Text(widget.emptyHint,
-                    style: TextStyle(color: C.deepGrey, fontSize: 14.r)),
+                    style: TextStyle(color: CC.deepGrey, fontSize: 14.r)),
               if (choose.isNotEmpty)
                 Container(
                   padding:
@@ -266,7 +266,7 @@ class _DropSelectState extends State<DropSelect> {
                           .toList()
                           .join('; '),
                       style: TextStyle(
-                          color: C.mainColor,
+                          color: CC.mainColor,
                           fontSize: 14.r,
                           fontWeight: AppFont.regular)),
                 ),
@@ -302,7 +302,7 @@ class _DropSelectState extends State<DropSelect> {
                               borderRadius: BorderRadius.circular(8.r),
                               border: Border.all(
                                   width: 1.r,
-                                  color: mo.select ? C.mainColor : C.line),
+                                  color: mo.select ? CC.mainColor : CC.line),
                             ),
                             child: Center(
                                 child: Row(
@@ -311,7 +311,7 @@ class _DropSelectState extends State<DropSelect> {
                                 (mo.label.contains(_txtC.text) == false)
                                     ? Text(mo.label,
                                         style: TextStyle(
-                                            color: C.font,
+                                            color: CC.font,
                                             fontSize: 14.r,
                                             fontWeight: AppFont.regular))
                                     : Row(
@@ -325,13 +325,13 @@ class _DropSelectState extends State<DropSelect> {
                                               if (e.key > 0)
                                                 Text(_txtC.text,
                                                     style: TextStyle(
-                                                        color: C.red,
+                                                        color: CC.red,
                                                         fontSize: 14.r,
                                                         fontWeight:
                                                             AppFont.regular)),
                                               Text(e.value,
                                                   style: TextStyle(
-                                                      color: C.font,
+                                                      color: CC.font,
                                                       fontSize: 14.r,
                                                       fontWeight:
                                                           AppFont.regular)),
@@ -342,7 +342,7 @@ class _DropSelectState extends State<DropSelect> {
                                 if (mo.select)
                                   Icon(
                                     Icons.done,
-                                    color: C.mainColor,
+                                    color: CC.mainColor,
                                   )
                               ],
                             )),
@@ -362,7 +362,7 @@ class _DropSelectState extends State<DropSelect> {
                     keyboardType: TextInputType.multiline,
                     textInputAction: TextInputAction.done,
                     style: TextStyle(
-                      color: C.mainColor,
+                      color: CC.mainColor,
                       fontSize: 14.r,
                       fontWeight: AppFont.medium,
                     ),
@@ -384,7 +384,7 @@ class _DropSelectState extends State<DropSelect> {
                                 : rgba(102, 102, 102, 1),
                           )),
                       hintText: widget.hintText,
-                      hintStyle: TextStyle(color: C.deepGrey),
+                      hintStyle: TextStyle(color: CC.deepGrey),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.r)),
                       // isCollapsed:true,

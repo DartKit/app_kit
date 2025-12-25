@@ -94,7 +94,7 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: C.black,
+      backgroundColor: CC.black,
       body: SafeArea(
         child: Container(
           color: Colors.black,
@@ -115,7 +115,7 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
                   allowImplicitScrolling: false,
                   // backgroundDecoration: BoxDecoration(
                   //   borderRadius: BorderRadius.circular(10.r),
-                  //   border: Border.all(width: 1.r,color: C.line),
+                  //   border: Border.all(width: 1.r,color: CC.line),
                   // ),
                   loadingBuilder: widget.loadingBuilder ??
                       (context, event) => Center(
@@ -152,7 +152,7 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
                     right: 0,
                     top: 0,
                     child: Container(
-                      color: C.black,
+                      color: CC.black,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,7 +161,7 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
                               onPressed: () => Get.back(),
                               icon: Icon(
                                 Icons.cancel,
-                                color: C.white,
+                                color: CC.white,
                                 size: 30.r,
                               )).marginOnly(left: 10.r),
                           if (widget.saveImaPromise)
@@ -243,7 +243,7 @@ class _GalleryPhotoViewWrapperState extends State<GalleryPhotoViewWrapper> {
             children: [
               MainText(
                 '当前是$ends附件',
-                color: C.white,
+                color: CC.white,
                 fontSize: 14.r,
               ),
               SizedBox(
@@ -290,8 +290,8 @@ class ActionButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
-            border: Border.all(width: 1.r, color: C.white),
-            color: C.black),
+            border: Border.all(width: 1.r, color: CC.white),
+            color: CC.black),
         padding: EdgeInsets.symmetric(horizontal: 5.r, vertical: 1.r),
         child: Text(
           name,

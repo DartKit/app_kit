@@ -39,7 +39,7 @@ class _NavSegeState extends State<NavSege> {
         margin: const EdgeInsets.only(bottom: 0.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
-            color: widget.bgColor ?? C.black.withOpacity(0.1)),
+            color: widget.bgColor ?? CC.black.withOpacity(0.1)),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: widget.ls.asMap().entries.map((e) {
@@ -57,12 +57,12 @@ class _NavSegeState extends State<NavSege> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(8.r)),
                     color: index == widget.initIndex
-                        ? C.mainColor
-                        : C.transparent),
+                        ? CC.mainColor
+                        : CC.transparent),
                 child: Text(
                   se.name ?? '',
                   style: TextStyle(
-                      color: index == widget.initIndex ? C.white : C.lightGrey,
+                      color: index == widget.initIndex ? CC.white : CC.lightGrey,
                       fontSize: 14.0,
                       fontWeight: FontWeight.w700),
                 ),
