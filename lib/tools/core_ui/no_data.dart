@@ -62,7 +62,7 @@ class NoData extends StatelessWidget {
                         borderRadius: BorderRadius.circular(29.r/2),
                         border: Border.all(width: 1.r,color: Color(0xFF989DAF)),
                       ),
-                      child: Text('刷新一下', style: TextStyle(color: Color(0xFF2F3933), fontSize: 13.r, fontWeight: AppFont.medium))),
+                      child: Center(child: Text('刷新一下', style: TextStyle(color: Color(0xFF2F3933), fontSize: 13.r, fontWeight: AppFont.medium)))),
                   onTap: () {
                     kdao.inReq.value = true;
                     if (call != null) call!();

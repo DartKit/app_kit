@@ -816,10 +816,10 @@ class _FromInputState extends State<FromInput> {
     }
 
     if (o.url.contains('_rsp_list=1')) {
-      List<FromTemplateList>? res = await KitService.fireGet<List<FromTemplateList>>(o.url, unTap: true);
+      List<FromTemplateList>? res = await KitService.fireGet<List<FromTemplateList>>(o.url, unTap: true,isMoInAppKit: true);
       if (res != null) o.dats = res;
     } else {
-      FromTemplate? res = await KitService.fireGet<FromTemplate>(o.url, unTap: true);
+      FromTemplate? res = await KitService.fireGet<FromTemplate>(o.url, unTap: true,isMoInAppKit: true);
       if (res != null) o.dats = res.list;
     }
   }

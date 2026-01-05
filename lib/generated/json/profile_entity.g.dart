@@ -59,6 +59,10 @@ ProfileEntity $ProfileEntityFromJson(Map<String, dynamic> json) {
   if (user_host != null) {
     profileEntity.user_host = user_host;
   }
+  final String? project_id = jsonConvert.convert<String>(json['project_id']);
+  if (project_id != null) {
+    profileEntity.project_id = project_id;
+  }
   return profileEntity;
 }
 
@@ -78,6 +82,7 @@ Map<String, dynamic> $ProfileEntityToJson(ProfileEntity entity) {
   data['notifications_enabled'] = entity.notifications_enabled;
   data['readSetBgLoc'] = entity.readSetBgLoc;
   data['user_host'] = entity.user_host;
+  data['project_id'] = entity.project_id;
   return data;
 }
 
@@ -97,6 +102,7 @@ extension ProfileEntityExtension on ProfileEntity {
     bool? notifications_enabled,
     int? readSetBgLoc,
     String? user_host,
+    String? project_id,
   }) {
     return ProfileEntity()
       ..token = token ?? this.token
@@ -112,7 +118,8 @@ extension ProfileEntityExtension on ProfileEntity {
       ..use_cam_sys = use_cam_sys ?? this.use_cam_sys
       ..notifications_enabled = notifications_enabled ?? this.notifications_enabled
       ..readSetBgLoc = readSetBgLoc ?? this.readSetBgLoc
-      ..user_host = user_host ?? this.user_host;
+      ..user_host = user_host ?? this.user_host
+      ..project_id = project_id ?? this.project_id;
   }
 }
 

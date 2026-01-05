@@ -18,6 +18,7 @@ class ProfileEntity {
   late bool notifications_enabled = false; //通知权限
   late int readSetBgLoc = 0; // 是否已设置背景定位
   late String user_host = '';
+  late String project_id = '';
   // late bool working = false;
   // late int workId = 0;
   // late int distance = 0;

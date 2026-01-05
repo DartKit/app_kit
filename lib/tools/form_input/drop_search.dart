@@ -45,7 +45,7 @@ class _DropSearchState extends State<DropSearchField> {
       });
     }
 
-    List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map);
+    List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map,isMoInAppKit: true);
     if (res != null) {
       hasReqDone = true;
       ls = res;

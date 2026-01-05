@@ -62,7 +62,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
 
     if (widget.mo.url.contains('_fill_fas')) map.addAll(widget.fas);
     List<FromTemplateList>? res =
-        await KitService.fireGet<List<FromTemplateList>>(widget.mo.url, query: map);
+        await KitService.fireGet<List<FromTemplateList>>(widget.mo.url, query: map,isMoInAppKit: true);
     if (res != null) {
       _tags[_num].ls = res;
       if (mounted) setState(() {});
@@ -72,7 +72,7 @@ class _ScoreRulesPageState extends State<ScoreRulesPage> {
   /*
   Future<void> _evaluateList() async {
     Map<String,dynamic> map = {widget.mo.name:_parent_id};
-    FromTemplate? res = await  KitService.fire<FromTemplate>(widget.mo.children.first.url,query: map );
+    FromTemplate? res = await  KitService.fire<FromTemplate>(widget.mo.children.first.url,query: map,isMoInAppKit: true );
     if (res != null) {
       _tags[_num].ls = res.list;
       if (mounted) setState(() {});

@@ -87,7 +87,7 @@ class _DropSelectState extends State<DropSelect> {
       List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(
           widget.url,
           unTap: true,
-          query: map);
+          query: map,isMoInAppKit: true);
       if (res != null) {
         hasReqDone = true;
         ls = res;
@@ -96,7 +96,7 @@ class _DropSelectState extends State<DropSelect> {
       }
     } else {
       List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url,
-          unTap: true, query: map);
+          unTap: true, query: map,isMoInAppKit: true);
       if (res != null) {
         hasReqDone = true;
         ls = res;

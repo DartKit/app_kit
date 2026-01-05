@@ -48,22 +48,12 @@ class _DropSelectPopState extends State<DropSelectPop> {
 
     if (widget.url.contains('district_id=0')) return;
 
-    if (widget.url.contains('_rsp_list=1')) {
-      List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map);
-      if (res != null) {
-        hasReqDone = true;
-        ls = res;
-        filter = ls;
-        if (mounted) setState(() {});
-      }
-    } else {
-      List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map);
-      if (res != null) {
-        hasReqDone = true;
-        ls = res;
-        filter = ls;
-        if (mounted) setState(() {});
-      }
+    List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true, query: map,isMoInAppKit: true);
+    if (res != null) {
+      hasReqDone = true;
+      ls = res;
+      filter = ls;
+      if (mounted) setState(() {});
     }
   }
 

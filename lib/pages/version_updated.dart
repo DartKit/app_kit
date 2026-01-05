@@ -52,7 +52,7 @@ class VersionUpdated extends StatefulWidget {
     if ((kdao.channel == 'official') || ((kdao.channel == 'appstore'))) map.clear();
     logs('---kdao.channel--${kdao.channel}');
 
-    CommonVer? res = await KitService.fireGet<CommonVer>(url, query: map);
+    CommonVer? res = await KitService.fireGet<CommonVer>(url, query: map,isMoInAppKit: true);
     if (res != null) {
       if (res.info.project_list.contains(owm_project_id) == false) {
         if (isHud) kPopSnack('当前已是最新版本', bgColor: CC.blue);

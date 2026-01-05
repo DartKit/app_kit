@@ -49,9 +49,9 @@ class FormInputLogic extends GetxController {
     required String code,
     int work_id = 0,
     int patrol_type_id = 0,
-    String url = '',
+   required String url,
   }) async {
-    if (isNil(url.isNotEmpty, '缺少url')) return;
+    if (isNil(url.isEmpty, '缺少url')) return;
     mo ??= {};
     Map<String, dynamic> map = {
       'code': code,
@@ -62,7 +62,7 @@ class FormInputLogic extends GetxController {
     hasReqTemps.value = false;
 
     FromTemplate? res =
-    await KitService.fireGet<FromTemplate>(url, query: map);
+    await KitService.fireGet<FromTemplate>(url, query: map,isMoInAppKit: true);
 
     if (res != null) {
       hasReqTemps.value = true;

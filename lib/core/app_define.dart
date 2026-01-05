@@ -58,7 +58,7 @@ bool isNil<T>(Object? v, [String tip = '', bool useSnack = true]) {
 /// 导航栏下滑吐司
 /// 导航栏下滑吐司
 kPopSnack(text,
-    {Color? bgColor, Color? textColor, int time = 1, Function? onFinish}) {
+    {Color? bgColor, Color? textColor, int time = 1, VoidCallback? onFinish}) {
   logs('---Get.isSnackbarOpen--${Get.isSnackbarOpen}');
   if (!Get.isSnackbarOpen) {
     // Get.rawSnackbar()

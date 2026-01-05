@@ -728,7 +728,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
   }
 
   Future<OssObj> _uploadFile(File file, {Function? onSendProgress, Function? callback}) async {
-    final OssObj url = await UploadOss.upload(file: file, onSendProgress: onSendProgress, callback: callback);
+    final OssObj url = await UploadOss.upload_rspOss(file: file, onSendProgress: onSendProgress, callback: callback);
     return url;
   }
 

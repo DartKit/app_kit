@@ -27,7 +27,7 @@ class UploadOss {
     }
   }
 
-  static Future<OssObj> upload({required File file, String? fileType, Function? callback, Function? onSendProgress}) async {
+  static Future<OssObj> upload_rspOss({required File file, String? fileType, Function? callback, Function? onSendProgress}) async {
     size = 0;
     file.length().then((value) => size = value);
 
@@ -89,6 +89,76 @@ class UploadOss {
       return OssObj()..url = '';
       // throw(e.hashCode);
     }
+  }
+
+  static Future<String> upload_rspStr({File? file ,String filePath = '', String? fileType, Function? callback, Function? onSendProgress,bool showHud = false}) async {
+    // size = 0;
+    // file.length().then((value) => size = value);
+
+    await _filetoken();
+    BaseOptions options = BaseOptions();
+    options.responseType = ResponseType.plain;
+    //创建dio对象
+    Dio dio = Dio(options);
+    var fileUrl = filePath.isEmpty? file!.path: filePath;
+    // 生成oss的路径和文件名我这里目前设置的是files/20230307/1678170194599562.mp4
+    String path = "$pathName.${fileType ?? _getFileType(fileUrl)}";
+
+    // logs('---path--${path}');
+
+    // 请求参数的form对象
+    FormData data = FormData.fromMap({
+      "key": path,
+      "policy": policy,
+      "OSSAccessKeyId": ossAccessKeyId,
+      "success_action_status": "200", //让服务端返回200，不然，默认会返回204
+      "signature": signature,
+      "contentType": "multipart/form-data",
+      "file": MultipartFile.fromFileSync(fileUrl),
+    });
+
+    Response response;
+    CancelToken uploadCancelToken = CancelToken();
+    if(callback != null) callback(uploadCancelToken);
+    try {
+      logs('---url--$url');
+      logs('---data--$data');
+      // 发送请求
+      response = await dio.post(url, data: data, cancelToken: uploadCancelToken, onSendProgress: (int count, int data) {
+        if(onSendProgress != null) onSendProgress(count, data);
+        if (showHud) {
+          double progress = count/data* 1.0;
+          EasyLoading.instance
+            ..maskColor = Colors.black.withOpacity(0.2)
+            ..backgroundColor = Colors.black;
+          EasyLoading.showProgress(progress,maskType:EasyLoadingMaskType.none, status: '\n${(progress * 100).toStringAsFixed(0)}%');
+          if (progress >= 1)  EasyLoading.dismiss();
+        }
+
+
+      });
+      if (showHud){
+        EasyLoading.instance.backgroundColor = CC.mainColor;
+        kitHideLoading();
+      }
+
+      // OssObj o = OssObj();
+      // o.name = path;
+      // o.size = size;
+      // o.url = '$url/$path';
+      // o.thumbUrl = o.url;
+      // o.type = _getFileType(file.path);
+      // o.uid = pathName;
+      // 成功后返回文件访问路径
+      return '$url/$path';
+    } catch(e) {
+      EasyLoading.instance.backgroundColor = CC.mainColor;
+      kitHideLoading();
+      logs('--error-e--${e.toString()}');
+      return '';
+      // throw(e.hashCode);
+    }
+
   }
 
   static String _getFileType(String path) {

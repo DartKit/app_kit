@@ -36,7 +36,7 @@ class _MultiSelectState extends State<MultiSelect> {
   }
 
   void _req() async {
-    List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true, key: widget.url.urlQuery()['_rsp'] ?? '');
+    List<KeyVars>? res = await KitService.fireGet<List<KeyVars>>(widget.url, unTap: true,isMoInAppKit: true);
     if (res != null) _ls = res;
     if (mounted) setState(() {});
   }

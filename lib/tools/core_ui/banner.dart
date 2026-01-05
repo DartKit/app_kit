@@ -7,7 +7,7 @@ import '../image/gallery.dart';
 
 class CoBanner extends StatelessWidget {
   const CoBanner(this.ls, {super.key});
-  final List<OssObj> ls;
+  final List ls;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CoBanner extends StatelessWidget {
               gotoImagesView(urls: ls, index: index);
             },
             child: CachedNetworkImage(
-              imageUrl: ls[index].url, fit: BoxFit.cover, //缓存高
+              imageUrl:  ls[index].runtimeType == String? ls[index]: ls[index].url, fit: BoxFit.cover, //缓存高
               placeholder: (context, url) {
                 return SizedBox.expand(
                   child: Icon(

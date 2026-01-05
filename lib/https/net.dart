@@ -57,12 +57,12 @@ class Net {
     );
   }
 
-  Future<T?> get<T>(String url, {Map<String, dynamic>? query, String dataKey = '', Map? data, Map<String, dynamic>? headers, bool showErr = true, bool Function(ApiException)? onError, bool unTap = false, bool hud = true,bool isMoInAppKit = false}) {
-    return request(url, query: query, dataKey: dataKey, headers: headers, onError: onError, unTap: unTap, showErr: showErr, data: data, hud: hud,isMoInAppKit:isMoInAppKit);
+  Future<T?> get<T>(String url, {Map<String, dynamic>? query, String dataKey = '', Map? data, Map<String, dynamic>? headers, bool showErr = true, bool Function(ApiException)? onError, bool unTap = false, bool hud = true, bool isMoInAppKit = false, int? successCode}) {
+    return request(url, query: query, dataKey: dataKey, headers: headers, onError: onError, unTap: unTap, showErr: showErr, data: data, hud: hud, isMoInAppKit: isMoInAppKit, successCode: successCode);
   }
 
-  Future<T?> post<T>(String url, {Map<String, dynamic>? query, String dataKey = '', data, Map<String, dynamic>? headers, bool Function(ApiException)? onError, bool unTap = false, bool showErr = true, bool hud = true,bool isMoInAppKit = false}) {
-    return request(url, method: "POST", query: query, data: data, dataKey: dataKey, headers: headers, onError: onError, unTap: unTap, showErr: showErr, hud: hud,isMoInAppKit:isMoInAppKit);
+  Future<T?> post<T>(String url, {Map<String, dynamic>? query, String dataKey = '', data, Map<String, dynamic>? headers, bool Function(ApiException)? onError, bool unTap = false, bool showErr = true, bool hud = true, bool isMoInAppKit = false, int? successCode}) {
+    return request(url, method: "POST", query: query, data: data, dataKey: dataKey, headers: headers, onError: onError, unTap: unTap, showErr: showErr, hud: hud, isMoInAppKit: isMoInAppKit, successCode: successCode);
   }
 
   Future<T?> request<T>(
@@ -78,7 +78,8 @@ class Net {
     bool showErr = true,
     CancelToken? cancelToken,
     ProgressCallback? onSendProgress,
-        bool isMoInAppKit = false
+    int? successCode,
+    bool isMoInAppKit = false,
   }) async {
     if (!_hasInit) init(baseUrl: kdao.baseUrl);
     if (url.startsWith('http')) {
@@ -107,7 +108,7 @@ class Net {
       kdao.reqing = true;
 
       logs('--url--:${url}');
-      Response response = await dio.request(url,queryParameters: query, data: data, options: options, cancelToken: cancelToken, onSendProgress: onSendProgress);
+      Response response = await dio.request(url, queryParameters: query, data: data, options: options, cancelToken: cancelToken, onSendProgress: onSendProgress);
       kdao.req_end = true;
       kdao.reqing = false;
       if (hud) Hud.hide();
@@ -115,10 +116,10 @@ class Net {
       if (isNil(response.toString().isEmpty, '无数据返回')) return null;
       if (isMoInAppKit) {
         // logs('--response--:${response}');
-        (T? tt,bool isGot) tt = Net.handleResponseBaseType<T>(response, showErr);
+        (T? tt, bool isGot) tt = Net.handleResponseBaseType<T>(response, showErr, successCode: successCode);
         if (tt.$2 == true) return tt.$1;
         // logs('--tt--:${tt}');
-        return _handleResponse<T>(response, showErr, dataKey: dataKey, onError: onError);
+        return _handleResponse<T>(response, showErr, dataKey: dataKey, successCode: successCode, onError: onError);
       } else {
         return response as T;
       }
@@ -133,26 +134,27 @@ class Net {
   }
 
   ///请求响应内容处理
-  static (T?,bool isGot) handleResponseBaseType<T>(Response? response, bool showErr, ) {
+  static (T?, bool isGot) handleResponseBaseType<T>(Response? response, bool showErr, {int? successCode}) {
     if (response?.statusCode == 200) {
       // logs('--response?.data.runtimeType--:${response?.data.runtimeType}');
-      if (T == CoState) {
-       return ((CoState()..state = true) as T,true);
+      if (response?.data.runtimeType.toString().startsWith('_Map<') == true) {
+        Map<String, dynamic> map = Map<String, dynamic>.from(response?.data);
+        if (map.containsKey('code') && (T == CoState)) {
+          var code = map['code'];
+          if (code == (successCode ?? net.okCode)) return ((CoState()..state = true) as T, true);
+          // if ((data.runtimeType == bool)) return ((CoState()..state = true) as T,true);
+        }
+      } else {
+        if (T == CoState) {
+          return ((CoState()..state = true) as T, true);
+        }
       }
-        // if (response?.data.runtimeType.toString().startsWith('_Map<') == true) {
-      //   Map<String, dynamic> map = Map<String, dynamic>.from(response?.data);
-      //   if (map.containsKey('data') && (T == CoState)) {
-      //     var data = map['data'];
-      //     if (data == null) return ((CoState()..state = true) as T,true);
-      //     if ((data.runtimeType == bool)) return ((CoState()..state = true) as T,true);
-      //   }
-      // }
-
     } else {
       if (showErr == true && (response.toString() != 'null')) net.getException(response);
     }
-    return (null,false);
+    return (null, false);
   }
+
   ///请求响应内容处理
   static T? _handleResponse<T>(Response? response, bool showErr, {String dataKey = '', int? successCode, Function(ApiException err)? onError}) {
     KitResponse<T> apiResponse = KitResponse<T>.fromJson(response?.data.runtimeType == num ? null : response!.data, dataKey: dataKey);
@@ -160,9 +162,9 @@ class Net {
     return Net.handleBusinessResponse<T>(apiResponse, showErr, successCode: successCode, onError: onError);
   }
 
-
   ///业务内容处理
   static T? handleBusinessResponse<T>(KitResponse<T> response, bool showErr, {int? successCode, Function(ApiException err)? onError}) {
+    logs('--response.code--:${response.code}--successCode--:${successCode}--net.okCode--:${net.okCode}');
     if (response.code == (successCode ?? net.okCode)) {
       if (T == CoState) {
         CoState s = CoState();
@@ -178,13 +180,12 @@ class Net {
     } else {
       logs('---hud--$showErr--catch-e-3-$response');
       if (onError != null) onError(ApiException(response.code, response.message ?? '网络错误'));
-      if (showErr) net.getException(response);
+      if (showErr) net.getException(response,successCode: successCode);
     }
     return null;
   }
 
-
-  Future<T?> getException<T>(e) async {
+  Future<T?> getException<T>(e,{int? successCode}) async {
     kitHideLoading();
     ApiException exception;
     int? code;
@@ -213,7 +214,11 @@ class Net {
     } else {
       logs('---code--$code');
       var exception = ApiException(code, msg);
-      if ((code != null) && (code != _successCode)) kPopSnack(msg);
+      if ((code != null) && ((code != _successCode) && (code != successCode))){
+        var time = ((msg??'').length)~/10;
+        if(time>8) time = 8;
+        kPopSnack(msg,time: time+1);
+      }
 
       if (isDebug) {
         logs('---exception--${exception.message}');

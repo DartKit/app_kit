@@ -79,7 +79,10 @@ class BaState<T extends StatefulWidget> extends State<T> {
   List ls = [];
   bool noData = false;
 
-  Future<void> get checkNoData async => noData = ls.isEmpty;
+  Future<bool> get checkNoData async {
+    kdao.inReq.value = false;
+    return noData = ls.isEmpty;
+  }
 
   /// 搜索入参
   Map<String, dynamic> param = {};
