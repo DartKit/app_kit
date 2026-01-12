@@ -9,6 +9,14 @@ extension AddInt on int {
     }
   }
 
+  bool get no {
+    if ((this != 1) && (this != 10)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   bool get is0 {
     if (this == 0) {
       return true;
@@ -18,8 +26,7 @@ extension AddInt on int {
   }
 
   String get weekDay {
-    if ((this >= 1) && (this <= 7))
-      return ['一', '二', '三', '四', '五', '六', '日'][this - 1];
+    if ((this >= 1) && (this <= 7)) return ['一', '二', '三', '四', '五', '六', '日'][this - 1];
     return '';
   }
 

@@ -8,6 +8,7 @@ class InfoButton extends StatelessWidget {
         required this.name,
         this.isEnable = true,
         required this.onTap,
+        this.height,
         this.width,
         this.minWidth,
         this.fontSize,
@@ -16,6 +17,7 @@ class InfoButton extends StatelessWidget {
   final String name;
   final VoidCallback onTap;
   final bool isEnable;
+  final double? height;
   final double? width;
   final double? minWidth;
   final double? fontSize;
@@ -29,7 +31,7 @@ class InfoButton extends StatelessWidget {
       children: [
         NewButton(
             padding: padding ?? EdgeInsets.symmetric(horizontal: 10.r),
-            height: 35.r,
+            height: height??35.r,
             bgColor: bgColor,
             minWidth: minWidth,
             fontSize: (name.length <= 6 ? fontSize : 13.r),

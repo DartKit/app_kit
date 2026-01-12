@@ -1,5 +1,6 @@
 import 'package:app_kit/core/kt_export.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+export 'package:app_kit/tools/image/gallery.dart';
 
 const String _path = '';
 
@@ -84,10 +85,14 @@ class CoImage extends StatelessWidget {
       image = CachedNetworkImage(
         imageUrl: url,
         placeholder: (context, url) => p,
+        errorWidget: (context, url, error) => p,
         width: width,
         height: height,
         color: color,
-        fadeOutDuration: Duration(milliseconds: 0),
+        memCacheHeight: height == null?null: (height!)~/1,
+        memCacheWidth: width == null?null: (width!)~/1,
+        maxHeightDiskCache: height == null?null: (height!)~/1,
+        maxWidthDiskCache: width == null?null: (width!)~/1,
         fit: fit,
       );
     } else {

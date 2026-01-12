@@ -34,6 +34,8 @@ class CC {
   static const Color keyRed = Color(0xFFFF685F);
   static const Color blue2 = Color(0xFF6C9BFF);
 
+  static const Color FFCCCCCC = Color(0xFFCCCCCC);
+  static const Color FFEEEEEE = Color(0xFFEEEEEE);
 
   static const Color transparent = Colors.transparent;
   static const Color white = Colors.white;

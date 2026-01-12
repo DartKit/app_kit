@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:common_utils/common_utils.dart';
+import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import '../core/app_define.dart';
 
 /// 字符串扩展方法
@@ -12,6 +13,13 @@ extension AddString on String {
   double get toDouble {
     if (this == '') return 0.0;
     return double.parse(this);
+  }
+
+  bool get isNotEmptyNotZero {
+    var ff = true;
+    if(isNum && (toDouble == 0)) return false;
+    if(isEmpty) return false;
+    return ff;
   }
 
   // 取整 小数点后面舍弃

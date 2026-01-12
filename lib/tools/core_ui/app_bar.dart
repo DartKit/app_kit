@@ -9,6 +9,8 @@ class CoAppBar extends AppBar {
       Color? titleColor,
       GestureTapCallback? onLeadingTap,
       super.bottom,
+      super.shadowColor,
+      super.systemOverlayStyle,
       double? elevation,
       bool? scrollTitle,
       Widget? leading
@@ -104,3 +106,30 @@ class SearchButton extends IconButton {
 // class NavButton extends IconButton {
 //   NavButton(VoidCallback onTap,IconData icon):super(onPressed: onTap,icon:  Icon(icon, size: 24.0, color: Color(0xff000000),));
 // }
+
+class MyAppBar extends StatelessWidget {
+  const MyAppBar(this.title,{super.key,
+    this.color = Colors.white
+  });
+
+  final Color? color;
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      child: Row(
+        mainAxisAlignment:MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(onPressed: (){
+            Get.back();
+          }, icon: Icon(Icons.arrow_back_ios_new_rounded, color: color)),
+          Text(title ?? "",style: TextStyle(fontWeight: AppFont.bold,fontSize: 18.r,color: color),),
+          IconButton(onPressed: (){
+          }, icon: Icon(Icons.arrow_back_ios_new, color: Colors.transparent)),
+        ],
+      )
+    );
+  }
+}
