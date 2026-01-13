@@ -49,18 +49,19 @@ extension AddInt on int {
   }
 
   String get to2Bit {
-    if (this <= 0) {
-      return '00';
-    } else {
-      String str = toString();
-      if (str == '') return '00';
-      if (str == 'null') return '00';
-      if (str.length == 1) {
-        return '0$this';
-      } else {
-        return str;
-      }
-    }
+    return toString().padLeft(2, '0');
+    // if (this <= 0) {
+    //   return '00';
+    // } else {
+    //   String str = toString();
+    //   if (str == '') return '00';
+    //   if (str == 'null') return '00';
+    //   if (str.length == 1) {
+    //     return '0$this';
+    //   } else {
+    //     return str;
+    //   }
+    // }
   }
 
   int ifNil(int str) {
