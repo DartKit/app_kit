@@ -20,6 +20,7 @@ class CoImage extends StatelessWidget {
   final double? aspectRatio;
   final bool noHolder;
   final bool isMask;
+  final bool canView;
   final EdgeInsets? margin;
   final Widget? holdIma;
   final GestureTapCallback? onTap;
@@ -36,6 +37,7 @@ class CoImage extends StatelessWidget {
     this.aspectRatio,
     this.noHolder = false,
     this.isMask = false,
+    this.canView = false,
     this.margin,
     this.holdIma,
     this.onTap,
@@ -82,18 +84,24 @@ class CoImage extends StatelessWidget {
 
     Widget image;
     if (url.contains('http')) {
-      image = CachedNetworkImage(
-        imageUrl: url,
-        placeholder: (context, url) => p,
-        errorWidget: (context, url, error) => p,
-        width: width,
-        height: height,
-        color: color,
-        memCacheHeight: height == null?null: (height!)~/1,
-        memCacheWidth: width == null?null: (width!)~/1,
-        maxHeightDiskCache: height == null?null: (height!)~/1,
-        maxWidthDiskCache: width == null?null: (width!)~/1,
-        fit: fit,
+      image = GestureDetector(
+        onTap: canView?(){
+          gotoImagesView(urls: [url]);
+        }:null,
+        child: CachedNetworkImage(
+          imageUrl: url,
+          placeholder: (context, url) => p,
+          errorWidget: (context, url, error) => p,
+          width: width,
+          height: height,
+          color: color,
+          // 此处缓存会导致图片模糊看不清
+          // memCacheHeight: height == null?null: (height!)~/1,
+          // memCacheWidth: width == null?null: (width!)~/1,
+          // maxHeightDiskCache: height == null?null: (height!)~/1,
+          // maxWidthDiskCache: width == null?null: (width!)~/1,
+          fit: fit,
+        ),
       );
     } else {
       String urlEnd = '$_path$url${url.contains('.') ? '' : '.png'}';

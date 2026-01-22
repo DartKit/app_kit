@@ -363,6 +363,6 @@ class InputEvent {
       this.onSubmitted,
       this.inputFormatters,
       this.maxLines = 15,
-      this.minLines = 3
+      this.minLines = 1
       });
 }
