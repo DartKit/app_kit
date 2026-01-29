@@ -11,8 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  app_log:
+    git:
+      url: https://github.com/DartKit/app_log.git
+
   hud:
-    path: /Users/mingo/allRepos/all_kit/hud
+    git:
+      url: https://github.com/DartKit/hud.git
+#  hud:
+#    path: /Users/mingo/allRepos/all_kit/hud
   open_file_plus:
     git:
       url: https://github.com/postflow/open_file_plus.git
@@ -21,11 +28,11 @@ dependencies:
     git:
       url: https://github.com/quewen08/flutter_pickers.git
       ref: 3168c16d5157dbaab3ba01aa273b98f531dc1263
-  dio_log:
-    path: /Users/mingo/allRepos/all_kit/dio_log/
 #  dio_log:
-#    git:
-#      url: https://github.com/yfming93/dio_log.git
+#    path: /Users/mingo/allRepos/all_kit/dio_log/
+  dio_log:
+    git:
+      url: https://github.com/yfming93/dio_log.git
 #      ref: 08d4515146d8d185dbf24b714bcffa5439779e19
 
   dio: 5.9.0
