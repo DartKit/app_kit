@@ -13,7 +13,7 @@ class CallPhone extends StatelessWidget {
       onTap: () {
         if (call != null) call!();
       },
-      child: CoImage(AstToolKit.pkgAst(AstKit.lib_asts_images_ic_copy), width: 36.r, height: 36.r, circular: 0),
+      child: CoImage(AstToolKit.pkgAst(AstKit.lib_asts_images_ic_call), width: 36.r, height: 36.r, circular: 0),
     );
   }
 }

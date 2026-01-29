@@ -64,7 +64,7 @@ class PhotoPicker extends StatefulWidget {
     this.circular,
     this.imaSizeW,
     this.imaSizeH,
-    this.addImaTipStr,
+    // this.addImaTipStr,
 
   });
   bool isLook;
@@ -96,7 +96,7 @@ class PhotoPicker extends StatefulWidget {
   double? circular;
   double? imaSizeW;
   double? imaSizeH;
-  String? addImaTipStr;
+  // String? addImaTipStr;
 
   // /// 已经上传成功的  图片名称。退出当前页面后清空
   // static List<String> names = [];

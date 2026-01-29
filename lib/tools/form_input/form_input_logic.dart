@@ -153,7 +153,7 @@ class FormInputLogic extends GetxController {
 
 
   // 各个事件按钮 提交
-  Future<bool?> sure({bool autoBack = true, noReq = false}) async {
+  Future<bool?> sure({bool autoBack = true, noReq = false, bool needQuery = false}) async {
     logs('---params--$params');
     Map<String, dynamic> map = {};
     map.addAll(params);
@@ -169,7 +169,7 @@ class FormInputLogic extends GetxController {
     logs('---info.url--${info.url}');
     if (noReq) return false;
     // return false;
-    CoState? res = await KitService.fire<CoState>(url,data: map, query: map, unTap: true,isMoInAppKit: true);
+    CoState? res = await KitService.fire<CoState>(url,data: map, query: needQuery? map:null, unTap: true,isMoInAppKit: true);
     if (res?.state == true) {
       kPopSnack('操作成功',onFinish: (){
         params.clear();
