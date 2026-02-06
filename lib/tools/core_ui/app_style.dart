@@ -10,6 +10,7 @@ class ListBox extends Container {
     Color? bdColor,
     CrossAxisAlignment? crossAxisAlignment,
     MainAxisAlignment? mainAxisAlignment,
+    double spacing = 0.0
     // EdgeInsets? margin
   }) : super(
          margin: const EdgeInsets.only(left: 5, right: 5, top: 0, bottom: 14),
@@ -25,13 +26,13 @@ class ListBox extends Container {
          ),
          child: InkWell(
            onTap: onTap,
-           child: Column(crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start, mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start, children: children),
+           child: Column(crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start, mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,spacing: spacing, children: children),
          ),
        );
 }
 
 class ListBox2 extends Container {
-  ListBox2({super.key, required final List<Widget> children, final GestureTapCallback? onTap, EdgeInsets? padding, Color? bgColor, Color? bdColor, CrossAxisAlignment? crossAxisAlignment, MainAxisAlignment? mainAxisAlignment})
+  ListBox2({super.key, required final List<Widget> children, final GestureTapCallback? onTap, EdgeInsets? padding, Color? bgColor, Color? bdColor, CrossAxisAlignment? crossAxisAlignment, MainAxisAlignment? mainAxisAlignment,double spacing = 0.0})
     : super(
         margin: const EdgeInsets.only(left: 5, right: 5, top: 0, bottom: 14),
         padding: padding ?? const EdgeInsets.only(left: 15.0, right: 10.0, top: 10.0, bottom: 10.0),
@@ -52,7 +53,7 @@ class ListBox2 extends Container {
         ),
         child: InkWell(
           onTap: onTap,
-          child: Column(crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start, mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start, children: children),
+          child: Column(crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start, mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,spacing: spacing, children: children),
         ),
       );
 }

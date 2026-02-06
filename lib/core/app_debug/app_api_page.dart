@@ -43,6 +43,7 @@ class _AppApiPageState extends State<AppApiPage> {
                     onTap: () async {
                       var url = AppDebug.urls[index];
                       AppDebug.seledUrl = url;
+                      if (mounted) setState(() {});
                       if (AppDebug.onChangeHost != null) AppDebug.onChangeHost!(url, index);
                     },
                     child: Container(

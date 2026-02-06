@@ -6,15 +6,19 @@ import 'package:app_kit/models/core/oss_obj.dart';
 import 'package:app_kit/tools/ast_tool_kit.dart';
 import 'package:app_kit/tools/image/camera.dart';
 import 'package:app_kit/tools/image/image_editor.dart';
+import 'package:app_kit/tools/qrcode/qrcode_layout.dart';
 import 'package:app_kit/utils/open_file.dart';
 import 'package:app_kit/tools/image/oss.dart';
 import 'package:app_kit/tools/image/gallery.dart';
+import 'package:app_kit/widgets/ai_scan_overlay.dart';
 import 'package:app_kit/widgets/kit_views/kit_view.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
+
 // import 'package:image_pickers/image_pickers.dart';
 import 'package:permission_handler/permission_handler.dart';
+
 // import 'package:path/path.dart' as p;
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -27,8 +31,10 @@ enum TypePicker {
   camera(2, 'camera');
 
   const TypePicker(this.number, this.text);
+
   final int number;
   final String text;
+
   static TypePicker name(String title) => TypePicker.values.firstWhereOrNull((e) => e.name == title) ?? TypePicker.camera;
 }
 
@@ -64,9 +70,11 @@ class PhotoPicker extends StatefulWidget {
     this.circular,
     this.imaSizeW,
     this.imaSizeH,
+    this.aiOnTap,
     // this.addImaTipStr,
 
   });
+
   bool isLook;
   String title;
   String hintText;
@@ -85,9 +93,12 @@ class PhotoPicker extends StatefulWidget {
   Function? onCheckBoxChange;
   int compressSize;
   bool imaAndVideo;
+
   // bool isBig;
   bool isFile;
+  @Deprecated('使用aiOnTap替代')
   Function? aiCall;
+  Function(String url)? aiOnTap;
   bool isUpLsInStr;
   bool canImaEdit;
   bool canCamEdit;
@@ -96,6 +107,7 @@ class PhotoPicker extends StatefulWidget {
   double? circular;
   double? imaSizeW;
   double? imaSizeH;
+
   // String? addImaTipStr;
 
   // /// 已经上传成功的  图片名称。退出当前页面后清空
@@ -140,7 +152,9 @@ class _PhotoPickerState extends State<PhotoPicker> {
         _urls = widget.urls!.map((e) => OssObj.fromJson(e)).toList();
       } else {
         if (widget.urls!.first.runtimeType == String) {
-          _urls = widget.urls!.map((e) => OssObj()..url = e).toList();
+          _urls = widget.urls!.map((e) =>
+          OssObj()
+            ..url = e).toList();
         } else {
           _urls = List<OssObj>.from(widget.urls!);
         }
@@ -171,36 +185,36 @@ class _PhotoPickerState extends State<PhotoPicker> {
           widget.title.isEmpty
               ? Container()
               : Container(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Row(
-                    children: [
-                      if (widget.is_required)
-                        Text(
-                          '∗',
-                          style: TextStyle(color: CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
-                        ),
-                      if (widget.check_box != null)
-                        SizedBox(
-                          height: 20.r,
-                          width: 30.r,
-                          child: Checkbox(
-                              value: widget.check_box,
-                              onChanged: (x) {
-                                _check_box_fire();
-                              }),
-                        ),
-                      Expanded(
-                        child: InkWell(
-                          onTap: _check_box_fire,
-                          child: Text(
-                            widget.title + (widget.isLook ? '' : '（最多${widget.max}张）'),
-                            style: widget.titleStyle ?? TextStyle(color: CC.deepBlack, fontSize: 16.r, fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                      ),
-                    ],
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Row(
+              children: [
+                if (widget.is_required)
+                  Text(
+                    '∗',
+                    style: TextStyle(color: CC.red, fontSize: 16.r, fontWeight: FontWeight.w700),
+                  ),
+                if (widget.check_box != null)
+                  SizedBox(
+                    height: 20.r,
+                    width: 30.r,
+                    child: Checkbox(
+                        value: widget.check_box,
+                        onChanged: (x) {
+                          _check_box_fire();
+                        }),
+                  ),
+                Expanded(
+                  child: InkWell(
+                    onTap: _check_box_fire,
+                    child: Text(
+                      widget.title + (widget.isLook ? '' : '（最多${widget.max}张）'),
+                      style: widget.titleStyle ?? TextStyle(color: CC.deepBlack, fontSize: 16.r, fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ),
+              ],
+            ),
+          ),
           if (widget.check_box != false) _buildUploadContainer()
         ],
       ),
@@ -227,27 +241,27 @@ class _PhotoPickerState extends State<PhotoPicker> {
 
     return widget.isWrap
         ? Container(
-            // color: CC.random,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Wrap(
-                    alignment: widget.wrapAlignment ?? WrapAlignment.start,
-                    spacing: 10.r,
-                    runSpacing: 10.r,
-                    children: list,
-                  ),
-                ),
-              ],
+      // color: CC.random,
+      child: Row(
+        children: [
+          Expanded(
+            child: Wrap(
+              alignment: widget.wrapAlignment ?? WrapAlignment.start,
+              spacing: 10.r,
+              runSpacing: 10.r,
+              children: list,
             ),
-          )
+          ),
+        ],
+      ),
+    )
         : SizedBox(
       height: widget.imaSizeH ?? imaSizeW,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: list.map((e) => e.marginOnly(right: 10.r)).toList(),
-            ),
-          );
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: list.map((e) => e.marginOnly(right: 10.r)).toList(),
+      ),
+    );
   }
 
   Widget _add() {
@@ -282,7 +296,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
           width: imaSizeW,
           height: widget.imaSizeH ?? imaSizeW,
           padding: EdgeInsets.all(10.r),
-          decoration: BoxDecoration(border: Border.all(color: widget.bdColor ?? CC.fiveColor), borderRadius: BorderRadius.all(Radius.circular(widget.circular??5.r)), color: widget.bgColor ?? CC.white),
+          decoration: BoxDecoration(border: Border.all(color: widget.bdColor ?? CC.fiveColor), borderRadius: BorderRadius.all(Radius.circular(widget.circular ?? 5.r)), color: widget.bgColor ?? CC.white),
           child: Column(
             spacing: 3.r,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -293,7 +307,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
                 color: CC.fiveColor,
                 size: 40.r,
               ),
-             if (widget.hintText.isNotEmpty)  Text(widget.hintText, style: TextStyle(color: Color(0xFF666666), fontSize: 12.r, fontWeight: AppFont.bold),),
+              if (widget.hintText.isNotEmpty) Text(widget.hintText, style: TextStyle(color: Color(0xFF666666), fontSize: 12.r, fontWeight: AppFont.bold),),
             ],
           ),
         ));
@@ -301,11 +315,15 @@ class _PhotoPickerState extends State<PhotoPicker> {
 
   Widget _cellIma(index) {
     var ob = _urls[index];
-    var url =  ob.runtimeType == String ? ob: ob.url;
+    var url = ob.runtimeType == String ? ob : ob.url;
 
     // var mo = _urls[index];
     // logs('--mo.name--:${mo.name}');
-    var end = ((url.split('.').last).split('?x').first).toLowerCase();
+    var end = ((url
+        .split('.')
+        .last)
+        .split('?x')
+        .first).toLowerCase();
     // logs('--end--:${end}');
 
     return SizedBox(
@@ -317,55 +335,67 @@ class _PhotoPickerState extends State<PhotoPicker> {
             alignment: Alignment.bottomLeft,
             child: ['jpg', 'jpeg', 'png', 'webp', 'heic', 'jfif', 'gif', 'bmp', 'tiff', 'ai', 'cdr', 'eps', 'svg'].contains(end)
                 ? InkWell(
-                    onTap: () {
-                      // ImagePickers.previewImages(_urls.map((e) => e.url).toList(), index);
-                      gotoImagesView(urls: _urls, index: index);
-                      // Get.to(()=>GalleryPhotoViewWrapper(
-                      //   galleryItems: _urls,
-                      //   initialIndex: index,
-                      // ));
-                    },
-                    child: CoImage(
-                      url,
-                      width: imaSizeW, height: widget.imaSizeH ?? imaSizeW,
-                      fit: BoxFit.cover,
-                      circular: widget.circular??5.r,
-                    ))
-                : _file(ob.runtimeType == String? (OssObj()..url = url) : ob ),
+                onTap: () {
+                  // ImagePickers.previewImages(_urls.map((e) => e.url).toList(), index);
+                  gotoImagesView(urls: _urls, index: index);
+                  // Get.to(()=>GalleryPhotoViewWrapper(
+                  //   galleryItems: _urls,
+                  //   initialIndex: index,
+                  // ));
+                },
+                child: CoImage(
+                  url,
+                  width: imaSizeW, height: widget.imaSizeH ?? imaSizeW,
+                  fit: BoxFit.cover,
+                  circular: widget.circular ?? 5.r,
+                ))
+                : _file(ob.runtimeType == String ? (OssObj()
+              ..url = url) : ob),
           ),
-          if (widget.aiCall != null)
+          if ((widget.aiCall != null) || (widget.aiOnTap != null))
             Positioned(
                 left: 0.0,
                 right: 0.0,
                 bottom: 0.0,
-                child: Obx(() => (aiGif.isTrue && (_aiIndex == index))
-                    ? SizedBox()
-                    : InkWell(
-                        child: Container(
-                          height: 30.r,
-                          decoration: BoxDecoration(
-                            color: CC.blue.withOpacity(0.7),
-                            borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                child: Obx(() {
+
+                  return (aiGif.isTrue && (_aiIndex == index)
+                      ? SizedBox()
+                      : InkWell(
+                    child: Container(
+                      height: 30.r,
+                      decoration: BoxDecoration(
+                        color: CC.blue.withOpacity(0.7),
+                        borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'AI 识图',
+                            style: TextStyle(color: CC.white, fontSize: 14.r, fontWeight: AppFont.regular),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'AI 识图',
-                                style: TextStyle(color: CC.white, fontSize: 14.r, fontWeight: AppFont.regular),
-                              ),
-                            ],
-                          ),
-                        ),
-                        onTap: () {
-                          aiGif.value = true;
-                          _aiIndex = index;
-                          if (widget.aiCall != null) {
-                            widget.aiCall!(url);
-                          }
-                        },
-                      ))),
-          Obx(() => (aiGif.isTrue && (_aiIndex == index)) ? Positioned(top: 0, right: 0, left: 0, bottom: 0, child: CoImage(AstToolKit.pkgAst(AstKit.lib_asts_images_gf_scan1))) : SizedBox()),
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      aiGif.value = true;
+                      _aiIndex = index;
+                      if (widget.aiCall != null) {
+                        widget.aiCall!(url);
+                      }
+                      if (widget.aiOnTap != null) {
+                        widget.aiOnTap!(url);
+                      }
+                    },
+                  ));
+                })),
+          Obx(() =>
+          (aiGif.isTrue && (_aiIndex == index)) ? Positioned(top: 0,
+              right: 0,
+              left: 0,
+              bottom: 0,
+              child: AiScanOverlay(isScanning: true,)) : SizedBox()),
           Positioned(
               top: 0.0,
               right: 0.0,
@@ -388,16 +418,15 @@ class _PhotoPickerState extends State<PhotoPicker> {
                     aiGif.value = false;
                     _urls.removeAt(index);
                     if (widget.callback != null) {
-
-                        // List ls = [];
-                        // for (var e in _urls) {
-                        //   if (e.runtimeType == String) {
-                        //     ls.add(e);
-                        //   } else {
-                        //     ls.add(widget.isUpLsInStr? e.url:e);
-                        //   }
-                        // }
-                      List ls = _urls.map((e) => widget.isUpLsInStr? e.url: e).toList();
+                      // List ls = [];
+                      // for (var e in _urls) {
+                      //   if (e.runtimeType == String) {
+                      //     ls.add(e);
+                      //   } else {
+                      //     ls.add(widget.isUpLsInStr? e.url:e);
+                      //   }
+                      // }
+                      List ls = _urls.map((e) => widget.isUpLsInStr ? e.url : e).toList();
                       widget.callback(ls);
                     }
                     if (mounted) setState(() {});
@@ -409,7 +438,12 @@ class _PhotoPickerState extends State<PhotoPicker> {
     );
   }
 
-  String get timestamp => DateTime.now().millisecondsSinceEpoch.toString();
+  String get timestamp =>
+      DateTime
+          .now()
+          .millisecondsSinceEpoch
+          .toString();
+
   // double get imaSize => (Get.width - 20.r - 35.r - (widget.isLook ? 0 : 30.r) - 10.r * 2) / 3.0;
   double get imaSizeW => widget.imaSizeW ?? (Get.width - 20.r - 35.r - (widget.isLook ? 0 : 30.r) - 10.r * 2) / 3.0;
 
@@ -423,10 +457,12 @@ class _PhotoPickerState extends State<PhotoPicker> {
             child: Container(
               padding: EdgeInsets.all(5.r),
               width: imaSizeW,
-              height: widget.imaSizeH??imaSizeW,
+              height: widget.imaSizeH ?? imaSizeW,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), border: Border.all(width: 1.r, color: CC.line), color: CC.lightGrey.withOpacity(0.3)),
               child: AutoSizeText(
-                '\n' + mo.name.ifNil(mo.url.split('/').last),
+                '\n' + mo.name.ifNil(mo.url
+                    .split('/')
+                    .last),
                 // style: TextStyle(fontSize: 18.r),
                 // minFontSize: 8,
                 // maxFontSize: 28,
@@ -436,7 +472,9 @@ class _PhotoPickerState extends State<PhotoPicker> {
             )),
         Align(
           alignment: Alignment.topLeft,
-          child: KitView.sortName((mo.name.ifNil(mo.url)).split('.').last, padding: EdgeInsets.symmetric(vertical: 1.r, horizontal: 5.r), bgColor: CC.mainColor.withOpacity(0.5), margin: EdgeInsets.all(1.5)),
+          child: KitView.sortName((mo.name.ifNil(mo.url))
+              .split('.')
+              .last, padding: EdgeInsets.symmetric(vertical: 1.r, horizontal: 5.r), bgColor: CC.mainColor.withOpacity(0.5), margin: EdgeInsets.all(1.5)),
         ),
       ],
     );
@@ -535,7 +573,10 @@ class _PhotoPickerState extends State<PhotoPicker> {
 
   Future<XFile?> compressImageToTargetSize(XFile imageFile, [int targetSizeInBytes = 5 * 1024 * 1024]) async {
     int currentSize = await imageFile.length();
-    String jpgExt = imageFile.path.split('.').last.toLowerCase();
+    String jpgExt = imageFile.path
+        .split('.')
+        .last
+        .toLowerCase();
     CompressFormat format = CompressFormat.jpeg;
     switch (jpgExt) {
       case 'jpeg':
@@ -576,7 +617,9 @@ class _PhotoPickerState extends State<PhotoPicker> {
       quality = quality2;
       // var temUrl = '${imageFile.path.split('.').first+'_temp}'}.${jpgExt}';
       final tempDir = await getTemporaryDirectory();
-      String temUrl = '${tempDir.path}/ima_tem_${DateTime.now().millisecondsSinceEpoch}.$jpgExt';
+      String temUrl = '${tempDir.path}/ima_tem_${DateTime
+          .now()
+          .millisecondsSinceEpoch}.$jpgExt';
       logs('---temUrl--$temUrl');
       compressedImage = await FlutterImageCompress.compressAndGetFile(
         imageFile.path,
@@ -699,7 +742,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
       return;
     }
     await uploadOss(files);
-    List ls = _urls.map((e) => widget.isUpLsInStr? e.url: e).toList();
+    List ls = _urls.map((e) => widget.isUpLsInStr ? e.url : e).toList();
     widget.callback(ls);
     if (mounted) setState(() {});
   }
